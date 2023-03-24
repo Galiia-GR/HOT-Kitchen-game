@@ -1,2 +1,13 @@
 ///base///
+@import "./base/_const.scss";
+@import "./base/_media.scss";
 @import "./base/_base.scss";
+
+///sections///
+@import "./sections/_header.scss";
+@import "./sections/_not-only.scss";
+@import "./sections/_About.scss";
+@import "./sections/_Our-Friends.scss";
+@import "./sections/_Help.scss";
+@import "./sections/_In-addition.scss";
+@import "./sections/_footer.scss";

@@ -1,0 +1,45 @@
+$content-width: 1280px;
+$tablet-width: 761px;
+$tablet-width-big: 1080px;
+$mobile-width: 320px;
+$mobile-big-width: 760px;
+
+@font-face {
+  font-family: "Georgia-bold";
+  src: url("/src/assets/fonts/georgia/georgia-bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgia-normal";
+  src: url("/src/assets/fonts/georgia/georgia-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgia-italic";
+  src: url("/src/assets/fonts/georgia/georgia-italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arial-italic";
+  src: url("/src/assets/fonts/arial/arial-italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arial-normal";
+  src: url("/src/assets/fonts/arial/arial-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
