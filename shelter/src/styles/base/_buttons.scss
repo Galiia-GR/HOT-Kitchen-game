@@ -1,0 +1,17 @@
+.not-only-select {
+  display: flex;
+}
+
+.not-only__button {
+  background-color: $color-primary;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  width: 207px;
+  height: 52px;
+  color: $color-dark-3xl;
+  font-family: "Georgia-normal";
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: 0.06em;
+}

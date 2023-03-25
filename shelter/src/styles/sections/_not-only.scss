@@ -1,7 +1,27 @@
-.not-only {
-  background-color: aquamarine;
+.not-only__wrapper {
+  display: flex;
+  gap: 42px;
+  padding-top: 90px;
 }
 
-.not-only__wrapper {
-  background-color: antiquewhite;
+.not-only__content {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  padding-top: 163px;
+}
+
+.not-only__title {
+  font-family: "Georgia-normal";
+  font-size: 44px;
+  line-height: 57px;
+  color: $color-light-xl;
+  width: 310px;
+}
+
+.not-only__info {
+  font-family: "Arial-normal";
+  font-size: 15px;
+  line-height: 24px;
+  color: $color-dark-s;
 }
