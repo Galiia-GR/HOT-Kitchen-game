@@ -16,7 +16,7 @@
   font-family: "Georgia-normal";
   color: $color-primary;
   font-size: 32px;
-  line-height: 35.2px;
+  line-height: 35px;
   font-weight: 400;
   letter-spacing: 0.06em;
 }
@@ -51,12 +51,13 @@
 
 li:first-child {
   padding-left: 0;
-  border-bottom: solid 3px $color-primary;
-  pointer-events: none;
 }
 
 .active {
   color: $color-light-s;
+  border-bottom: solid 3px $color-primary;
+  pointer-events: none;
+  padding-bottom: 4px;
 }
 
 li:last-child {
@@ -66,4 +67,30 @@ li:last-child {
 .navigation__link:hover {
   transition: all 0.4s;
   color: $color-light-s;
+}
+
+//////header pets/////
+
+.pets__title {
+  color: $color-dark-l;
+}
+
+.pets__info {
+  color: $color-dark-3xl;
+  padding-bottom: 30px;
+}
+
+.pets__link {
+  color: $color-dark-l;
+}
+
+.pets__link:hover {
+  color: $color-dark-3xl;
+}
+
+.active_pets {
+  color: $color-dark-3xl;
+  padding-bottom: 4px;
+  border-bottom: solid 3px $color-primary;
+  pointer-events: none;
 }

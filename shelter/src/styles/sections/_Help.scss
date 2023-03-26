@@ -7,7 +7,7 @@
   justify-content: center;
   gap: 60px;
   flex-direction: column;
-  padding: 80px 80px 100px 80px;
+  padding: 80px 87px 100px 87px;
 }
 
 .help__title {
@@ -20,14 +20,20 @@
 }
 
 .help__container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 120px;
+  row-gap: 55px;
+  justify-content: center;
 }
 
 .help-item {
-  display: grid;
-  justify-self: center;
-  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  row-gap: 30px;
+  align-items: center;
 }
 
 .help__name {
@@ -36,5 +42,5 @@
   line-height: 23px;
   color: $color-dark-l;
   letter-spacing: 0.06em;
-  align-items: center;
+  align-self: center;
 }

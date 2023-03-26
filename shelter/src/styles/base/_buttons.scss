@@ -49,6 +49,7 @@ Our-Friends-select {
   border: none;
   cursor: pointer;
   border-radius: 100px;
+  background-color: $color-primary-light;
 }
 
 .Our-Friends-slider__nextButton {
@@ -59,4 +60,31 @@ Our-Friends-select {
   transition: all 0.4s ease;
   border: none;
   background-color: $color-primary-light;
+}
+
+.card__number:hover {
+  transition: all 0.4s ease;
+  cursor: pointer;
+  background-color: $color-primary-light;
+}
+
+.Our-Friends-slider__btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+  background-color: $color-light-l;
+}
+
+.pets-next1:hover,
+.pets-next2:hover,
+.Our-Friends-slider__prevButton:hover,
+.Our-Friends-slider__nextButton:hover {
+  transition: all 0.4s ease;
+  background-color: $color-primary;
+}
+
+a {
+  text-decoration: none;
+  list-style-type: none;
+  color: $color-dark-3xl;
 }

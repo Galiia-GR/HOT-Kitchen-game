@@ -1,7 +1,70 @@
 .In-addition {
-  background-color: aquamarine;
+  background-color: $color-light-l;
 }
 
 .In-addition__wrapper {
-  background-color: antiquewhite;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+.donation__dog {
+  padding-top: 90px;
+  padding-bottom: 110px;
+}
+
+.In-addition__info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 80px;
+}
+
+.In-addition__title {
+  font-family: "Georgia-normal";
+  font-size: 35px;
+  line-height: 45px;
+  color: $color-dark-l;
+  letter-spacing: 0.06em;
+  width: 300px;
+}
+
+.card__title {
+  font-family: "Georgia-normal";
+  font-size: 15px;
+  line-height: 17px;
+  font-weight: 400;
+  color: $color-dark-l;
+  letter-spacing: 0.06em;
+}
+
+.card__info {
+  font-family: "Arial-italic";
+  font-size: 12px;
+  line-height: 18px;
+  color: $color-dark-m;
+  width: 380px;
+}
+
+.card__number {
+  background-color: $color-primary;
+  display: flex;
+  height: 43px;
+  width: 350px;
+  border-radius: 9px;
+  gap: 15px;
+  justify-content: center;
+}
+
+.number {
+  font-family: "Georgia-normal";
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: 400;
+  color: $color-dark-l;
+  letter-spacing: 0.06em;
+  padding-left: 15px;
+}
+
+.number__ico {
+  padding-top: 5px;
 }

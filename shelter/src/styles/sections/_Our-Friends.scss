@@ -36,6 +36,7 @@
 }
 
 .pets-card {
+  width: 270px;
   background-color: $color-light-s;
   display: flex;
   gap: 30px;
@@ -81,4 +82,29 @@
   cursor: pointer;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   background-color: $color-light-xl;
+}
+
+/////our friends pets/////
+
+.pets__wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px 0 100px 0;
+}
+
+.pets__conteiner {
+  padding: 60px 40px 55px 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 40px;
+  row-gap: 25px;
+  align-items: center;
+}
+
+.container__buttons {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 5px;
 }
