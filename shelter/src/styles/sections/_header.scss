@@ -55,10 +55,15 @@ li:first-child {
   pointer-events: none;
 }
 
+.active {
+  color: $color-light-s;
+}
+
 li:last-child {
   padding-right: 0;
 }
 
 .navigation__link:hover {
   transition: all 0.4s;
+  color: $color-light-s;
 }

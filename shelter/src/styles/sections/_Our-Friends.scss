@@ -1,7 +1,84 @@
 .Our-Friends {
-  background-color: aquamarine;
+  background-color: $color-light-l;
 }
 
 .Our-Friends__wrapper {
-  background-color: antiquewhite;
+  padding: 70px 0 100px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  justify-content: center;
+}
+
+.Our-Friends__title {
+  font-family: "Georgia-normal";
+  font-size: 35px;
+  line-height: 45px;
+  color: $color-dark-l;
+  width: 400px;
+  letter-spacing: 0.06em;
+  align-self: center;
+  text-align: center;
+}
+
+.Our-Friends-select {
+  align-self: center;
+}
+
+.pets-card__conteiner {
+  display: flex;
+  gap: 90px;
+}
+
+.Our-Friends-slider {
+  display: flex;
+  justify-content: center;
+}
+
+.pets-card {
+  background-color: $color-light-s;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  border-radius: 9px;
+}
+
+.pets-card__name {
+  font-family: "Georgia-normal";
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  align-self: center;
+}
+
+.pets__img {
+  border-top-right-radius: 9px;
+  border-top-left-radius: 9px;
+}
+
+.Our-Friends-slider__prev,
+.Our-Friends-slider__next {
+  align-self: center;
+}
+
+.Our-Friends-slider__next {
+  padding-left: 52px;
+}
+
+.Our-Friends-slider__prev {
+  padding-right: 52px;
+}
+
+.Our-Friends-slider__prevButton {
+  background-color: $color-light-l;
+}
+
+.Our-Friends-slider__nextButton {
+  background-color: $color-light-l;
+}
+
+.pets-card:hover {
+  cursor: pointer;
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  background-color: $color-light-xl;
 }

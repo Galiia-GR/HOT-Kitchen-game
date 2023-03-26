@@ -1,7 +1,40 @@
 .Help {
-  background-color: aquamarine;
+  background-color: $color-light-xl;
 }
 
 .Help__wrapper {
-  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-direction: column;
+  padding: 80px 80px 100px 80px;
+}
+
+.help__title {
+  font-family: "Georgia-normal";
+  font-size: 35px;
+  line-height: 45px;
+  color: $color-dark-l;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.help__container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.help-item {
+  display: grid;
+  justify-self: center;
+  gap: 30px;
+}
+
+.help__name {
+  font-family: "Georgia-normal";
+  font-size: 20px;
+  line-height: 23px;
+  color: $color-dark-l;
+  letter-spacing: 0.06em;
+  align-items: center;
 }

@@ -1,8 +1,11 @@
-.not-only-select {
+.not-only-select,
+Our-Friends-select {
   display: flex;
 }
 
-.not-only__button {
+.not-only__button,
+.Our-Friends__button,
+.pets-card__button {
   background-color: $color-primary;
   border: none;
   border-radius: 100px;
@@ -14,4 +17,46 @@
   font-size: 17px;
   line-height: 22px;
   letter-spacing: 0.06em;
+}
+
+.not-only__button:hover {
+  transition: all 0.4s ease;
+  background-color: $color-primary-light;
+}
+
+.Our-Friends__button:hover {
+  transition: all 0.4s ease;
+  background-color: $color-primary-light;
+}
+
+.Our-Friends__button {
+  width: 261px;
+}
+
+.pets-card__button {
+  border: solid 2px #f1cdb3;
+  background-color: $color-light-s;
+  width: 190px;
+}
+
+.slide-select-pets {
+  padding-bottom: 30px;
+  align-self: center;
+}
+
+.Our-Friends-slider__prevButton,
+.Our-Friends-slider__nextButton {
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+.Our-Friends-slider__nextButton {
+  transform: rotate(180deg);
+}
+
+.pets-card:hover .pets-card__button {
+  transition: all 0.4s ease;
+  border: none;
+  background-color: $color-primary-light;
 }
