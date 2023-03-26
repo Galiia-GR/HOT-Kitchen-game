@@ -1,0 +1,32 @@
+.About {
+  background-color: $color-light-xl;
+}
+
+.About__wrapper {
+  display: flex;
+  gap: 120px;
+  padding: 80px 215px 100px 215px;
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-top: 10px;
+}
+
+.about__title {
+  font-family: "Georgia-normal";
+  font-size: 35px;
+  line-height: 45px;
+  color: $color-dark-l;
+  letter-spacing: 0.06em;
+  width: 370px;
+}
+
+.about__parag {
+  font-family: "Arial-normal";
+  font-size: 15px;
+  line-height: 24px;
+  color: $color-dark-xl;
+}
