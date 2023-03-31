@@ -60,22 +60,23 @@
 .Our-Friends-slider__prev,
 .Our-Friends-slider__next {
   align-self: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid $color-primary-light;
+  border-radius: 50%;
+  background-image: url("..//../assets/buttons/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.5s;
 }
 
 .Our-Friends-slider__next {
-  padding-left: 52px;
+  transform: rotate(180deg);
+  margin-left: 52px;
 }
 
 .Our-Friends-slider__prev {
-  padding-right: 52px;
-}
-
-.Our-Friends-slider__prevButton {
-  background-color: $color-light-l;
-}
-
-.Our-Friends-slider__nextButton {
-  background-color: $color-light-l;
+  margin-right: 52px;
 }
 
 .pets-card:hover {
@@ -107,4 +108,47 @@
   display: flex;
   gap: 20px;
   padding-bottom: 5px;
+}
+
+.Our-Friends-slider__btn {
+  align-self: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid $color-primary-light;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.4s ease;
+}
+
+.pets-prev2 {
+  background-image: url("..//../assets/buttons/dablEqual2.svg");
+  border: 2px solid $color-dark-s;
+  transform: rotate(180deg);
+}
+
+.pets-prev1 {
+  background-image: url("..//../assets/buttons/equal2.svg");
+  border: 2px solid $color-dark-s;
+  transform: rotate(180deg);
+}
+
+.pets-next1 {
+  background-image: url("..//../assets/buttons/equal.svg");
+}
+
+.pets-next2 {
+  background-image: url("..//../assets/buttons/dablEqual.svg");
+}
+
+.next-num {
+  padding-top: 12px;
+  background-color: $color-primary-light;
+  text-align: center;
+  font-family: "Georgia-normal";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  align-self: center;
 }
