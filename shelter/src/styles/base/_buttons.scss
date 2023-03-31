@@ -34,7 +34,7 @@ Our-Friends-select {
 }
 
 .pets-card__button {
-  border: solid 2px #f1cdb3;
+  border: solid 2px $color-primary;
   background-color: $color-light-s;
   width: 190px;
 }
@@ -44,16 +44,10 @@ Our-Friends-select {
   align-self: center;
 }
 
-.Our-Friends-slider__prevButton,
-.Our-Friends-slider__nextButton {
-  border: none;
+.Our-Friends-slider__next:hover,
+.Our-Friends-slider__prev:hover {
   cursor: pointer;
-  border-radius: 100px;
   background-color: $color-primary-light;
-}
-
-.Our-Friends-slider__nextButton {
-  transform: rotate(180deg);
 }
 
 .pets-card:hover .pets-card__button {
@@ -63,24 +57,17 @@ Our-Friends-select {
 }
 
 .card__number:hover {
-  transition: all 0.4s ease;
   cursor: pointer;
   background-color: $color-primary-light;
 }
 
-.Our-Friends-slider__btn {
-  border: none;
-  cursor: pointer;
-  border-radius: 100px;
-  background-color: $color-light-l;
-}
-
 .pets-next1:hover,
 .pets-next2:hover,
+.next-num:hover,
 .Our-Friends-slider__prevButton:hover,
 .Our-Friends-slider__nextButton:hover {
-  transition: all 0.4s ease;
-  background-color: $color-primary;
+  background-color: $color-primary-light;
+  cursor: pointer;
 }
 
 a {
