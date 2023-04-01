@@ -6,6 +6,17 @@
   display: flex;
   gap: 120px;
   padding: 80px 215px 100px 215px;
+
+  @include media-tablet {
+    flex-direction: column-reverse;
+    gap: 80px;
+    padding: 65px 169px 100px 169px;
+  }
+  @include media-mobile {
+    flex-direction: column-reverse;
+    padding: 28px 25px 42px 25px;
+    gap: 40px;
+  }
 }
 
 .about__content {
@@ -22,6 +33,14 @@
   color: $color-dark-l;
   letter-spacing: 0.06em;
   width: 370px;
+
+  @include media-mobile {
+    text-align: center;
+    font-size: 25px;
+    line-height: 32px;
+    width: 300px;
+    padding-right: 25px;
+  }
 }
 
 .about__parag {
@@ -29,4 +48,14 @@
   font-size: 15px;
   line-height: 24px;
   color: $color-dark-xl;
+
+  @include media-mobile {
+    text-align: justify;
+  }
+}
+
+.about__img {
+  @include media-tablet {
+    padding-left: 65px;
+  }
 }
