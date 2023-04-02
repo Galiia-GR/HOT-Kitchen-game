@@ -5,30 +5,49 @@
 
 .header__wrapper {
   display: flex;
-  gap: 573px;
+  justify-content: space-between;
+  gap: 0px;
+
+  @include media-tablet {
+    gap: 81px;
+  }
+  @include media-mobile {
+    justify-content: space-between;
+    gap: 0;
+  }
 }
 
 .header-logo {
   padding-top: 30px;
+  height: 60px;
+  @include media-mobile {
+    padding-left: 10px;
+  }
+
+  &__title {
+    font-family: "Georgia-normal";
+    color: $color-primary;
+    font-size: 32px;
+    line-height: 35px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+
+  &__info {
+    font-family: "Arial-normal";
+    font-size: 13px;
+    line-height: 15px;
+    color: $color-light-xl;
+    letter-spacing: 0.1em;
+    padding-top: 10px;
+    padding-left: 4px;
+  }
 }
 
-.header-logo__title {
-  font-family: "Georgia-normal";
-  color: $color-primary;
-  font-size: 32px;
-  line-height: 35px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-}
-
-.header-logo__info {
-  font-family: "Arial-normal";
-  font-size: 13px;
-  line-height: 15px;
-  color: $color-light-xl;
-  letter-spacing: 0.1em;
-  padding-top: 10px;
-  padding-left: 4px;
+.header__navigation {
+  @include media-mobile {
+    display: none;
+  }
 }
 
 .navigation {
@@ -36,6 +55,7 @@
   gap: 35px;
   padding-top: 46px;
 }
+
 .navigation-item {
   list-style-type: none;
   cursor: pointer;
@@ -72,6 +92,10 @@ li:last-child {
 
 //////header pets/////
 
+.pets__header {
+  padding-bottom: 50px;
+}
+
 .pets__title {
   color: $color-dark-l;
 }
@@ -79,6 +103,10 @@ li:last-child {
 .pets__info {
   color: $color-dark-3xl;
   padding-bottom: 30px;
+
+  @include media-tablet {
+    margin-bottom: 30px;
+  }
 }
 
 .pets__link {

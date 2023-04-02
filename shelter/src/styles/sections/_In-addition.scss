@@ -6,10 +6,29 @@
   display: flex;
   gap: 30px;
   justify-content: center;
+
+  @include media-tablet {
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+  @include media-mobile {
+    padding-top: 10px;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
 }
 .donation__dog {
   padding-top: 90px;
   padding-bottom: 110px;
+
+  @include media-tablet {
+    padding-top: 30px;
+    padding-bottom: 95px;
+  }
+  @include media-mobile {
+    padding-top: 15px;
+    padding-bottom: 35px;
+  }
 }
 
 .In-addition__info {
@@ -17,6 +36,12 @@
   flex-direction: column;
   gap: 20px;
   padding-top: 80px;
+
+  @include media-mobile {
+    justify-content: center;
+    width: 281px;
+    padding-top: 32px;
+  }
 }
 
 .In-addition__title {
@@ -26,6 +51,13 @@
   color: $color-dark-l;
   letter-spacing: 0.06em;
   width: 300px;
+  height: 64px;
+
+  @include media-mobile {
+    text-align: center;
+    font-size: 25px;
+    line-height: 32px;
+  }
 }
 
 .card__title {
@@ -35,6 +67,15 @@
   font-weight: 400;
   color: $color-dark-l;
   letter-spacing: 0.06em;
+  padding-top: 25px;
+
+  @include media-mobile {
+    text-align: center;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: 0em;
+    padding-top: 0px;
+  }
 }
 
 .card__info {
@@ -43,6 +84,11 @@
   line-height: 18px;
   color: $color-dark-m;
   width: 380px;
+
+  @include media-mobile {
+    width: 280px;
+    text-align: justify;
+  }
 }
 
 .card__number {
@@ -54,6 +100,10 @@
   gap: 15px;
   justify-content: center;
   transition: all 0.4s ease;
+
+  @include media-mobile {
+    width: 280px;
+  }
 }
 
 .number {
@@ -64,8 +114,13 @@
   color: $color-dark-l;
   letter-spacing: 0.06em;
   padding-left: 15px;
+
+  @include media-mobile {
+    font-size: 15px;
+    line-height: 17px;
+  }
 }
 
 .number__ico {
-  padding-top: 5px;
+  padding-top: 8px;
 }

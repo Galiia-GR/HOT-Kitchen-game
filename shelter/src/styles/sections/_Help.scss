@@ -8,6 +8,15 @@
   gap: 60px;
   flex-direction: column;
   padding: 80px 87px 100px 87px;
+
+  @include media-tablet {
+    padding: 80px 69px 60px 69px;
+  }
+
+  @include media-mobile {
+    padding: 42px 15px 42px 15px;
+    gap: 42px;
+  }
 }
 
 .help__title {
@@ -17,6 +26,11 @@
   color: $color-dark-l;
   letter-spacing: 0.06em;
   text-align: center;
+
+  @include media-mobile {
+    font-size: 25px;
+    line-height: 32px;
+  }
 }
 
 .help__container {
@@ -26,6 +40,37 @@
   column-gap: 120px;
   row-gap: 55px;
   justify-content: center;
+
+  @include media-tablet {
+    column-gap: 41px;
+    row-gap: 20px;
+    justify-content: space-between;
+  }
+
+  @include media-mobile {
+    column-gap: 34px;
+    row-gap: 30px;
+    justify-content: space-between;
+  }
+}
+
+.help__img {
+  @include media-mobile {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.petfood {
+  @include media-mobile {
+    width: 40px;
+  }
+}
+
+.shampoo {
+  @include media-mobile {
+    width: 26px;
+  }
 }
 
 .help-item {
@@ -34,6 +79,16 @@
   width: fit-content;
   row-gap: 30px;
   align-items: center;
+  @include media-tablet {
+    width: 166px;
+    height: 150px;
+  }
+
+  @include media-mobile {
+    width: 126px;
+    height: auto;
+    row-gap: 20px;
+  }
 }
 
 .help__name {
@@ -43,4 +98,8 @@
   color: $color-dark-l;
   letter-spacing: 0.06em;
   align-self: center;
+  @include media-mobile {
+    font-size: 15px;
+    line-height: 17px;
+  }
 }
