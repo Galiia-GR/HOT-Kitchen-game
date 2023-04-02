@@ -60,7 +60,7 @@
     padding: 0 30px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .wrapper {
     padding: 0 10px;
   }
@@ -76,7 +76,7 @@ Our-Friends-select {
     padding-left: 126px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .not-only-select {
     display: block;
   }
@@ -161,16 +161,18 @@ a {
 
 .header__wrapper {
   display: flex;
-  gap: 573px;
+  justify-content: space-between;
+  gap: 0px;
 }
 @media (min-width: 768px) and (max-width: 1080px) {
   .header__wrapper {
     gap: 81px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .header__wrapper {
-    gap: 66px;
+    justify-content: space-between;
+    gap: 0;
   }
 }
 
@@ -178,7 +180,7 @@ a {
   padding-top: 30px;
   height: 60px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .header-logo {
     padding-left: 10px;
   }
@@ -201,7 +203,7 @@ a {
   padding-left: 4px;
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .header__navigation {
     display: none;
   }
@@ -247,6 +249,10 @@ li:last-child {
   color: #fafafa;
 }
 
+.pets__header {
+  padding-bottom: 50px;
+}
+
 .pets__title {
   color: #545454;
 }
@@ -254,6 +260,11 @@ li:last-child {
 .pets__info {
   color: #292929;
   padding-bottom: 30px;
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pets__info {
+    margin-bottom: 30px;
+  }
 }
 
 .pets__link {
@@ -282,7 +293,7 @@ li:last-child {
     flex-direction: column;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .not-only__wrapper {
     padding-top: 80px;
     flex-direction: column;
@@ -302,7 +313,7 @@ li:last-child {
     padding-right: 124px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .not-only__content {
     padding-top: 0px;
     padding-left: 0px;
@@ -317,7 +328,7 @@ li:last-child {
   line-height: 57px;
   color: #ffffff;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .not-only__title {
     font-size: 25px;
     line-height: 32px;
@@ -346,7 +357,7 @@ li:last-child {
     padding-left: 140px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .not-only__img {
     padding-left: 40px;
     padding-top: 60px;
@@ -369,7 +380,7 @@ li:last-child {
     padding: 65px 169px 100px 169px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .About__wrapper {
     flex-direction: column-reverse;
     padding: 28px 25px 42px 25px;
@@ -392,7 +403,7 @@ li:last-child {
   letter-spacing: 0.06em;
   width: 370px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .about__title {
     text-align: center;
     font-size: 25px;
@@ -408,7 +419,7 @@ li:last-child {
   line-height: 24px;
   color: #4c4c4c;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .about__parag {
     text-align: justify;
   }
@@ -437,7 +448,7 @@ li:last-child {
     gap: 60px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .Our-Friends__wrapper {
     padding: 35px 0 42px 0;
     gap: 40px;
@@ -454,7 +465,7 @@ li:last-child {
   align-self: center;
   text-align: center;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .Our-Friends__title {
     font-size: 25px;
     line-height: 32px;
@@ -469,7 +480,7 @@ li:last-child {
     margin-top: -5px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .Our-Friends-select {
     margin-top: 73px;
   }
@@ -513,14 +524,14 @@ li:last-child {
   }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .item2,
   .item3 {
     display: none;
   }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .pets-card:last-child {
     display: none;
   }
@@ -558,7 +569,7 @@ li:last-child {
     margin-right: 12px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .Our-Friends-slider__prev {
     position: absolute;
     margin-top: 528px;
@@ -575,7 +586,7 @@ li:last-child {
     margin-left: 12px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .Our-Friends-slider__next {
     position: absolute;
     margin-top: 528px;
@@ -589,6 +600,43 @@ li:last-child {
   flex-direction: column;
   padding: 80px 0 100px 0;
 }
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pets__wrapper {
+    padding-bottom: 68px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .pets__wrapper {
+    padding: 40px 0 38px 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pets__item7,
+  .pets__item8 {
+    display: none;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .pets__item7,
+  .pets__item8 {
+    display: none;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .pets__item5,
+  .pets__item6 {
+    display: none;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .pets__item4 {
+    display: none;
+  }
+}
 
 .pets__conteiner {
   padding: 60px 40px 55px 40px;
@@ -599,11 +647,37 @@ li:last-child {
   row-gap: 25px;
   align-items: center;
 }
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pets__conteiner {
+    padding: 30px 94px 34px 94px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 26px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .pets__conteiner {
+    padding: 40px 25px 40px 25px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    row-gap: 25px;
+  }
+}
 
 .container__buttons {
   display: flex;
   gap: 20px;
   padding-bottom: 5px;
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  .container__buttons {
+    padding-bottom: 10px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .container__buttons {
+    gap: 10px;
+  }
 }
 
 .Our-Friends-slider__btn {
@@ -665,7 +739,7 @@ li:last-child {
     padding: 80px 69px 60px 69px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .Help__wrapper {
     padding: 42px 15px 42px 15px;
     gap: 42px;
@@ -680,7 +754,7 @@ li:last-child {
   letter-spacing: 0.06em;
   text-align: center;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .help__title {
     font-size: 25px;
     line-height: 32px;
@@ -702,7 +776,7 @@ li:last-child {
     justify-content: space-between;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .help__container {
     column-gap: 34px;
     row-gap: 30px;
@@ -710,20 +784,20 @@ li:last-child {
   }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .help__img {
     width: 50px;
     height: 50px;
   }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .petfood {
     width: 40px;
   }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .shampoo {
     width: 26px;
   }
@@ -742,7 +816,7 @@ li:last-child {
     height: 150px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .help-item {
     width: 126px;
     height: auto;
@@ -758,7 +832,7 @@ li:last-child {
   letter-spacing: 0.06em;
   align-self: center;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .help__name {
     font-size: 15px;
     line-height: 17px;
@@ -780,7 +854,7 @@ li:last-child {
     flex-direction: column-reverse;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .In-addition__wrapper {
     padding-top: 10px;
     align-items: center;
@@ -798,7 +872,7 @@ li:last-child {
     padding-bottom: 95px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .donation__dog {
     padding-top: 15px;
     padding-bottom: 35px;
@@ -811,7 +885,7 @@ li:last-child {
   gap: 20px;
   padding-top: 80px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .In-addition__info {
     justify-content: center;
     width: 281px;
@@ -828,7 +902,7 @@ li:last-child {
   width: 300px;
   height: 64px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .In-addition__title {
     text-align: center;
     font-size: 25px;
@@ -845,7 +919,7 @@ li:last-child {
   letter-spacing: 0.06em;
   padding-top: 25px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .card__title {
     text-align: center;
     font-size: 15px;
@@ -862,7 +936,7 @@ li:last-child {
   color: #b2b2b2;
   width: 380px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .card__info {
     width: 280px;
     text-align: justify;
@@ -879,7 +953,7 @@ li:last-child {
   justify-content: center;
   transition: all 0.4s ease;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .card__number {
     width: 280px;
   }
@@ -894,7 +968,7 @@ li:last-child {
   letter-spacing: 0.06em;
   padding-left: 15px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .number {
     font-size: 15px;
     line-height: 17px;
@@ -921,7 +995,7 @@ li:last-child {
     gap: 60px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .footer__wrapper {
     flex-direction: column;
     gap: 40px;
@@ -941,7 +1015,7 @@ li:last-child {
   flex-direction: column;
   gap: 34px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .footer-location {
     gap: 40px;
   }
@@ -956,7 +1030,7 @@ li:last-child {
   color: #ffffff;
   letter-spacing: 0.06em;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .footer-location__title,
   .footer-contacts__title {
     padding-top: 0px;
@@ -990,7 +1064,7 @@ li:last-child {
   display: flex;
   gap: 20px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .footer-contacts__mail,
   .footer-contacts__tel {
     margin-left: 28px;
@@ -1017,13 +1091,13 @@ li:last-child {
     margin-left: -530px;
   }
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .footer-puppy__img {
     padding-left: 20px;
   }
 }
 
-.hamburger__line::after, .hamburger::after, .hamburger::before {
+.pets__line::after, .pets__hamburger::after, .pets__hamburger::before, .hamburger__line::after, .hamburger::after, .hamburger::before {
   content: "";
   display: block;
   position: absolute;
@@ -1039,8 +1113,9 @@ li:last-child {
   width: 30px;
   height: 22px;
   margin-top: 50px;
+  margin-right: 10px;
 }
-@media (min-width: 320px) and (max-width: 767px) {
+@media (min-width: 300px) and (max-width: 767px) {
   .hamburger {
     display: block;
   }
@@ -1057,6 +1132,27 @@ li:last-child {
 }
 
 .hamburger__line::after {
+  height: 2px;
+  left: 0;
+  top: 10px;
+  z-index: 11;
+}
+
+.pets__hamburger::before {
+  background-color: #000000;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+.pets__hamburger::after {
+  background-color: #000000;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+}
+
+.pets__line::after {
+  background-color: #000000;
   height: 2px;
   left: 0;
   top: 10px;

@@ -5,13 +5,15 @@
 
 .header__wrapper {
   display: flex;
-  gap: 573px;
+  justify-content: space-between;
+  gap: 0px;
 
   @include media-tablet {
     gap: 81px;
   }
   @include media-mobile {
-    gap: 66px;
+    justify-content: space-between;
+    gap: 0;
   }
 }
 
@@ -90,6 +92,10 @@ li:last-child {
 
 //////header pets/////
 
+.pets__header {
+  padding-bottom: 50px;
+}
+
 .pets__title {
   color: $color-dark-l;
 }
@@ -97,6 +103,10 @@ li:last-child {
 .pets__info {
   color: $color-dark-3xl;
   padding-bottom: 30px;
+
+  @include media-tablet {
+    margin-bottom: 30px;
+  }
 }
 
 .pets__link {

@@ -156,8 +156,42 @@
   justify-content: center;
   flex-direction: column;
   padding: 80px 0 100px 0;
+
+  @include media-tablet {
+    padding-bottom: 68px;
+  }
+
+  @include media-mobile {
+    padding: 40px 0 38px 0;
+  }
 }
 
+.pets__item7,
+.pets__item8 {
+  @include media-tablet {
+    display: none;
+  }
+}
+
+.pets__item7,
+.pets__item8 {
+  @include media-mobile {
+    display: none;
+  }
+}
+
+.pets__item5,
+.pets__item6 {
+  @include media-mobile {
+    display: none;
+  }
+}
+
+.pets__item4 {
+  @include media-mobile {
+    display: none;
+  }
+}
 .pets__conteiner {
   padding: 60px 40px 55px 40px;
   display: grid;
@@ -166,12 +200,33 @@
   gap: 40px;
   row-gap: 25px;
   align-items: center;
+
+  @include media-tablet {
+    padding: 30px 94px 34px 94px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: 26px;
+  }
+
+  @include media-mobile {
+    padding: 40px 25px 40px 25px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    row-gap: 25px;
+  }
 }
 
 .container__buttons {
   display: flex;
   gap: 20px;
   padding-bottom: 5px;
+  @include media-tablet {
+    padding-bottom: 10px;
+  }
+
+  @include media-mobile {
+    gap: 10px;
+  }
 }
 
 .Our-Friends-slider__btn {
