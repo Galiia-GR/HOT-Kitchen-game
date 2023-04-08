@@ -2,6 +2,15 @@
 Our-Friends-select {
   display: flex;
 }
+.not-only-select {
+  @include media-tablet {
+    padding-left: 126px;
+  }
+
+  @include media-mobile {
+    display: block;
+  }
+}
 
 .not-only__button,
 .Our-Friends__button,

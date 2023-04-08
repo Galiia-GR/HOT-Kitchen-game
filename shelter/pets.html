@@ -16,7 +16,7 @@
   <body>
     <div class="container">
       <header class="header">
-        <div class="wrapper header__wrapper">
+        <div class="wrapper header__wrapper pets__header">
           <div class="header-logo">
             <a href="main.html">
               <h1 class="header-logo__title pets__title">Cozy House</h1>
@@ -25,8 +25,11 @@
               </p>
             </a>
           </div>
+          <div class="hamburger pets__hamburger">
+            <span class="hamburger__line pets__line"></span>
+          </div>
           <nav class="header__navigation">
-            <ul class="navigation">
+            <ul class="navigation pets__navigation">
               <li class="navigation-item pets__nav">
                 <a class="navigation__link pets__link" href="main.html"
                   >About the shelter</a
@@ -35,7 +38,7 @@
               <li class="navigation-item">
                 <a
                   class="navigation__link pets__link active_pets"
-                  href="pets.html"
+                  href="#pets.html"
                   >Our pets</a
                 >
               </li>
@@ -60,7 +63,7 @@
             are looking for a house
           </h3>
           <div class="pets-card__conteiner pets__conteiner">
-            <div class="pets-card item1">
+            <div class="pets-card pets__item1">
               <picture>
                 <img
                   class="pets__img"
@@ -73,7 +76,7 @@
                 <button class="pets-card__button">Learn more</button>
               </div>
             </div>
-            <div class="pets-card item2">
+            <div class="pets-card pets__item2">
               <picture>
                 <img
                   class="pets__img"
@@ -86,7 +89,7 @@
                 <button class="pets-card__button">Learn more</button>
               </div>
             </div>
-            <div class="pets-card item3">
+            <div class="pets-card pets__item3">
               <picture>
                 <img
                   class="pets__img"
@@ -99,7 +102,7 @@
                 <button class="pets-card__button">Learn more</button>
               </div>
             </div>
-            <div class="pets-card item4">
+            <div class="pets-card pets__item4">
               <picture>
                 <img
                   class="pets__img"
@@ -112,7 +115,7 @@
                 <button class="pets-card__button">Learn more</button>
               </div>
             </div>
-            <div class="pets-card item5">
+            <div class="pets-card pets__item5">
               <picture>
                 <img
                   class="pets__img"
@@ -125,7 +128,7 @@
                 <button class="pets-card__button">Learn more</button>
               </div>
             </div>
-            <div class="pets-card item6">
+            <div class="pets-card pets__item6">
               <picture>
                 <img
                   class="pets__img"
@@ -138,7 +141,7 @@
                 <button class="pets-card__button">Learn more</button>
               </div>
             </div>
-            <div class="pets-card item7">
+            <div class="pets-card pets__item7">
               <picture>
                 <img
                   class="pets__img"
@@ -151,7 +154,7 @@
                 <button class="pets-card__button">Learn more</button>
               </div>
             </div>
-            <div class="pets-card item8">
+            <div class="pets-card pets__item8">
               <picture>
                 <img
                   class="pets__img"
@@ -219,6 +222,10 @@
             </a>
           </div>
           <picture>
+            <source
+              srcset="./src/assets/footer-puppyMob.png"
+              media="(min-width:300px) and (max-width:767px)"
+            />
             <img
               class="footer-puppy__img"
               src="./src/assets/footer-puppy.png"
