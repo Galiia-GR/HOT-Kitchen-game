@@ -77,7 +77,6 @@ li:first-child {
   color: $color-light-s;
   border-bottom: solid 3px $color-primary;
   cursor: default;
-  pointer-events: none;
   padding-bottom: 4px;
 }
 
@@ -121,5 +120,4 @@ li:last-child {
   color: $color-dark-3xl;
   padding-bottom: 4px;
   border-bottom: solid 3px $color-primary;
-  pointer-events: none;
 }

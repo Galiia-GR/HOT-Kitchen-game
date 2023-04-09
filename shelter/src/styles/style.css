@@ -236,7 +236,6 @@ li:first-child {
   color: #fafafa;
   border-bottom: solid 3px #f1cdb3;
   cursor: default;
-  pointer-events: none;
   padding-bottom: 4px;
 }
 
@@ -279,7 +278,6 @@ li:last-child {
   color: #292929;
   padding-bottom: 4px;
   border-bottom: solid 3px #f1cdb3;
-  pointer-events: none;
 }
 
 .not-only__wrapper {
@@ -489,9 +487,11 @@ li:last-child {
 .pets-card__conteiner {
   display: flex;
   gap: 90px;
+  align-self: center;
 }
 @media (min-width: 768px) and (max-width: 1080px) {
   .pets-card__conteiner {
+    align-self: flex-start;
     width: 580px;
     gap: 40px;
   }
@@ -525,8 +525,8 @@ li:last-child {
 }
 
 @media (min-width: 300px) and (max-width: 767px) {
-  .item2,
-  .item3 {
+  .main_item1,
+  .main_item2 {
     display: none;
   }
 }
@@ -594,6 +594,34 @@ li:last-child {
   }
 }
 
+.Our-Friends-slider__prevButton {
+  border: 0;
+  background-size: 32px 32px;
+}
+
+.Our-Friends-slider__nextButton {
+  border: 0;
+  background-size: 32px 32px;
+}
+
+.pets-card {
+  animation: imgAnim 3s ease-in-out;
+}
+
+@keyframes imgAnim {
+  0% {
+    opacity: 0.25;
+  }
+  8% {
+    opacity: 0.45;
+  }
+  25% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .pets__wrapper {
   display: flex;
   justify-content: center;
@@ -1104,7 +1132,7 @@ li:last-child {
   background-color: #f1cdb3;
   width: 100%;
   height: 2px;
-  transition: all 0.3s ease 0s;
+  transition: all 0.8s ease 0s;
 }
 
 .hamburger {
@@ -1118,6 +1146,9 @@ li:last-child {
 @media (min-width: 300px) and (max-width: 767px) {
   .hamburger {
     display: block;
+    position: absolute;
+    right: 15px;
+    z-index: 11;
   }
 }
 .hamburger::before {
@@ -1157,6 +1188,60 @@ li:last-child {
   left: 0;
   top: 10px;
   z-index: 11;
+}
+
+.active-icon::before {
+  top: 10px;
+  transform: rotate(90deg);
+}
+.active-icon::after {
+  transform: rotate(90deg);
+  left: 20px;
+  bottom: 10px;
+}
+
+.active-icon .hamburger__line::after {
+  transform: rotate(90deg);
+  left: 10px;
+}
+
+.hamburger:hover,
+.header__navigation_active:hover {
+  cursor: pointer;
+}
+
+.header__navigation_active {
+  display: block;
+  transition-delay: 2s, 4ms;
+}
+
+.header__navigation_active .navigation {
+  background: #292929;
+  position: fixed;
+  padding-top: 208px;
+  width: 320px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 8;
+  overflow: auto;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 2px 35px 1000px rgba(19, 18, 18, 0.486);
+}
+
+.header__navigation_active .pets__navigation {
+  background-color: #ffffff;
+}
+
+.header__navigation_active .navigation-item {
+  padding-top: 40px;
+  font-size: 32px;
+  line-height: 51px;
+}
+
+.modal-open {
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */
