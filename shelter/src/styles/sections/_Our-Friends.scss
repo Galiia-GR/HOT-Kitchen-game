@@ -179,6 +179,31 @@
     opacity: 1;
   }
 }
+.pop-Up {
+  display: flex;
+  z-index: 2;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  background-color: $color-light-s;
+  border-radius: 9px;
+  position: fixed;
+  width: 900px;
+  gap: 30px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding-top: 50px;
+    padding-right: 20px;
+  }
+
+  &__img {
+    border-radius: 9px 0px 0px 9px;
+  }
+}
+
 /////our friends pets/////
 
 .pets__wrapper {

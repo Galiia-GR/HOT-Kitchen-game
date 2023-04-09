@@ -30,34 +30,55 @@ export async function getFetchPets() {
     petsNameCard[i].textContent = petsObj[petsArr[i]].name;
     petsCardImg[i].src = petsObj[petsArr[i]].img;
     count = i;
+
     console.log(count);
   }
 
   nextButtonEl.addEventListener("click", () => {
     console.log("вперед", count);
-    if (count < 7) {
+    if (count < 7 && window.innerWidth < 768) {
       count = count + 1;
-      petsNameCard[0].textContent = petsObj[petsArr[count - 2]].name;
-      petsCardImg[0].src = petsObj[petsArr[count - 2]].img;
-      petsNameCard[1].textContent = petsObj[petsArr[count - 1]].name;
-      petsCardImg[1].src = petsObj[petsArr[count - 1]].img;
-      petsNameCard[2].textContent = petsObj[petsArr[count]].name;
-      petsCardImg[2].src = petsObj[petsArr[count]].img;
+      petsNameCard[0].textContent = petsObj[petsArr[count]].name;
+      petsCardImg[0].src = petsObj[petsArr[count]].img;
+    } else if (count < 6 && window.innerWidth < 1080) {
+      count = count + 1;
+      petsNameCard[0].textContent = petsObj[petsArr[count]].name;
+      petsCardImg[0].src = petsObj[petsArr[count]].img;
+      petsNameCard[1].textContent = petsObj[petsArr[count + 1]].name;
+      petsCardImg[1].src = petsObj[petsArr[count + 1]].img;
+    } else if (count < 5 && window.innerWidth > 1081) {
+      petsNameCard[0].textContent = petsObj[petsArr[count + 1]].name;
+      petsCardImg[0].src = petsObj[petsArr[count + 1]].img;
+      petsNameCard[1].textContent = petsObj[petsArr[count + 2]].name;
+      petsCardImg[1].src = petsObj[petsArr[count + 2]].img;
+      petsNameCard[2].textContent = petsObj[petsArr[count + 3]].name;
+      petsCardImg[2].src = petsObj[petsArr[count + 3]].img;
+      count = count + 1;
     } else {
-      count = 1;
+      count = 0;
     }
   });
 
   prevButtonEl.addEventListener("click", () => {
     console.log("назад", count);
-    if (count <= 7 && count > 2) {
+    if (count <= 7 && count > 1 && window.innerWidth < 768) {
+      count = count;
+      petsNameCard[0].textContent = petsObj[petsArr[count]].name;
+      petsCardImg[0].src = petsObj[petsArr[count]].img;
+    } else if (count <= 7 && count > 2 && window.innerWidth < 1080) {
       count = count - 1;
-      petsNameCard[2].textContent = petsObj[petsArr[count]].name;
-      petsCardImg[2].src = petsObj[petsArr[count]].img;
+      petsNameCard[0].textContent = petsObj[petsArr[count]].name;
+      petsCardImg[0].src = petsObj[petsArr[count]].img;
       petsNameCard[1].textContent = petsObj[petsArr[count - 1]].name;
       petsCardImg[1].src = petsObj[petsArr[count - 1]].img;
-      petsNameCard[0].textContent = petsObj[petsArr[count - 2]].name;
-      petsCardImg[0].src = petsObj[petsArr[count - 2]].img;
+    } else if (count <= 7 && count > 3 && window.innerWidth > 1081) {
+      count = count - 1;
+      petsNameCard[0].textContent = petsObj[petsArr[count]].name;
+      petsCardImg[0].src = petsObj[petsArr[count]].img;
+      petsNameCard[1].textContent = petsObj[petsArr[count - 2]].name;
+      petsCardImg[1].src = petsObj[petsArr[count - 2]].img;
+      petsNameCard[2].textContent = petsObj[petsArr[count - 3]].name;
+      petsCardImg[2].src = petsObj[petsArr[count - 3]].img;
     } else {
       count = 7;
     }
