@@ -51,8 +51,10 @@
 .pets-card__conteiner {
   display: flex;
   gap: 90px;
+  align-self: center;
 
   @include media-tablet {
+    align-self: flex-start;
     width: 580px;
     gap: 40px;
   }
@@ -86,8 +88,8 @@
   }
 }
 
-.item2,
-.item3 {
+.main_item1,
+.main_item2 {
   @include media-mobile {
     display: none;
   }
@@ -149,6 +151,34 @@
   }
 }
 
+.Our-Friends-slider__prevButton {
+  border: 0;
+  background-size: 32px 32px;
+}
+
+.Our-Friends-slider__nextButton {
+  border: 0;
+  background-size: 32px 32px;
+}
+
+.pets-card {
+  animation: imgAnim 3s ease-in-out;
+}
+
+@keyframes imgAnim {
+  0% {
+    opacity: 0.25;
+  }
+  8% {
+    opacity: 0.45;
+  }
+  25% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /////our friends pets/////
 
 .pets__wrapper {
