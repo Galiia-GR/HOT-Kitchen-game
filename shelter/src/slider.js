@@ -31,12 +31,9 @@ export async function getFetchPets() {
     petsNameCard[i].textContent = petsObj[petsArr[i]].name;
     petsCardImg[i].src = petsObj[petsArr[i]].img;
     count = i;
-
-    console.log(count);
   }
 
   nextButtonEl.addEventListener("click", () => {
-    console.log("вперед");
     if (count < 7 && window.innerWidth < 768) {
       count = count + 1;
       petsNameCard[0].textContent = petsObj[petsArr[count]].name;
@@ -61,7 +58,6 @@ export async function getFetchPets() {
   });
 
   prevButtonEl.addEventListener("click", () => {
-    console.log("назад");
     if (count <= 7 && count > 1 && window.innerWidth < 768) {
       count = count - 1;
       petsNameCard[0].textContent = petsObj[petsArr[count]].name;
