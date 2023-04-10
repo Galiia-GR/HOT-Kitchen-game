@@ -561,6 +561,42 @@ li:last-child {
   transition: all 0.5s;
 }
 
+.Our-Friends-slider__close {
+  position: fixed;
+  right: 0px;
+  top: 120px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #fddcc4;
+  border-radius: 50%;
+  transition: all 0.5s;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("..//../assets/buttons/VectorX.svg");
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  .Our-Friends-slider__close {
+    right: 10px;
+    top: 80px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .Our-Friends-slider__close {
+    right: 10px;
+    top: 55px;
+  }
+}
+
+.pop-Up__button {
+  border: none;
+  background-size: 32px 32px;
+}
+
+.Our-Friends-slider__close:hover {
+  background-color: #fddcc4;
+  cursor: pointer;
+}
+
 .Our-Friends-slider__prev {
   margin-right: 52px;
 }
@@ -623,7 +659,8 @@ li:last-child {
   }
 }
 .pop-Up {
-  display: flex;
+  display: none;
+  box-shadow: 0px 2px 35px 1000px rgba(19, 18, 18, 0.486);
   z-index: 2;
   position: fixed;
   top: 25%;
@@ -634,6 +671,22 @@ li:last-child {
   width: 900px;
   gap: 30px;
 }
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pop-Up {
+    width: 630px;
+    gap: 10px;
+    top: 15%;
+    left: 10%;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .pop-Up {
+    width: 240px;
+    gap: 10px;
+    top: 15%;
+    left: 12%;
+  }
+}
 .pop-Up__content {
   display: flex;
   flex-direction: column;
@@ -641,8 +694,127 @@ li:last-child {
   padding-top: 50px;
   padding-right: 20px;
 }
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pop-Up__content {
+    padding-top: 10;
+    width: 260px;
+    padding-right: 8px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .pop-Up__content {
+    align-items: center;
+    padding-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
 .pop-Up__img {
   border-radius: 9px 0px 0px 9px;
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pop-Up__img {
+    width: 350px;
+    height: 350px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .pop-Up__img {
+    display: none;
+  }
+}
+.pop-Up__name {
+  font-family: "Georgia-normal";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 35px;
+  line-height: 45px;
+  letter-spacing: 0.06em;
+  color: #000;
+}
+.pop-Up__type {
+  font-family: "Georgia-normal";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  color: #000;
+  padding-top: 10px;
+}
+.pop-Up__info {
+  font-family: "Georgia-normal";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 17px;
+  letter-spacing: 0.06em;
+  color: #000;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pop-Up__info {
+    font-size: 13px;
+    line-height: 14px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .pop-Up__info {
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+}
+.pop-Up__item {
+  font-family: "Georgia-bold";
+  font-style: normal;
+  font-weight: 400px;
+  font-size: 15px;
+  line-height: 17px;
+  letter-spacing: 0.06em;
+  color: #000;
+  padding-top: 11px;
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pop-Up__item {
+    padding-top: 6px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .pop-Up__item {
+    padding-top: 6px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1080px) {
+  .pop-Up__item:last-child {
+    padding-bottom: 38px;
+  }
+}
+.pop-Up__list {
+  list-style: none;
+}
+.pop-Up__item ::before {
+  position: absolute;
+  display: inline;
+  content: "";
+  width: 4px;
+  height: 4px;
+  top: 7px;
+  left: 0px;
+  border-radius: 50%;
+  background-color: #f1cdb3;
+}
+.pop-Up__age, .pop-Up__inoculations, .pop-Up__diseases, .pop-Up__parasites {
+  font-family: "Georgia-normal";
+}
+
+.pop-Up-active {
+  display: flex;
 }
 
 .pets__wrapper {

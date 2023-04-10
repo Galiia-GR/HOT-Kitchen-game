@@ -3,6 +3,7 @@ const petsNameCard = document.querySelectorAll(".main_name");
 
 const prevButtonEl = document.querySelector(".Our-Friends-slider__prev");
 const nextButtonEl = document.querySelector(".Our-Friends-slider__next");
+const petsContainer = document.querySelector(".pets-card__conteiner");
 let petsArr = [];
 let count;
 
@@ -35,7 +36,7 @@ export async function getFetchPets() {
   }
 
   nextButtonEl.addEventListener("click", () => {
-    console.log("вперед", count);
+    console.log("вперед");
     if (count < 7 && window.innerWidth < 768) {
       count = count + 1;
       petsNameCard[0].textContent = petsObj[petsArr[count]].name;
@@ -60,9 +61,9 @@ export async function getFetchPets() {
   });
 
   prevButtonEl.addEventListener("click", () => {
-    console.log("назад", count);
+    console.log("назад");
     if (count <= 7 && count > 1 && window.innerWidth < 768) {
-      count = count;
+      count = count - 1;
       petsNameCard[0].textContent = petsObj[petsArr[count]].name;
       petsCardImg[0].src = petsObj[petsArr[count]].img;
     } else if (count <= 7 && count > 2 && window.innerWidth < 1080) {
@@ -81,6 +82,73 @@ export async function getFetchPets() {
       petsCardImg[2].src = petsObj[petsArr[count - 3]].img;
     } else {
       count = 7;
+    }
+  });
+
+  const popUp = document.querySelector(".pop-Up");
+  const popUpClose = document.querySelector(".Our-Friends-slider__close");
+  let clickPetName;
+
+  petsContainer.addEventListener("click", (e) => {
+    e.preventDefault;
+    if (e.target.classList.contains("pets-card")) {
+      clickPetName = e.target.querySelector(".main_name").textContent;
+
+      console.log(clickPetName);
+
+      const pet = petsObj.find((el) => el.name === clickPetName);
+
+      console.log(pet);
+
+      popUp.classList.add("pop-Up-active");
+
+      console.log(popUp);
+
+      popUp.querySelector(".pop-Up__img").setAttribute("src", pet.img);
+      popUp.querySelector(".pop-Up__name").textContent = pet.name;
+      popUp.querySelector(
+        ".pop-Up__type"
+      ).textContent = `${pet.type} - ${pet.breed}`;
+      popUp.querySelector(".pop-Up__info").textContent = pet.description;
+      popUp.querySelector(".pop-Up__age").textContent = pet.age;
+      popUp.querySelector(".pop-Up__inoculations").textContent =
+        pet.inoculations;
+      popUp.querySelector(".pop-Up__diseases").textContent = pet.diseases;
+      popUp.querySelector(".pop-Up__parasites").textContent = pet.parasites;
+      document.body.classList.add("modal-open");
+    }
+  });
+
+  popUpClose.addEventListener("click", () => {
+    popUp.classList.remove("pop-Up-active");
+    document.body.classList.remove("modal-open");
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      e.preventDefault;
+      if (popUp.classList.contains("pop-Up-active")) {
+        popUp.classList.remove("pop-Up-active");
+        document.body.classList.remove("modal-open");
+      }
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (popUp.classList.contains("pop-Up-active")) {
+      popUp.classList.remove("pop-Up-active");
+      document.body.classList.remove("modal-open");
+    }
+  });
+
+  window.addEventListener("click", (e) => {
+    if (
+      !e.target.classList.contains("pets-card__conteiner") &&
+      !e.target.classList.contains("pets-card") &&
+      popUp.classList.contains("pop-Up-active")
+    ) {
+      popUp.classList.remove("pop-Up-active");
+      document.body.classList.remove("modal-open");
     }
   });
 }

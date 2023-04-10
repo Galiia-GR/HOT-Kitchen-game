@@ -124,6 +124,40 @@
   transition: all 0.5s;
 }
 
+.Our-Friends-slider__close {
+  position: fixed;
+  right: 0px;
+  top: 120px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid $color-primary-light;
+  border-radius: 50%;
+  transition: all 0.5s;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("..//../assets/buttons/VectorX.svg");
+
+  @include media-tablet {
+    right: 10px;
+    top: 80px;
+  }
+
+  @include media-mobile {
+    right: 10px;
+    top: 55px;
+  }
+}
+
+.pop-Up__button {
+  border: none;
+  background-size: 32px 32px;
+}
+
+.Our-Friends-slider__close:hover {
+  background-color: $color-primary-light;
+  cursor: pointer;
+}
+
 .Our-Friends-slider__prev {
   margin-right: 52px;
   @include media-tablet {
@@ -179,8 +213,10 @@
     opacity: 1;
   }
 }
+
 .pop-Up {
-  display: flex;
+  display: none;
+  box-shadow: 0px 2px 35px 1000px rgba(19, 18, 18, 0.486);
   z-index: 2;
   position: fixed;
   top: 25%;
@@ -191,17 +227,148 @@
   width: 900px;
   gap: 30px;
 
+  @include media-tablet {
+    width: 630px;
+    gap: 10px;
+    top: 15%;
+    left: 10%;
+  }
+
+  @include media-mobile {
+    width: 240px;
+    gap: 10px;
+    top: 15%;
+    left: 12%;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
     width: 400px;
     padding-top: 50px;
     padding-right: 20px;
+    @include media-tablet {
+      padding-top: 10;
+      width: 260px;
+      padding-right: 8px;
+    }
+
+    @include media-mobile {
+      align-items: center;
+      padding-right: 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
   }
 
   &__img {
     border-radius: 9px 0px 0px 9px;
+    @include media-tablet {
+      width: 350px;
+      height: 350px;
+    }
+
+    @include media-mobile {
+      display: none;
+    }
   }
+
+  &__name {
+    font-family: "Georgia-normal";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 45px;
+    letter-spacing: 0.06em;
+    color: #000;
+  }
+  &__type {
+    font-family: "Georgia-normal";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.06em;
+    color: #000;
+    padding-top: 10px;
+  }
+
+  &__info {
+    font-family: "Georgia-normal";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    color: #000;
+    padding-top: 40px;
+    padding-bottom: 30px;
+
+    @include media-tablet {
+      font-size: 13px;
+      line-height: 14px;
+      padding-bottom: 10px;
+      padding-top: 20px;
+    }
+    @include media-mobile {
+      text-align: justify;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 20px;
+      padding-bottom: 10px;
+    }
+  }
+
+  &__item {
+    font-family: "Georgia-bold";
+    font-style: normal;
+    font-weight: 400px;
+    font-size: 15px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    color: #000;
+    padding-top: 11px;
+    @include media-tablet {
+      padding-top: 6px;
+    }
+
+    @include media-mobile {
+      padding-top: 6px;
+    }
+  }
+
+  &__item:last-child {
+    @include media-tablet {
+      padding-bottom: 38px;
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item ::before {
+    position: absolute;
+    display: inline;
+    content: "";
+    width: 4px;
+    height: 4px;
+    top: 7px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: $color-primary;
+  }
+
+  &__age,
+  &__inoculations,
+  &__diseases,
+  &__parasites {
+    font-family: "Georgia-normal";
+  }
+}
+
+.pop-Up-active {
+  display: flex;
 }
 
 /////our friends pets/////
