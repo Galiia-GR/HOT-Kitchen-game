@@ -125,9 +125,9 @@
 }
 
 .Our-Friends-slider__close {
-  position: fixed;
-  right: 0px;
-  top: 120px;
+  position: relative;
+  bottom: 50px;
+  left: 100%;
   width: 52px;
   height: 52px;
   border: 2px solid $color-primary-light;
@@ -138,13 +138,9 @@
   background-image: url("..//../assets/buttons/VectorX.svg");
 
   @include media-tablet {
-    right: 10px;
-    top: 80px;
   }
 
   @include media-mobile {
-    right: 10px;
-    top: 55px;
   }
 }
 
@@ -225,18 +221,15 @@
   border-radius: 9px;
   position: fixed;
   width: 900px;
-  gap: 30px;
 
   @include media-tablet {
     width: 630px;
-    gap: 10px;
     top: 15%;
     left: 10%;
   }
 
   @include media-mobile {
     width: 240px;
-    gap: 10px;
     top: 15%;
     left: 12%;
   }
@@ -248,7 +241,7 @@
     padding-top: 50px;
     padding-right: 20px;
     @include media-tablet {
-      padding-top: 10;
+      padding-top: 10px;
       width: 260px;
       padding-right: 8px;
     }
@@ -262,10 +255,15 @@
   }
 
   &__img {
+    width: 500px;
+    height: 500px;
     border-radius: 9px 0px 0px 9px;
+    padding-right: 30px;
+    margin-left: -55px;
     @include media-tablet {
       width: 350px;
       height: 350px;
+      padding-right: 20px;
     }
 
     @include media-mobile {
@@ -312,9 +310,9 @@
     }
     @include media-mobile {
       text-align: justify;
-      padding-left: 10px;
-      padding-right: 10px;
+      margin-left: -10px;
       padding-top: 20px;
+      padding-right: 10px;
       padding-bottom: 10px;
     }
   }
@@ -347,7 +345,7 @@
     list-style: none;
   }
 
-  &__item ::before {
+  /* &__item ::before {
     position: absolute;
     display: inline;
     content: "";
@@ -357,7 +355,7 @@
     left: 0px;
     border-radius: 50%;
     background-color: $color-primary;
-  }
+  } */
 
   &__age,
   &__inoculations,

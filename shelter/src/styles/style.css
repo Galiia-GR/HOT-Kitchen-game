@@ -562,9 +562,9 @@ li:last-child {
 }
 
 .Our-Friends-slider__close {
-  position: fixed;
-  right: 0px;
-  top: 120px;
+  position: relative;
+  bottom: 50px;
+  left: 100%;
   width: 52px;
   height: 52px;
   border: 2px solid #fddcc4;
@@ -574,19 +574,6 @@ li:last-child {
   background-position: center;
   background-image: url("..//../assets/buttons/VectorX.svg");
 }
-@media (min-width: 768px) and (max-width: 1080px) {
-  .Our-Friends-slider__close {
-    right: 10px;
-    top: 80px;
-  }
-}
-@media (min-width: 300px) and (max-width: 767px) {
-  .Our-Friends-slider__close {
-    right: 10px;
-    top: 55px;
-  }
-}
-
 .pop-Up__button {
   border: none;
   background-size: 32px 32px;
@@ -669,12 +656,21 @@ li:last-child {
   border-radius: 9px;
   position: fixed;
   width: 900px;
-  gap: 30px;
+  /* &__item ::before {
+    position: absolute;
+    display: inline;
+    content: "";
+    width: 4px;
+    height: 4px;
+    top: 7px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: $color-primary;
+  } */
 }
 @media (min-width: 768px) and (max-width: 1080px) {
   .pop-Up {
     width: 630px;
-    gap: 10px;
     top: 15%;
     left: 10%;
   }
@@ -682,7 +678,6 @@ li:last-child {
 @media (min-width: 300px) and (max-width: 767px) {
   .pop-Up {
     width: 240px;
-    gap: 10px;
     top: 15%;
     left: 12%;
   }
@@ -696,7 +691,7 @@ li:last-child {
 }
 @media (min-width: 768px) and (max-width: 1080px) {
   .pop-Up__content {
-    padding-top: 10;
+    padding-top: 10px;
     width: 260px;
     padding-right: 8px;
   }
@@ -710,12 +705,17 @@ li:last-child {
   }
 }
 .pop-Up__img {
+  width: 500px;
+  height: 500px;
   border-radius: 9px 0px 0px 9px;
+  padding-right: 30px;
+  margin-left: -55px;
 }
 @media (min-width: 768px) and (max-width: 1080px) {
   .pop-Up__img {
     width: 350px;
     height: 350px;
+    padding-right: 20px;
   }
 }
 @media (min-width: 300px) and (max-width: 767px) {
@@ -764,9 +764,9 @@ li:last-child {
 @media (min-width: 300px) and (max-width: 767px) {
   .pop-Up__info {
     text-align: justify;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-left: -10px;
     padding-top: 20px;
+    padding-right: 10px;
     padding-bottom: 10px;
   }
 }
@@ -797,17 +797,6 @@ li:last-child {
 }
 .pop-Up__list {
   list-style: none;
-}
-.pop-Up__item ::before {
-  position: absolute;
-  display: inline;
-  content: "";
-  width: 4px;
-  height: 4px;
-  top: 7px;
-  left: 0px;
-  border-radius: 50%;
-  background-color: #f1cdb3;
 }
 .pop-Up__age, .pop-Up__inoculations, .pop-Up__diseases, .pop-Up__parasites {
   font-family: "Georgia-normal";
