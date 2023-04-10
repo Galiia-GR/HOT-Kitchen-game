@@ -145,6 +145,7 @@ export async function getFetchPets() {
     if (
       !e.target.classList.contains("pets-card__conteiner") &&
       !e.target.classList.contains("pets-card") &&
+      !e.target.classList.contains("pop-Up") &&
       popUp.classList.contains("pop-Up-active")
     ) {
       popUp.classList.remove("pop-Up-active");

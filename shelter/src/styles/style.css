@@ -142,6 +142,8 @@ Our-Friends-select {
 
 .pets-next1:hover,
 .pets-next2:hover,
+.pets-prev1:hover,
+.pets-prev2:hover,
 .next-num:hover,
 .Our-Friends-slider__prevButton:hover,
 .Our-Friends-slider__nextButton:hover {
@@ -905,13 +907,11 @@ li:last-child {
 
 .pets-prev2 {
   background-image: url("..//../assets/buttons/dablEqual2.svg");
-  border: 2px solid #cdcdcd;
   transform: rotate(180deg);
 }
 
 .pets-prev1 {
   background-image: url("..//../assets/buttons/equal2.svg");
-  border: 2px solid #cdcdcd;
   transform: rotate(180deg);
 }
 
