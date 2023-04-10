@@ -43,4 +43,17 @@ export function funcHamburger() {
       hamburgerOpen = false;
     }
   });
+
+  window.addEventListener("click", (e) => {
+    if (
+      !e.target.classList.contains("navigation") &&
+      !e.target.classList.contains("hamburger") &&
+      navMemu.classList.contains("header__navigation_active")
+    ) {
+      navMemu.classList.toggle("header__navigation_active");
+      body.classList.toggle("modal-open");
+      icon.classList.toggle("active-icon");
+      hamburgerOpen = false;
+    }
+  });
 }
