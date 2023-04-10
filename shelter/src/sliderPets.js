@@ -100,8 +100,6 @@ export async function sliderPets() {
     petsNamePets[i].textContent = petsObj[arrToShowAll[i]].name;
     petsImgPets[i].src = petsObj[arrToShowAll[i]].img;
     coutnPets = i;
-
-    console.log(coutnPets);
   }
 
   //////секция модальных окон////
@@ -122,8 +120,6 @@ export async function sliderPets() {
       console.log(pet);
 
       popUp.classList.add("pop-Up-active");
-
-      console.log(popUp);
 
       popUp.querySelector(".pop-Up__img").setAttribute("src", pet.img);
       popUp.querySelector(".pop-Up__name").textContent = pet.name;
@@ -183,8 +179,6 @@ export async function sliderPets() {
   const prevButtonEl2 = document.querySelector(".pets-prev2");
 
   nextButtonEl1.addEventListener("click", () => {
-    console.log("вперед ребятушки", coutnPets);
-
     if (coutnPets < 16 && window.innerWidth < 768) {
       coutnPets = coutnPets + 1;
       petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
@@ -229,8 +223,6 @@ export async function sliderPets() {
   });
 
   prevButtonEl1.addEventListener("click", () => {
-    console.log("назад ребятушки", coutnPets);
-
     if (coutnPets <= 16 && coutnPets > 2 && window.innerWidth < 768) {
       coutnPets = coutnPets - 1;
       petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
