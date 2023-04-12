@@ -3,6 +3,7 @@ const petsImgPets = document.querySelectorAll(".pets__img");
 const petsContainer = document.querySelector(".pets-card__conteiner");
 const petsLearnMoreBut = document.querySelectorAll(".slide-select-pets");
 let coutnPets;
+const petsImg = document.querySelectorAll(".pets__img");
 
 export async function sliderPets() {
   const responsePets = await fetch("./src/pets.json");
@@ -109,6 +110,43 @@ export async function sliderPets() {
   const popUpClose = document.querySelector(".Our-Friends-slider__close");
   let clickPetNamePets;
 
+  petsImg.forEach((el) => {
+    el.addEventListener("click", function (e) {
+      e.preventDefault;
+
+      console.log(e.target);
+      if (e.target.classList.contains("pets__img")) {
+        clickPetNamePets =
+          e.target.parentNode.parentNode.querySelector(
+            ".pets-card__name"
+          ).textContent;
+
+        console.log(clickPetNamePets);
+
+        const pet = petsObj.find((item) => item.name === clickPetNamePets);
+
+        console.log(pet);
+
+        popUp.classList.add("pop-Up-active");
+
+        console.log(popUp);
+
+        popUp.querySelector(".pop-Up__img").setAttribute("src", pet.img);
+        popUp.querySelector(".pop-Up__name").textContent = pet.name;
+        popUp.querySelector(
+          ".pop-Up__type"
+        ).textContent = `${pet.type} - ${pet.breed}`;
+        popUp.querySelector(".pop-Up__info").textContent = pet.description;
+        popUp.querySelector(".pop-Up__age").textContent = pet.age;
+        popUp.querySelector(".pop-Up__inoculations").textContent =
+          pet.inoculations;
+        popUp.querySelector(".pop-Up__diseases").textContent = pet.diseases;
+        popUp.querySelector(".pop-Up__parasites").textContent = pet.parasites;
+        document.body.classList.add("modal-open");
+      }
+    });
+  });
+
   petsLearnMoreBut.forEach((el) => {
     el.addEventListener("click", function (e) {
       e.preventDefault;
@@ -201,6 +239,7 @@ export async function sliderPets() {
       !e.target.classList.contains("pop-Up") &&
       !e.target.classList.contains("slide-select-pets") &&
       !e.target.classList.contains("pets-card__button") &&
+      !e.target.classList.contains("pets__img") &&
       popUp.classList.contains("pop-Up-active")
     ) {
       popUp.classList.remove("pop-Up-active");
@@ -261,6 +300,94 @@ export async function sliderPets() {
   });
 
   prevButtonEl1.addEventListener("click", () => {
+    if (coutnPets <= 16 && coutnPets > 2 && window.innerWidth < 768) {
+      coutnPets = coutnPets - 1;
+      petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
+      petsImgPets[0].src = petsObj[arrToShowAll[coutnPets]].img;
+      petsNamePets[1].textContent = petsObj[arrToShowAll[coutnPets - 1]].name;
+      petsImgPets[1].src = petsObj[arrToShowAll[coutnPets - 1]].img;
+      petsNamePets[2].textContent = petsObj[arrToShowAll[coutnPets - 2]].name;
+      petsImgPets[2].src = petsObj[arrToShowAll[coutnPets - 2]].img;
+    } else if (coutnPets <= 8 && coutnPets > 4 && window.innerWidth < 1080) {
+      coutnPets = coutnPets - 1;
+      petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
+      petsImgPets[0].src = petsObj[arrToShowAll[coutnPets]].img;
+      petsNamePets[1].textContent = petsObj[arrToShowAll[coutnPets - 1]].name;
+      petsImgPets[1].src = petsObj[arrToShowAll[coutnPets - 1]].img;
+      petsNamePets[2].textContent = petsObj[arrToShowAll[coutnPets - 2]].name;
+      petsImgPets[2].src = petsObj[arrToShowAll[coutnPets - 2]].img;
+      petsNamePets[3].textContent = petsObj[arrToShowAll[coutnPets - 3]].name;
+      petsImgPets[3].src = petsObj[arrToShowAll[coutnPets - 3]].img;
+      petsNamePets[4].textContent = petsObj[arrToShowAll[coutnPets - 4]].name;
+      petsImgPets[4].src = petsObj[arrToShowAll[coutnPets - 4]].img;
+      petsNamePets[5].textContent = petsObj[arrToShowAll[coutnPets - 5]].name;
+      petsImgPets[5].src = petsObj[arrToShowAll[coutnPets - 5]].img;
+    } else if (coutnPets <= 9 && coutnPets > 4 && window.innerWidth > 1080) {
+      coutnPets = coutnPets - 1;
+      petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
+      petsImgPets[0].src = petsObj[arrToShowAll[coutnPets]].img;
+      petsNamePets[1].textContent = petsObj[arrToShowAll[coutnPets - 1]].name;
+      petsImgPets[1].src = petsObj[arrToShowAll[coutnPets - 1]].img;
+      petsNamePets[2].textContent = petsObj[arrToShowAll[coutnPets - 2]].name;
+      petsImgPets[2].src = petsObj[arrToShowAll[coutnPets - 2]].img;
+      petsNamePets[3].textContent = petsObj[arrToShowAll[coutnPets - 3]].name;
+      petsImgPets[3].src = petsObj[arrToShowAll[coutnPets - 3]].img;
+      petsNamePets[4].textContent = petsObj[arrToShowAll[coutnPets - 4]].name;
+      petsImgPets[4].src = petsObj[arrToShowAll[coutnPets - 4]].img;
+      petsNamePets[5].textContent = petsObj[arrToShowAll[coutnPets - 5]].name;
+      petsImgPets[5].src = petsObj[arrToShowAll[coutnPets - 5]].img;
+      petsNamePets[6].textContent = petsObj[arrToShowAll[coutnPets - 6]].name;
+      petsImgPets[6].src = petsObj[arrToShowAll[coutnPets - 6]].img;
+      petsNamePets[7].textContent = petsObj[arrToShowAll[coutnPets - 7]].name;
+      petsImgPets[7].src = petsObj[arrToShowAll[coutnPets - 7]].img;
+    }
+  });
+
+  nextButtonEl2.addEventListener("click", () => {
+    if (coutnPets < 16 && window.innerWidth < 768) {
+      coutnPets = coutnPets + 1;
+      petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
+      petsImgPets[0].src = petsObj[arrToShowAll[coutnPets]].img;
+      petsNamePets[1].textContent = petsObj[arrToShowAll[coutnPets + 1]].name;
+      petsImgPets[1].src = petsObj[arrToShowAll[coutnPets + 1]].img;
+      petsNamePets[2].textContent = petsObj[arrToShowAll[coutnPets + 2]].name;
+      petsImgPets[2].src = petsObj[arrToShowAll[coutnPets + 2]].img;
+    } else if (coutnPets < 8 && window.innerWidth < 1080) {
+      coutnPets = coutnPets + 1;
+      petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
+      petsImgPets[0].src = petsObj[arrToShowAll[coutnPets]].img;
+      petsNamePets[1].textContent = petsObj[arrToShowAll[coutnPets + 1]].name;
+      petsImgPets[1].src = petsObj[arrToShowAll[coutnPets + 1]].img;
+      petsNamePets[2].textContent = petsObj[arrToShowAll[coutnPets + 2]].name;
+      petsImgPets[2].src = petsObj[arrToShowAll[coutnPets + 2]].img;
+      petsNamePets[3].textContent = petsObj[arrToShowAll[coutnPets + 3]].name;
+      petsImgPets[3].src = petsObj[arrToShowAll[coutnPets + 3]].img;
+      petsNamePets[4].textContent = petsObj[arrToShowAll[coutnPets + 4]].name;
+      petsImgPets[4].src = petsObj[arrToShowAll[coutnPets + 4]].img;
+      petsNamePets[5].textContent = petsObj[arrToShowAll[coutnPets + 5]].name;
+      petsImgPets[5].src = petsObj[arrToShowAll[coutnPets + 5]].img;
+    } else if (coutnPets <= 8 && window.innerWidth > 1080) {
+      coutnPets = coutnPets + 1;
+      petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
+      petsImgPets[0].src = petsObj[arrToShowAll[coutnPets]].img;
+      petsNamePets[1].textContent = petsObj[arrToShowAll[coutnPets + 1]].name;
+      petsImgPets[1].src = petsObj[arrToShowAll[coutnPets + 1]].img;
+      petsNamePets[2].textContent = petsObj[arrToShowAll[coutnPets + 2]].name;
+      petsImgPets[2].src = petsObj[arrToShowAll[coutnPets + 2]].img;
+      petsNamePets[3].textContent = petsObj[arrToShowAll[coutnPets + 3]].name;
+      petsImgPets[3].src = petsObj[arrToShowAll[coutnPets + 3]].img;
+      petsNamePets[4].textContent = petsObj[arrToShowAll[coutnPets + 4]].name;
+      petsImgPets[4].src = petsObj[arrToShowAll[coutnPets + 4]].img;
+      petsNamePets[5].textContent = petsObj[arrToShowAll[coutnPets + 5]].name;
+      petsImgPets[5].src = petsObj[arrToShowAll[coutnPets + 5]].img;
+      petsNamePets[6].textContent = petsObj[arrToShowAll[coutnPets + 6]].name;
+      petsImgPets[6].src = petsObj[arrToShowAll[coutnPets + 6]].img;
+      petsNamePets[7].textContent = petsObj[arrToShowAll[coutnPets + 7]].name;
+      petsImgPets[7].src = petsObj[arrToShowAll[coutnPets + 7]].img;
+    }
+  });
+
+  prevButtonEl2.addEventListener("click", () => {
     if (coutnPets <= 16 && coutnPets > 2 && window.innerWidth < 768) {
       coutnPets = coutnPets - 1;
       petsNamePets[0].textContent = petsObj[arrToShowAll[coutnPets]].name;
