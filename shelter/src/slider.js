@@ -5,6 +5,7 @@ const prevButtonEl = document.querySelector(".Our-Friends-slider__prev");
 const nextButtonEl = document.querySelector(".Our-Friends-slider__next");
 const petsContainer = document.querySelector(".pets-card__conteiner");
 const petsLearnMoreBut = document.querySelectorAll(".slide-select-pets");
+const petsImg = document.querySelectorAll(".pets__img");
 
 let petsArr = [];
 let count;
@@ -88,6 +89,43 @@ export async function getFetchPets() {
   const popUp = document.querySelector(".pop-Up");
   const popUpClose = document.querySelector(".Our-Friends-slider__close");
   let clickPetName;
+
+  petsImg.forEach((el) => {
+    el.addEventListener("click", function (e) {
+      e.preventDefault;
+
+      console.log(e.target);
+      if (e.target.classList.contains("pets__img")) {
+        clickPetName =
+          e.target.parentNode.parentNode.querySelector(
+            ".main_name"
+          ).textContent;
+
+        console.log(clickPetName);
+
+        const pet = petsObj.find((item) => item.name === clickPetName);
+
+        console.log(pet);
+
+        popUp.classList.add("pop-Up-active");
+
+        console.log(popUp);
+
+        popUp.querySelector(".pop-Up__img").setAttribute("src", pet.img);
+        popUp.querySelector(".pop-Up__name").textContent = pet.name;
+        popUp.querySelector(
+          ".pop-Up__type"
+        ).textContent = `${pet.type} - ${pet.breed}`;
+        popUp.querySelector(".pop-Up__info").textContent = pet.description;
+        popUp.querySelector(".pop-Up__age").textContent = pet.age;
+        popUp.querySelector(".pop-Up__inoculations").textContent =
+          pet.inoculations;
+        popUp.querySelector(".pop-Up__diseases").textContent = pet.diseases;
+        popUp.querySelector(".pop-Up__parasites").textContent = pet.parasites;
+        document.body.classList.add("modal-open");
+      }
+    });
+  });
 
   petsLearnMoreBut.forEach((el) => {
     el.addEventListener("click", function (e) {
@@ -183,6 +221,7 @@ export async function getFetchPets() {
       !e.target.classList.contains("pop-Up") &&
       !e.target.classList.contains("slide-select-pets") &&
       !e.target.classList.contains("pets-card__button") &&
+      !e.target.classList.contains("pets__img") &&
       popUp.classList.contains("pop-Up-active")
     ) {
       popUp.classList.remove("pop-Up-active");
