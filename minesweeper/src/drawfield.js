@@ -1,5 +1,5 @@
 const { body } = document;
-
+export const fieldsArr = [];
 console.log('1 func');
 
 export function drawfield() {
@@ -20,15 +20,76 @@ export function drawfield() {
 
   const countBombs = 10;
 
-  const fieldsArr = [];
-  const bombsArr = [];
+  const bombsArr = Array(countBombs).fill('bomb');
+  const emptyArr = Array(countFields - countBombs).fill('field');
+  const gameShuflArr = emptyArr
+    .concat(bombsArr)
+    .sort(() => Math.random() - 0.5);
+
+  console.log(gameShuflArr);
+
+  console.log(bombsArr, emptyArr);
 
   for (let i = 0; i < countFields; i++) {
     const field = document.createElement('div');
-    field.classList.add('field');
+    field.classList.add(gameShuflArr[i]);
     field.setAttribute('id', i);
     minesweeper.appendChild(field);
     fieldsArr.push(field);
   }
-  console.log(fields);
+
+  /// write numbers ///
+
+  for (let i = 0; i < fieldsArr.length; i++) {
+    let numbers = 0;
+    const isLeftEdge = i % (countFields / 10) === 0;
+    const isRightEdge = i % (countFields / 10) === countFields / 10 - 1;
+
+    if (fieldsArr[i].classList.contains('field')) {
+      if (i > 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb'))
+        numbers++;
+      if (
+        i > countFields / 10 - 1 &&
+        !isRightEdge &&
+        fieldsArr[i + 1 - countFields / 10].classList.contains('bomb')
+      )
+        numbers++;
+      if (
+        i > countFields / 10 &&
+        fieldsArr[i - countFields / 10].classList.contains('bomb')
+      )
+        numbers++;
+      if (
+        i > countFields / 10 + 1 &&
+        !isLeftEdge &&
+        fieldsArr[i - 1 - countFields / 10].classList.contains('bomb')
+      )
+        numbers++;
+      if (
+        i < countFields - 2 &&
+        !isRightEdge &&
+        fieldsArr[i + 1].classList.contains('bomb')
+      )
+        numbers++;
+      if (
+        i < countFields - 10 &&
+        !isLeftEdge &&
+        fieldsArr[i - 1 + countFields / 10].classList.contains('bomb')
+      )
+        numbers++;
+      if (
+        i < countFields - 12 &&
+        !isRightEdge &&
+        fieldsArr[i + 1 + countFields / 10].classList.contains('bomb')
+      )
+        numbers++;
+      if (
+        i < countFields - 11 &&
+        fieldsArr[i + countFields / 10].classList.contains('bomb')
+      )
+        numbers++;
+      fieldsArr[i].setAttribute('data', numbers);
+      console.log(fieldsArr[i]);
+    }
+  }
 }
