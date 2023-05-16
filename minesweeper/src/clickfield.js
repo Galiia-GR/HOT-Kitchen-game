@@ -18,13 +18,30 @@ export function clickfield() {
         const numbers = event.target.getAttribute('data');
         console.log(numbers);
         if (numbers != 0) {
-          event.target.classList.add('open');
           event.target.innerText = numbers;
+
+          switch (numbers) {
+            case '1':
+              event.target.classList.add('open__one');
+              break;
+
+            case '2':
+              event.target.classList.add('open__two');
+              break;
+            case '3':
+              event.target.classList.add('open__three');
+              break;
+            case '4':
+              event.target.classList.add('open__four');
+              break;
+            default:
+  // do nothing;
+          }
         }
 
         // checkOpenField(field, id);
       }
-      event.target.classList.add('open');
+      // event.target.classList.add('open');
     });
   });
 }

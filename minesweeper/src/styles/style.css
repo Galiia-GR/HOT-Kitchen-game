@@ -57,6 +57,18 @@
   font-weight: bold;
   background-color: rgb(230, 227, 226);
 }
+.open__one {
+  color: green;
+}
+.open__two {
+  color: blue;
+}
+.open__three {
+  color: orange;
+}
+.open__four {
+  color: red;
+}
 
 .header__wrapper {
   display: flex;

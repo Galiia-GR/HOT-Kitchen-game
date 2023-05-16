@@ -2,6 +2,7 @@ const { body } = document;
 export const fieldsArr = [];
 export const countFields = 100;
 export const countBombs = 10;
+let firstClick = false;
 
 console.log('1 func');
 export function drawfield() {
@@ -47,6 +48,21 @@ export function drawfield() {
   wrap.appendChild(level);
   level.innerText = 'level';
 
+  const easy = document.createElement('div');
+  easy.classList.add('level__easy');
+  level.appendChild(easy);
+  easy.innerText = 'easy';
+
+  const medium = document.createElement('div');
+  medium.classList.add('level__medium');
+  level.appendChild(medium);
+  medium.innerText = 'medium';
+
+  const hard = document.createElement('div');
+  hard.classList.add('level__hard');
+  level.appendChild(hard);
+  hard.innerText = 'hard';
+
   const minesweeper = document.createElement('div');
   minesweeper.classList.add('minesweeper');
   container.appendChild(minesweeper);
@@ -61,13 +77,29 @@ export function drawfield() {
 
   console.log(bombsArr, emptyArr);
 
+  /// отрисовка поля///
   for (let i = 0; i < countFields; i++) {
     const field = document.createElement('div');
-    field.classList.add(gameShuflArr[i]);
-    field.setAttribute('id', i);
+    field.classList.add('field');
     minesweeper.appendChild(field);
     fieldsArr.push(field);
   }
+/// перерисовка после первого клика////
+  fieldsArr.forEach((el) => {
+    el.addEventListener('click', () => {
+      firstClick = true;
+      minesweeper.innerHTML = '';
+      for (let i = 0; i < countFields; i++) {
+        if (firstClick) {
+          const field = document.createElement('div');
+          field.classList.add(gameShuflArr[i]);
+          field.setAttribute('id', i);
+          minesweeper.appendChild(field);
+          fieldsArr.push(field);
+        }
+      }
+    });
+  });
 
   /// write numbers ///
 
