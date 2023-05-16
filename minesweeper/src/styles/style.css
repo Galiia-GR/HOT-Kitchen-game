@@ -1,7 +1,32 @@
+@font-face {
+  font-family: "RobotoBig";
+  src: url("./big-shot.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "RobotoBig";
+}
+
+.header {
+  padding: 20px;
+  width: 500px;
+}
+
+.header__title {
+  text-align: center;
+  font-size: 40px;
+  padding-bottom: 20px;
 }
 
 .minesweeper {
@@ -9,14 +34,8 @@
   height: 500px;
   display: flex;
   flex-wrap: wrap;
-  background-image: linear-gradient(
-    to bottom,
-    #d5cabd,
-    #ddc9c2,
-    #dfc9cb,
-    #ddcbd5,
-    #d5cede
-  );
+  background-image: linear-gradient(to bottom, #d5cabd, #ddc9c2, #dfc9cb, #ddcbd5, #d5cede);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .field {
@@ -30,6 +49,18 @@
   height: 50px;
   border: solid 1px white;
   background-color: coral;
+}
+
+.open {
+  text-align: right;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgb(230, 227, 226);
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=style.css.map */

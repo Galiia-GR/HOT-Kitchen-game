@@ -1,24 +1,55 @@
 const { body } = document;
 export const fieldsArr = [];
-console.log('1 func');
+export const countFields = 100;
+export const countBombs = 10;
 
+console.log('1 func');
 export function drawfield() {
   const container = document.createElement('div');
   container.classList.add('container');
   body.appendChild(container);
 
+  const header = document.createElement('header');
+  header.classList.add('header');
+  container.appendChild(header);
+
   const title = document.createElement('h1');
-  title.classList.add('container__title');
-  container.appendChild(title);
+  title.classList.add('header__title');
+  header.appendChild(title);
   title.innerText = 'minesweeper';
+
+  const wrap = document.createElement('div');
+  wrap.classList.add('header__wrapper');
+  header.appendChild(wrap);
+
+  const timer = document.createElement('div');
+  timer.classList.add('header__timer');
+  wrap.appendChild(timer);
+  timer.innerText = 'timer';
+
+  const mines = document.createElement('div');
+  mines.classList.add('header__mines');
+  wrap.appendChild(mines);
+  mines.innerText = 'mines';
+
+  const score = document.createElement('div');
+  timer.classList.add('header__score');
+  wrap.appendChild(score);
+  score.innerText = 'score';
+
+  const sound = document.createElement('div');
+  sound.classList.add('header__sound');
+  wrap.appendChild(sound);
+  sound.innerText = 'sound';
+
+  const level = document.createElement('div');
+  sound.classList.add('header__level');
+  wrap.appendChild(level);
+  level.innerText = 'level';
 
   const minesweeper = document.createElement('div');
   minesweeper.classList.add('minesweeper');
   container.appendChild(minesweeper);
-
-  const countFields = 100;
-
-  const countBombs = 10;
 
   const bombsArr = Array(countBombs).fill('bomb');
   const emptyArr = Array(countFields - countBombs).fill('field');
@@ -46,48 +77,40 @@ export function drawfield() {
     const isRightEdge = i % (countFields / 10) === countFields / 10 - 1;
 
     if (fieldsArr[i].classList.contains('field')) {
-      if (i > 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb'))
-        numbers++;
+      if (i > 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb')) numbers++;
       if (
-        i > countFields / 10 - 1 &&
-        !isRightEdge &&
-        fieldsArr[i + 1 - countFields / 10].classList.contains('bomb')
-      )
-        numbers++;
+        i > countFields / 10 - 1
+        && !isRightEdge
+        && fieldsArr[i + 1 - countFields / 10].classList.contains('bomb')
+      ) numbers++;
       if (
-        i > countFields / 10 &&
-        fieldsArr[i - countFields / 10].classList.contains('bomb')
-      )
-        numbers++;
+        i > countFields / 10
+        && fieldsArr[i - countFields / 10].classList.contains('bomb')
+      ) numbers++;
       if (
-        i > countFields / 10 + 1 &&
-        !isLeftEdge &&
-        fieldsArr[i - 1 - countFields / 10].classList.contains('bomb')
-      )
-        numbers++;
+        i > countFields / 10 + 1
+        && !isLeftEdge
+        && fieldsArr[i - 1 - countFields / 10].classList.contains('bomb')
+      ) numbers++;
       if (
-        i < countFields - 2 &&
-        !isRightEdge &&
-        fieldsArr[i + 1].classList.contains('bomb')
-      )
-        numbers++;
+        i < countFields - 2
+        && !isRightEdge
+        && fieldsArr[i + 1].classList.contains('bomb')
+      ) numbers++;
       if (
-        i < countFields - 10 &&
-        !isLeftEdge &&
-        fieldsArr[i - 1 + countFields / 10].classList.contains('bomb')
-      )
-        numbers++;
+        i < countFields - 10
+        && !isLeftEdge
+        && fieldsArr[i - 1 + countFields / 10].classList.contains('bomb')
+      ) numbers++;
       if (
-        i < countFields - 12 &&
-        !isRightEdge &&
-        fieldsArr[i + 1 + countFields / 10].classList.contains('bomb')
-      )
-        numbers++;
+        i < countFields - 12
+        && !isRightEdge
+        && fieldsArr[i + 1 + countFields / 10].classList.contains('bomb')
+      ) numbers++;
       if (
-        i < countFields - 11 &&
-        fieldsArr[i + countFields / 10].classList.contains('bomb')
-      )
-        numbers++;
+        i < countFields - 11
+        && fieldsArr[i + countFields / 10].classList.contains('bomb')
+      ) numbers++;
       fieldsArr[i].setAttribute('data', numbers);
       console.log(fieldsArr[i]);
     }
