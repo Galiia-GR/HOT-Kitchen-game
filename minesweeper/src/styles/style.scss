@@ -9,7 +9,14 @@
   height: 500px;
   display: flex;
   flex-wrap: wrap;
-  background-image: linear-gradient(to bottom, #d5cabd, #ddc9c2, #dfc9cb, #ddcbd5, #d5cede);
+  background-image: linear-gradient(
+    to bottom,
+    #d5cabd,
+    #ddc9c2,
+    #dfc9cb,
+    #ddcbd5,
+    #d5cede
+  );
 }
 
 .field {
@@ -17,5 +24,3 @@
   height: 50px;
   border: solid 1px white;
 }
-
-/*# sourceMappingURL=style.css.map */

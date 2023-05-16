@@ -13,5 +13,6 @@ module.exports = {
     'no-console': 'off',
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
+    'no-plusplus': 'off',
   },
 };

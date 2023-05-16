@@ -1,6 +1,6 @@
-import { showSome } from './script.js';
-import './styles/style.css';
+import { drawfield } from './drawfield.js';
+/* import './styles/style.css'; */
 
-console.log('хей хей');
+console.log('main');
 
-showSome('sdddf');
+drawfield();
