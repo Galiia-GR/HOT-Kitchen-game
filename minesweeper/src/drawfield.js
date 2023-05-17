@@ -2,7 +2,7 @@ const { body } = document;
 export const fieldsArr = [];
 export const countFields = 10;
 export const countBombs = 10;
-//const firstClick = false;
+// const firstClick = false;
 
 console.log('1 func');
 export function drawfield() {

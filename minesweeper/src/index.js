@@ -8,4 +8,9 @@ drawfield();
 
 console.log(fieldsArr);
 
-clickfield();
+fieldsArr.forEach((el) => {
+  el.addEventListener('click', (event) => {
+    console.log(event.target);
+    clickfield(el);
+  });
+});
