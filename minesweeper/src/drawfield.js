@@ -1,8 +1,8 @@
 const { body } = document;
 export const fieldsArr = [];
-export const countFields = 100;
+export const countFields = 10;
 export const countBombs = 10;
-let firstClick = false;
+//const firstClick = false;
 
 console.log('1 func');
 export function drawfield() {
@@ -68,7 +68,7 @@ export function drawfield() {
   container.appendChild(minesweeper);
 
   const bombsArr = Array(countBombs).fill('bomb');
-  const emptyArr = Array(countFields - countBombs).fill('field');
+  const emptyArr = Array(countFields * countFields - countBombs).fill('field');
   const gameShuflArr = emptyArr
     .concat(bombsArr)
     .sort(() => Math.random() - 0.5);
@@ -78,71 +78,32 @@ export function drawfield() {
   console.log(bombsArr, emptyArr);
 
   /// отрисовка поля///
-  for (let i = 0; i < countFields; i++) {
+  /// перерисовка после первого клика////
+
+  for (let i = 0; i < countFields * countFields; i++) {
     const field = document.createElement('div');
-    field.classList.add('field');
+    field.classList.add(gameShuflArr[i]);
+    field.setAttribute('id', i);
     minesweeper.appendChild(field);
     fieldsArr.push(field);
   }
-/// перерисовка после первого клика////
-  fieldsArr.forEach((el) => {
-    el.addEventListener('click', () => {
-      firstClick = true;
-      minesweeper.innerHTML = '';
-      for (let i = 0; i < countFields; i++) {
-        if (firstClick) {
-          const field = document.createElement('div');
-          field.classList.add(gameShuflArr[i]);
-          field.setAttribute('id', i);
-          minesweeper.appendChild(field);
-          fieldsArr.push(field);
-        }
-      }
-    });
-  });
 
   /// write numbers ///
 
   for (let i = 0; i < fieldsArr.length; i++) {
     let numbers = 0;
-    const isLeftEdge = i % (countFields / 10) === 0;
-    const isRightEdge = i % (countFields / 10) === countFields / 10 - 1;
+    const isLeftEdge = i % (countFields) === 0;
+    const isRightEdge = i % (countFields) === countFields - 1;
 
     if (fieldsArr[i].classList.contains('field')) {
       if (i > 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb')) numbers++;
-      if (
-        i > countFields / 10 - 1
-        && !isRightEdge
-        && fieldsArr[i + 1 - countFields / 10].classList.contains('bomb')
-      ) numbers++;
-      if (
-        i > countFields / 10
-        && fieldsArr[i - countFields / 10].classList.contains('bomb')
-      ) numbers++;
-      if (
-        i > countFields / 10 + 1
-        && !isLeftEdge
-        && fieldsArr[i - 1 - countFields / 10].classList.contains('bomb')
-      ) numbers++;
-      if (
-        i < countFields - 2
-        && !isRightEdge
-        && fieldsArr[i + 1].classList.contains('bomb')
-      ) numbers++;
-      if (
-        i < countFields - 10
-        && !isLeftEdge
-        && fieldsArr[i - 1 + countFields / 10].classList.contains('bomb')
-      ) numbers++;
-      if (
-        i < countFields - 12
-        && !isRightEdge
-        && fieldsArr[i + 1 + countFields / 10].classList.contains('bomb')
-      ) numbers++;
-      if (
-        i < countFields - 11
-        && fieldsArr[i + countFields / 10].classList.contains('bomb')
-      ) numbers++;
+      if (i > countFields - 1 && !isRightEdge && fieldsArr[i + 1 - countFields].classList.contains('bomb')) numbers++;
+      if (i > countFields && fieldsArr[i - countFields].classList.contains('bomb')) numbers++;
+      if (i > countFields + 1 && !isLeftEdge && fieldsArr[i - 1 - countFields].classList.contains('bomb')) numbers++;
+      if (i < countFields * countFields - 2 && !isRightEdge && fieldsArr[i + 1].classList.contains('bomb')) numbers++;
+      if (i < countFields * countFields - 10 && !isLeftEdge && fieldsArr[i - 1 + countFields].classList.contains('bomb')) numbers++;
+      if (i < countFields * countFields - 12 && !isRightEdge && fieldsArr[i + 1 + countFields].classList.contains('bomb')) numbers++;
+      if (i < countFields * countFields - 11 && fieldsArr[i + countFields].classList.contains('bomb')) numbers++;
       fieldsArr[i].setAttribute('data', numbers);
       console.log(fieldsArr[i]);
     }

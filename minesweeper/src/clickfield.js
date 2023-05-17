@@ -11,9 +11,9 @@ export function clickfield() {
       console.log(id);
       console.log(event.target);
       if (isGameOver) return;
-      if (el.classList.contains('open')) return;
+      if (el.classList.contains('open') || el.classList.contains('flag')) return;
       if (event.target.classList.contains('bomb')) {
-        console.log('game over');
+        console.log('Game over');
       } else {
         const numbers = event.target.getAttribute('data');
         console.log(numbers);
