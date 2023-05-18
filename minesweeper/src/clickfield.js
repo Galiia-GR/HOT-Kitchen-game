@@ -1,19 +1,24 @@
 import { fieldsArr, countFields } from './drawfield.js';
 
-const isGameOver = false;
-
-console.log(countFields);
+let isGameOver = false;
+let id;
 
 export function clickfield(field) {
   console.log('func 2');
 
-  const id = field.getAttribute('id');
+  id = Number(field.getAttribute('id'));
   console.log(id);
-  console.log(field);
   if (isGameOver) return;
   if (field.classList.contains('open') || field.classList.contains('flag')) return;
+
   if (field.classList.contains('bomb')) {
-    console.log('Game over');
+    isGameOver = true;
+    console.log('boom boom');
+    fieldsArr.forEach((el) => {
+      if (el.classList.contains('bomb')) {
+        el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
+      }
+    });
   } else {
     const numbers = field.getAttribute('data');
     console.log(numbers);
@@ -38,9 +43,9 @@ export function clickfield(field) {
   // do nothing;
       }
     }
-    field.classList.add('open');
-    console.log(fieldsArr[id - 1].id);
   }
+  field.classList.add('open');
+
   const isLeftEdge = (id % countFields === 0);
   const isRightEdge = (id % countFields === countFields - 1);
 
@@ -51,6 +56,7 @@ export function clickfield(field) {
       clickfield(newField);
     }
     if (id > countFields - 1 && !isRightEdge) {
+      console.log(typeof (id));
       const newId = fieldsArr[id + 1 - countFields].id;
       const newField = document.getElementById(newId);
       clickfield(newField);

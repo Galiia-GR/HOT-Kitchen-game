@@ -73,10 +73,6 @@ export function drawfield() {
     .concat(bombsArr)
     .sort(() => Math.random() - 0.5);
 
-  console.log(gameShuflArr);
-
-  console.log(bombsArr, emptyArr);
-
   /// отрисовка поля///
   /// перерисовка после первого клика////
 
@@ -105,7 +101,6 @@ export function drawfield() {
       if (i < countFields * countFields - 12 && !isRightEdge && fieldsArr[i + 1 + countFields].classList.contains('bomb')) numbers++;
       if (i < countFields * countFields - 11 && fieldsArr[i + countFields].classList.contains('bomb')) numbers++;
       fieldsArr[i].setAttribute('data', numbers);
-      console.log(fieldsArr[i]);
     }
   }
 }
