@@ -60,6 +60,13 @@ font-family: 'RobotoBig' ;
   background-size: 100%;
 }
 
+.flag {
+  width: 50px;
+  height: 50px;
+  border: solid 1px white;
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
 
 .open {
   text-align: right;
@@ -85,4 +92,9 @@ font-family: 'RobotoBig' ;
 .header__wrapper{
   display: flex;
   justify-content: space-between;
+}
+
+.header__flag{
+  display: flex;
+  flex-direction: column;
 }

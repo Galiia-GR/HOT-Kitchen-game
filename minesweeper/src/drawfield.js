@@ -1,8 +1,9 @@
+import { flagCount } from './clickfield.js';
+
 const { body } = document;
 export const fieldsArr = [];
 export const countFields = 10;
 export const countBombs = 10;
-// const firstClick = false;
 
 console.log('1 func');
 export function drawfield() {
@@ -23,10 +24,19 @@ export function drawfield() {
   wrap.classList.add('header__wrapper');
   header.appendChild(wrap);
 
-  const timer = document.createElement('div');
-  timer.classList.add('header__timer');
-  wrap.appendChild(timer);
-  timer.innerText = 'timer';
+  const flag = document.createElement('div');
+  flag.classList.add('header__flag');
+  wrap.appendChild(flag);
+  flag.innerText = 'flags';
+  const drawFlag = document.createElement('div');
+  drawFlag.classList.add('flag');
+  flag.appendChild(drawFlag);
+  drawFlag.style.backgroundImage = 'url(\'../image/flag.jpg\')';
+  const drawFlagScore = document.createElement('div');
+  drawFlagScore.classList.add('header__flag');
+  flag.appendChild(drawFlagScore);
+  drawFlagScore.innerText = flagCount;
+
 
   const mines = document.createElement('div');
   mines.classList.add('header__mines');
@@ -34,7 +44,7 @@ export function drawfield() {
   mines.innerText = 'mines';
 
   const score = document.createElement('div');
-  timer.classList.add('header__score');
+  score.classList.add('header__score');
   wrap.appendChild(score);
   score.innerText = 'score';
 

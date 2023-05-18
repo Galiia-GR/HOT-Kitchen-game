@@ -1,6 +1,7 @@
-import { fieldsArr, countFields } from './drawfield.js';
+import { fieldsArr, countFields, countBombs } from './drawfield.js';
 
 let isGameOver = false;
+export let flagCount = 0;
 let id;
 
 export function clickfield(field) {
@@ -9,6 +10,7 @@ export function clickfield(field) {
   id = Number(field.getAttribute('id'));
   console.log(id);
   if (isGameOver) return;
+
   if (field.classList.contains('open') || field.classList.contains('flag')) return;
 
   if (field.classList.contains('bomb')) {
@@ -17,6 +19,7 @@ export function clickfield(field) {
     fieldsArr.forEach((el) => {
       if (el.classList.contains('bomb')) {
         el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
+        el.style.backgroundColor = 'rgb(230, 227, 226)';
       }
     });
   } else {
@@ -92,4 +95,19 @@ export function clickfield(field) {
       clickfield(newField);
     }
   }, 10);
+}
+
+export function ticFlags(field) {
+  if (isGameOver) return;
+  if (!field.classList.contains('open') && flagCount < countBombs) {
+    if (!field.classList.contains('flag')) {
+      field.classList.add('flag');
+      field.style.backgroundImage = 'url(\'../image/flag.jpg\')';
+      flagCount++;
+    } else {
+      field.classList.remove('flag');
+      field.style.backgroundImage = '';
+      flagCount--;
+    }
+  }
 }
