@@ -5,14 +5,18 @@ import { clickfield, ticFlags } from './clickfield.js';
 drawfield();
 
 console.log(fieldsArr);
-
-document.addEventListener('click', (event) => {
-  console.log(event.target);
-  clickfield(event.target);
+fieldsArr.forEach((el) => {
+  el.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(el);
+    clickfield(el);
+  });
 });
 
-document.addEventListener('contextmenu', (event) => {
-  event.preventDefault();
-  console.log(event.target);
-  ticFlags(event.target);
+fieldsArr.forEach((el) => {
+  el.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    console.log(event.target);
+    ticFlags(event.target);
+  });
 });

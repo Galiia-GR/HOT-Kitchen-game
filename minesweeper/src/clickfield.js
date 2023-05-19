@@ -15,7 +15,7 @@ export function clickfield(field) {
 
   if (field.classList.contains('bomb')) {
     isGameOver = true;
-    console.log('boom boom');
+    console.log('boom boom, you louse');
     fieldsArr.forEach((el) => {
       if (el.classList.contains('bomb')) {
         el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
@@ -27,20 +27,20 @@ export function clickfield(field) {
     console.log(numbers);
     if (numbers != 0) {
       field.innerText = numbers;
-
+      field.classList.add('number');
       switch (numbers) {
         case '1':
-          field.classList.add('open__one');
+          field.classList.add('one');
           break;
 
         case '2':
-          field.classList.add('open__two');
+          field.classList.add('two');
           break;
         case '3':
-          field.classList.add('open__three');
+          field.classList.add('three');
           break;
         case '4':
-          field.classList.add('open__four');
+          field.classList.add('four');
           break;
         default:
   // do nothing;
@@ -98,16 +98,34 @@ export function clickfield(field) {
 }
 
 export function ticFlags(field) {
+  const drawFlag = document.querySelector('.drawFlag');
+  const drawBombs = document.querySelector('.drawBombs');
   if (isGameOver) return;
   if (!field.classList.contains('open') && flagCount < countBombs) {
     if (!field.classList.contains('flag')) {
       field.classList.add('flag');
-      field.style.backgroundImage = 'url(\'../image/flag.jpg\')';
       flagCount++;
+      drawFlag.innerText = flagCount;
+      drawBombs.innerText = countBombs - flagCount;
+      winWin();
     } else {
       field.classList.remove('flag');
-      field.style.backgroundImage = '';
       flagCount--;
+      drawFlag.innerText = flagCount;
+      drawBombs.innerText = countBombs - flagCount;
+    }
+  }
+}
+
+function winWin() {
+  let checkWin = 0;
+  for (let i = 0; i < fieldsArr.length; i++) {
+    if (fieldsArr[i].classList.contains('flag') && fieldsArr[i].classList.contains('bomb')) {
+      console.log('win count');
+      checkWin++;
+    } if (checkWin === countBombs) {
+      console.log('win win');
+      isGameOver = true;
     }
   }
 }

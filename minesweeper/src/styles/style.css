@@ -19,7 +19,7 @@
 }
 
 .header {
-  padding: 20px;
+  padding: 10px;
   width: 500px;
 }
 
@@ -49,6 +49,7 @@
   height: 50px;
   border: solid 1px white;
   background-repeat: no-repeat;
+  background-color: aqua;
   background-size: 100%;
 }
 
@@ -58,24 +59,29 @@
   border: solid 1px white;
   background-repeat: no-repeat;
   background-size: 70%;
+  background-image: url("../../image/flag.jpg");
 }
 
-.open {
+.open, .number {
   text-align: right;
   font-size: 16px;
   font-weight: bold;
   background-color: rgb(230, 227, 226);
 }
-.open__one {
+
+.one {
   color: green;
 }
-.open__two {
+
+.two {
   color: blue;
 }
-.open__three {
+
+.three {
   color: orange;
 }
-.open__four {
+
+.four {
   color: red;
 }
 
@@ -84,9 +90,71 @@
   justify-content: space-between;
 }
 
-.header__flag {
+.header__flag, .header__mines, .header__sound,
+.header__score, .header__level {
   display: flex;
   flex-direction: column;
+}
+
+.drawFlag {
+  background-image: url("../../image/flag1.jpg");
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: top right 5px;
+}
+
+.drawBombs {
+  background-image: url("../../image/mine1.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: top right 5px;
+}
+
+.drawSounds {
+  background-image: url("../../image/sound.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: top right 2px;
+}
+
+.drawStart {
+  background-image: url("../../image/refresh.png");
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: top right 0px;
+}
+
+.drawList {
+  background-image: url("../../image/list.png");
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: top right 0px;
+}
+
+.header__level:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.drawList:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.drawSounds:hover {
+  color: green;
+  cursor: pointer;
+}
+
+.drawStart:hover {
+  color: orange;
+  cursor: pointer;
+}
+
+.gameSummary {
+  text-align: center;
+  font-size: 26px;
+  color: red;
 }
 
 /*# sourceMappingURL=style.css.map */

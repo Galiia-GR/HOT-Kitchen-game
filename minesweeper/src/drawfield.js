@@ -1,5 +1,3 @@
-import { flagCount } from './clickfield.js';
-
 const { body } = document;
 export const fieldsArr = [];
 export const countFields = 10;
@@ -20,6 +18,11 @@ export function drawfield() {
   header.appendChild(title);
   title.innerText = 'minesweeper';
 
+  const gamesSummary = document.createElement('p');
+  gamesSummary.classList.add('gameSummary');
+  header.appendChild(gamesSummary);
+  gamesSummary.innerText = 'Games Over Games Play';
+
   const wrap = document.createElement('div');
   wrap.classList.add('header__wrapper');
   header.appendChild(wrap);
@@ -29,32 +32,48 @@ export function drawfield() {
   wrap.appendChild(flag);
   flag.innerText = 'flags';
   const drawFlag = document.createElement('div');
-  drawFlag.classList.add('flag');
+  drawFlag.classList.add('drawFlag');
   flag.appendChild(drawFlag);
-  drawFlag.style.backgroundImage = 'url(\'../image/flag.jpg\')';
-  const drawFlagScore = document.createElement('div');
-  drawFlagScore.classList.add('header__flag');
-  flag.appendChild(drawFlagScore);
-  drawFlagScore.innerText = flagCount;
-
+  drawFlag.innerText = 0;
 
   const mines = document.createElement('div');
   mines.classList.add('header__mines');
   wrap.appendChild(mines);
   mines.innerText = 'mines';
-
-  const score = document.createElement('div');
-  score.classList.add('header__score');
-  wrap.appendChild(score);
-  score.innerText = 'score';
+  const drawBombs = document.createElement('div');
+  drawBombs.classList.add('drawBombs');
+  mines.appendChild(drawBombs);
+  drawBombs.innerText = countBombs;
 
   const sound = document.createElement('div');
   sound.classList.add('header__sound');
   wrap.appendChild(sound);
   sound.innerText = 'sound';
+  const drawSounds = document.createElement('div');
+  drawSounds.classList.add('drawSounds');
+  sound.appendChild(drawSounds);
+  drawSounds.innerText = 'on';
+
+  const start = document.createElement('div');
+  start.classList.add('header__start');
+  wrap.appendChild(start);
+  start.innerText = 'start';
+  const drawStart = document.createElement('div');
+  drawStart.classList.add('drawStart');
+  start.appendChild(drawStart);
+  drawStart.innerText = 'pull';
+
+  const score = document.createElement('div');
+  score.classList.add('header__score');
+  wrap.appendChild(score);
+  score.innerText = 'score';
+  const drawlist = document.createElement('div');
+  drawlist.classList.add('drawList');
+  score.appendChild(drawlist);
+  drawlist.innerText = 'list';
 
   const level = document.createElement('div');
-  sound.classList.add('header__level');
+  level.classList.add('header__level');
   wrap.appendChild(level);
   level.innerText = 'level';
 
