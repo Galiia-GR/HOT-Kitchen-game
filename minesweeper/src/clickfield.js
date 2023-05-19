@@ -1,98 +1,116 @@
 import { fieldsArr, countFields, countBombs } from './drawfield.js';
+import { isGameOver } from './index.js';
 
-let isGameOver = false;
 export let flagCount = 0;
 let id;
 
 export function clickfield(field) {
-  console.log('func 2');
+  console.log('func refact');
 
   id = Number(field.getAttribute('id'));
   console.log(id);
-  if (isGameOver) return;
-
   if (field.classList.contains('open') || field.classList.contains('flag')) return;
+  if (field.classList.contains('number')) return;
+  if (isGameOver) return;
+  if (field.classList.contains('bomb')) return;
 
-  if (field.classList.contains('bomb')) {
-    isGameOver = true;
-    console.log('boom boom, you louse');
-    fieldsArr.forEach((el) => {
-      if (el.classList.contains('bomb')) {
-        el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
-        el.style.backgroundColor = 'rgb(230, 227, 226)';
-      }
-    });
-  } else {
-    const numbers = field.getAttribute('data');
-    console.log(numbers);
-    if (numbers != 0) {
-      field.innerText = numbers;
-      field.classList.add('number');
-      switch (numbers) {
-        case '1':
-          field.classList.add('one');
-          break;
+  const numbers = field.getAttribute('data');
+  if (numbers != 0) {
+    field.innerText = numbers;
+    field.classList.add('number');
+    switch (numbers) {
+      case '1':
+        field.classList.add('one');
+        break;
 
-        case '2':
-          field.classList.add('two');
-          break;
-        case '3':
-          field.classList.add('three');
-          break;
-        case '4':
-          field.classList.add('four');
-          break;
-        default:
+      case '2':
+        field.classList.add('two');
+        break;
+      case '3':
+        field.classList.add('three');
+        break;
+      case '4':
+        field.classList.add('four');
+        break;
+      default:
   // do nothing;
-      }
     }
   }
-  field.classList.add('open');
+
+  if (field.classList.contains('number')) {
+    field.classList.add('open');
+    console.log('I get number');
+  }
 
   const isLeftEdge = (id % countFields === 0);
   const isRightEdge = (id % countFields === countFields - 1);
 
   setTimeout(() => {
-    if (id > 0 && !isLeftEdge) {
+    if (id > 0 && !isLeftEdge
+  && !field.classList.contains('number')) {
       const newId = fieldsArr[id - 1].id;
       const newField = document.getElementById(newId);
+      field.classList.add('open');
       clickfield(newField);
+      console.log('1');
     }
-    if (id > countFields - 1 && !isRightEdge) {
-      console.log(typeof (id));
+    if (id > countFields - 1 && !isRightEdge
+    && !field.classList.contains('number')) {
       const newId = fieldsArr[id + 1 - countFields].id;
       const newField = document.getElementById(newId);
+      field.classList.add('open');
       clickfield(newField);
+      console.log('2');
     }
-    if (id > countFields) {
+    if (id > countFields
+      && !field.classList.contains('number')) {
       const newId = fieldsArr[id - countFields].id;
       const newField = document.getElementById(newId);
+      field.classList.add('open');
       clickfield(newField);
+      console.log('3');
     }
-    if (id > countFields + 1 && !isLeftEdge) {
+    if (id > countFields + 1 && !isLeftEdge
+      && !field.classList.contains('number')) {
       const newId = fieldsArr[id - 1 - countFields].id;
       const newField = document.getElementById(newId);
+      field.classList.add('open');
       clickfield(newField);
+      console.log('4');
     }
-    if (id < countFields * countFields - 2 && !isRightEdge) {
+    if (id < countFields * countFields - 2 && !isRightEdge
+      && !field.classList.contains('number')) {
       const newId = fieldsArr[id + 1].id;
       const newField = document.getElementById(newId);
+      field.classList.add('open');
       clickfield(newField);
+      console.log('5');
     }
-    if (id < countFields * countFields - 10 && !isRightEdge) {
+    if (id < countFields * countFields - 10 && !isRightEdge
+      && !field.classList.contains('number')) {
       const newId = fieldsArr[id - 1 + countFields].id;
       const newField = document.getElementById(newId);
+      field.classList.add('open');
       clickfield(newField);
+      console.log('6');
     }
-    if (id < countFields * countFields - 12 && !isRightEdge) {
+    if (id < countFields * countFields - 12 && !isRightEdge
+      && !field.classList.contains('number')
+    ) {
       const newId = fieldsArr[id + 1 + countFields].id;
       const newField = document.getElementById(newId);
+      field.classList.add('open');
       clickfield(newField);
+      console.log('7');
     }
-    if (id < countFields * countFields - 11 && !isRightEdge) {
+    if (id < countFields * countFields - 11 && !isRightEdge
+     && !field.classList.contains('number')
+    ) {
       const newId = fieldsArr[id + countFields].id;
       const newField = document.getElementById(newId);
+      field.classList.add('open');
       clickfield(newField);
+      console.log('8');
     }
   }, 10);
 }
@@ -124,8 +142,10 @@ function winWin() {
       console.log('win count');
       checkWin++;
     } if (checkWin === countBombs) {
-      console.log('win win');
-      isGameOver = true;
+      console.log('You win win');
+      for (let i = 0; i < fieldsArr.length; i++) {
+        fieldsArr[i].classList.add('open');
+      }
     }
   }
 }
