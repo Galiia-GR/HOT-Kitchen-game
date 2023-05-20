@@ -18,8 +18,9 @@ fieldsArr.forEach((el) => {
           el.style.backgroundColor = 'rgb(230, 227, 226)';
         }
       });
+    } if (el.classList.contains('flag')) {
+      console.log('flag');
     }
-    console.log(el);
     clickfield(el);
   });
 });

@@ -5,18 +5,16 @@ export let flagCount = 0;
 let id;
 
 export function clickfield(field) {
-  console.log('func refact');
-
   id = Number(field.getAttribute('id'));
-  console.log(id);
+
   if (field.classList.contains('open') || field.classList.contains('flag')) return;
-  if (field.classList.contains('number')) return;
   if (isGameOver) return;
   if (field.classList.contains('bomb')) return;
 
   const numbers = field.getAttribute('data');
   if (numbers != 0) {
     field.innerText = numbers;
+    field.classList.add('open');
     field.classList.add('number');
     switch (numbers) {
       case '1':
@@ -33,86 +31,92 @@ export function clickfield(field) {
         field.classList.add('four');
         break;
       default:
-  // do nothing;
+                // do nothing;
     }
   }
+  blabla(id);
+  fieldsArr[id].classList.add('open');
+}
 
-  if (field.classList.contains('number')) {
-    field.classList.add('open');
-    console.log('I get number');
-  }
-
+function blabla(id) {
   const isLeftEdge = (id % countFields === 0);
+  console.log(id, id % countFields)
   const isRightEdge = (id % countFields === countFields - 1);
-
+  console.log(id, id % countFields)
   setTimeout(() => {
-    if (id > 0 && !isLeftEdge
-  && !field.classList.contains('number')) {
-      const newId = fieldsArr[id - 1].id;
+    if (id + 1 <= 99 && !isRightEdge && !fieldsArr[id].classList.contains('number')
+    && !fieldsArr[id + 1].classList.contains('open')
+  && !fieldsArr[id + 1].classList.contains('flag')
+  && !fieldsArr[id + 1].classList.contains('bomb')) {
+      const newId = fieldsArr[id + 1].id;
       const newField = document.getElementById(newId);
-      field.classList.add('open');
       clickfield(newField);
       console.log('1');
     }
-    if (id > countFields - 1 && !isRightEdge
-    && !field.classList.contains('number')) {
-      const newId = fieldsArr[id + 1 - countFields].id;
+    if (id - 1 >= 0 && !isLeftEdge && !fieldsArr[id].classList.contains('number')
+      && !fieldsArr[id - 1].classList.contains('open')
+&& !fieldsArr[id - 1].classList.contains('flag')
+&& !fieldsArr[id - 1].classList.contains('bomb')) {
+      const newId = fieldsArr[id - 1].id;
       const newField = document.getElementById(newId);
-      field.classList.add('open');
       clickfield(newField);
       console.log('2');
     }
-    if (id > countFields
-      && !field.classList.contains('number')) {
-      const newId = fieldsArr[id - countFields].id;
+    if (id + 10 <= 99 && !fieldsArr[id].classList.contains('number')
+   && !fieldsArr[id + 10].classList.contains('open')
+   && !fieldsArr[id + 10].classList.contains('flag')
+   && !fieldsArr[id + 10].classList.contains('bomb')) {
+      const newId = fieldsArr[id + 10].id;
       const newField = document.getElementById(newId);
-      field.classList.add('open');
       clickfield(newField);
       console.log('3');
     }
-    if (id > countFields + 1 && !isLeftEdge
-      && !field.classList.contains('number')) {
-      const newId = fieldsArr[id - 1 - countFields].id;
+    if (id + 11 <= 99 && !isRightEdge && !fieldsArr[id].classList.contains('number')
+    && !fieldsArr[id + 11].classList.contains('open')
+    && !fieldsArr[id + 11].classList.contains('flag')
+    && !fieldsArr[id + 11].classList.contains('bomb')) {
+      const newId = fieldsArr[id + 11].id;
       const newField = document.getElementById(newId);
-      field.classList.add('open');
       clickfield(newField);
       console.log('4');
     }
-    if (id < countFields * countFields - 2 && !isRightEdge
-      && !field.classList.contains('number')) {
-      const newId = fieldsArr[id + 1].id;
+    if (id + 9 <= 99 && !isLeftEdge && !fieldsArr[id].classList.contains('number')
+    && !fieldsArr[id + 9].classList.contains('open')
+    && !fieldsArr[id + 9].classList.contains('flag')
+    && !fieldsArr[id + 9].classList.contains('bomb')) {
+      const newId = fieldsArr[id + 9].id;
       const newField = document.getElementById(newId);
-      field.classList.add('open');
       clickfield(newField);
       console.log('5');
     }
-    if (id < countFields * countFields - 10 && !isRightEdge
-      && !field.classList.contains('number')) {
-      const newId = fieldsArr[id - 1 + countFields].id;
-      const newField = document.getElementById(newId);
-      field.classList.add('open');
-      clickfield(newField);
-      console.log('6');
-    }
-    if (id < countFields * countFields - 12 && !isRightEdge
-      && !field.classList.contains('number')
-    ) {
-      const newId = fieldsArr[id + 1 + countFields].id;
-      const newField = document.getElementById(newId);
-      field.classList.add('open');
-      clickfield(newField);
-      console.log('7');
-    }
-    if (id < countFields * countFields - 11 && !isRightEdge
-     && !field.classList.contains('number')
-    ) {
-      const newId = fieldsArr[id + countFields].id;
-      const newField = document.getElementById(newId);
-      field.classList.add('open');
-      clickfield(newField);
-      console.log('8');
-    }
-  }, 10);
+    if (id - 9 >= 0 && !isRightEdge && !fieldsArr[id].classList.contains('number')
+      && !fieldsArr[id - 9].classList.contains('open')
+      && !fieldsArr[id - 9].classList.contains('flag')
+      && !fieldsArr[id - 9].classList.contains('bomb')) {
+        const newId = fieldsArr[id - 9].id;
+        const newField = document.getElementById(newId);
+        clickfield(newField);
+        console.log('6');
+      }
+   if (id - 10 >= 0 && !fieldsArr[id].classList.contains('number')
+    && !fieldsArr[id - 10].classList.contains('open')
+   && !fieldsArr[id - 10].classList.contains('flag')
+   && !fieldsArr[id - 10].classList.contains('bomb')) {
+    const newId = fieldsArr[id - 10].id;
+    const newField = document.getElementById(newId);
+    clickfield(newField);
+    console.log('7');
+   }
+ if (id - 11 >= 0 && !isLeftEdge && !fieldsArr[id].classList.contains('number')
+  && !fieldsArr[id - 11].classList.contains('open')
+  && !fieldsArr[id - 11].classList.contains('flag')
+  && !fieldsArr[id - 11].classList.contains('bomb')) {
+    const newId = fieldsArr[id - 11].id;
+    const newField = document.getElementById(newId);
+    clickfield(newField);
+    console.log('8');
+  }
+  }, 500);
 }
 
 export function ticFlags(field) {
