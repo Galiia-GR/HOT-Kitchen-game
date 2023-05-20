@@ -34,18 +34,18 @@ export function clickfield(field) {
                 // do nothing;
     }
   }
-  blabla(id);
+  emptyFieldGrow(id);
   fieldsArr[id].classList.add('open');
 }
 
-function blabla(id) {
+function emptyFieldGrow(id) {
   const isLeftEdge = (id % countFields === 0);
-  console.log(id, id % countFields)
+
   const isRightEdge = (id % countFields === countFields - 1);
-  console.log(id, id % countFields)
+
   setTimeout(() => {
-    if (id + 1 <= 99 && !isRightEdge && !fieldsArr[id].classList.contains('number')
-    && !fieldsArr[id + 1].classList.contains('open')
+    if (id + 1 <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr[id].classList.contains('number')
+  && !fieldsArr[id + 1].classList.contains('open')
   && !fieldsArr[id + 1].classList.contains('flag')
   && !fieldsArr[id + 1].classList.contains('bomb')) {
       const newId = fieldsArr[id + 1].id;
@@ -62,61 +62,61 @@ function blabla(id) {
       clickfield(newField);
       console.log('2');
     }
-    if (id + 10 <= 99 && !fieldsArr[id].classList.contains('number')
-   && !fieldsArr[id + 10].classList.contains('open')
-   && !fieldsArr[id + 10].classList.contains('flag')
-   && !fieldsArr[id + 10].classList.contains('bomb')) {
-      const newId = fieldsArr[id + 10].id;
+    if (id + countFields <= ((countFields * countFields) - 1) && !fieldsArr[id].classList.contains('number') /// нижнее поле (проверка на вариабельность)
+   && !fieldsArr[id + countFields].classList.contains('open')
+   && !fieldsArr[id + countFields].classList.contains('flag')
+   && !fieldsArr[id + countFields].classList.contains('bomb')) {
+      const newId = fieldsArr[id + countFields].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
       console.log('3');
     }
-    if (id + 11 <= 99 && !isRightEdge && !fieldsArr[id].classList.contains('number')
-    && !fieldsArr[id + 11].classList.contains('open')
-    && !fieldsArr[id + 11].classList.contains('flag')
-    && !fieldsArr[id + 11].classList.contains('bomb')) {
-      const newId = fieldsArr[id + 11].id;
+    if (id + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr[id].classList.contains('number') /// нижнее правое поле
+    && !fieldsArr[id + (countFields + 1)].classList.contains('open')
+    && !fieldsArr[id + (countFields + 1)].classList.contains('flag')
+    && !fieldsArr[id + (countFields + 1)].classList.contains('bomb')) {
+      const newId = fieldsArr[id + (countFields + 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
       console.log('4');
     }
-    if (id + 9 <= 99 && !isLeftEdge && !fieldsArr[id].classList.contains('number')
-    && !fieldsArr[id + 9].classList.contains('open')
-    && !fieldsArr[id + 9].classList.contains('flag')
-    && !fieldsArr[id + 9].classList.contains('bomb')) {
-      const newId = fieldsArr[id + 9].id;
+    if (id + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && !fieldsArr[id].classList.contains('number') /// нижнее левое поле
+    && !fieldsArr[id + (countFields - 1)].classList.contains('open')
+    && !fieldsArr[id + (countFields - 1)].classList.contains('flag')
+    && !fieldsArr[id + (countFields - 1)].classList.contains('bomb')) {
+      const newId = fieldsArr[id + (countFields - 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
       console.log('5');
     }
-    if (id - 9 >= 0 && !isRightEdge && !fieldsArr[id].classList.contains('number')
-      && !fieldsArr[id - 9].classList.contains('open')
-      && !fieldsArr[id - 9].classList.contains('flag')
-      && !fieldsArr[id - 9].classList.contains('bomb')) {
-        const newId = fieldsArr[id - 9].id;
-        const newField = document.getElementById(newId);
-        clickfield(newField);
-        console.log('6');
-      }
-   if (id - 10 >= 0 && !fieldsArr[id].classList.contains('number')
-    && !fieldsArr[id - 10].classList.contains('open')
-   && !fieldsArr[id - 10].classList.contains('flag')
-   && !fieldsArr[id - 10].classList.contains('bomb')) {
-    const newId = fieldsArr[id - 10].id;
-    const newField = document.getElementById(newId);
-    clickfield(newField);
-    console.log('7');
-   }
- if (id - 11 >= 0 && !isLeftEdge && !fieldsArr[id].classList.contains('number')
-  && !fieldsArr[id - 11].classList.contains('open')
-  && !fieldsArr[id - 11].classList.contains('flag')
-  && !fieldsArr[id - 11].classList.contains('bomb')) {
-    const newId = fieldsArr[id - 11].id;
-    const newField = document.getElementById(newId);
-    clickfield(newField);
-    console.log('8');
-  }
-  }, 500);
+    if (id - (countFields - 1) >= 0 && !isRightEdge && !fieldsArr[id].classList.contains('number') /// верхнее правое поле
+      && !fieldsArr[id - (countFields - 1)].classList.contains('open')
+      && !fieldsArr[id - (countFields - 1)].classList.contains('flag')
+      && !fieldsArr[id - (countFields - 1)].classList.contains('bomb')) {
+      const newId = fieldsArr[id - (countFields - 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+      console.log('6');
+    }
+    if (id - countFields >= 0 && !fieldsArr[id].classList.contains('number') /// /верхнее поле
+    && !fieldsArr[id - countFields].classList.contains('open')
+   && !fieldsArr[id - countFields].classList.contains('flag')
+   && !fieldsArr[id - countFields].classList.contains('bomb')) {
+      const newId = fieldsArr[id - countFields].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+      console.log('7');
+    }
+    if (id - (countFields + 1) >= 0 && !isLeftEdge && !fieldsArr[id].classList.contains('number') /// /верхнее левое поле
+      && !fieldsArr[id - (countFields + 1)].classList.contains('open')
+      && !fieldsArr[id - (countFields + 1)].classList.contains('flag')
+      && !fieldsArr[id - (countFields + 1)].classList.contains('bomb')) {
+      const newId = fieldsArr[id - (countFields + 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+      console.log('8');
+    }
+  }, 50);
 }
 
 export function ticFlags(field) {

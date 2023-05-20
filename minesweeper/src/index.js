@@ -19,7 +19,7 @@ fieldsArr.forEach((el) => {
         }
       });
     } if (el.classList.contains('flag')) {
-      console.log('flag');
+      return;
     }
     clickfield(el);
   });
