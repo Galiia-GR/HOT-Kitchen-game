@@ -149,8 +149,9 @@ export function drawfield() {
             gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
             fieldsArr.forEach((el) => {
               if (el.classList.contains('bomb')) {
-                el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
-                el.style.backgroundColor = 'rgb(230, 227, 226)';
+                if (el.classList.contains('bomb')) {
+                  el.classList.add('bomb-open');
+                }
               }
             });
           } if (el.classList.contains('flag')) {
@@ -193,8 +194,9 @@ export function drawfield() {
             gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
             fieldsArr.forEach((el) => {
               if (el.classList.contains('bomb')) {
-                el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
-                el.style.backgroundColor = 'rgb(230, 227, 226)';
+                if (el.classList.contains('bomb')) {
+                  el.classList.add('bomb-open');
+                }
               }
             });
           } if (el.classList.contains('flag')) {
@@ -236,8 +238,7 @@ export function drawfield() {
             gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
             fieldsArr.forEach((el) => {
               if (el.classList.contains('bomb')) {
-                el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
-                el.style.backgroundColor = 'rgb(230, 227, 226)';
+                el.classList.add('bomb-open');
               }
             });
           } if (el.classList.contains('flag')) {

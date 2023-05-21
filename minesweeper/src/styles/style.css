@@ -94,12 +94,19 @@
   background-size: 100%;
 }
 
+.bomb-open {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-color: rgb(230, 227, 226);
+  background-image: url("../../image/mine1.png");
+}
+
 .flag {
+  border: solid 1px white;
   background-repeat: no-repeat;
   background-size: 70%;
   background-image: url("../../image/flag.jpg");
 }
-
 
 .open, .number {
   text-align: right;
