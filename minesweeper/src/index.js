@@ -1,19 +1,20 @@
-import { drawfield, fieldsArr } from './drawfield.js';
+import { drawfield, fieldsArr, sizeField, sizeBomb } from './drawfield.js';
 import { clickfield, ticFlags } from './clickfield.js';
 /* import './styles/style.css'; */
 
 export let isGameOver = false;
+
 
 drawfield();
 
 fieldsArr.forEach((el) => {
   el.addEventListener('click', (event) => {
     event.preventDefault();
-    if (el.classList.contains('bomb')) {
+    if (el.classList.contains(sizeBomb)) {
       isGameOver = true;
       console.log('boom boom, you louse');
       fieldsArr.forEach((el) => {
-        if (el.classList.contains('bomb')) {
+        if (el.classList.contains(sizeBomb)) {
           el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
           el.style.backgroundColor = 'rgb(230, 227, 226)';
         }
@@ -21,7 +22,7 @@ fieldsArr.forEach((el) => {
     } if (el.classList.contains('flag')) {
       return;
     }
-    clickfield(el);
+    //clickfield(el);
   });
 });
 

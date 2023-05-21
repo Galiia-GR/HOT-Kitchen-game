@@ -1,9 +1,17 @@
 const { body } = document;
 export const fieldsArr = [];
-export const countFields = 25;
-export const countBombs = 25;
+export let countFields;
+export let countBombs = 10;
+export let sizeFlag;
+export let sizeField;
+export let sizeBomb;
+let levels;
+let bombsArr;
+let emptyArr;
+let gameShuflArr = [];
 
 console.log('1 func');
+
 export function drawfield() {
   const container = document.createElement('div');
   container.classList.add('container');
@@ -52,7 +60,7 @@ export function drawfield() {
   const drawSounds = document.createElement('div');
   drawSounds.classList.add('drawSounds');
   sound.appendChild(drawSounds);
-  drawSounds.innerText = 'on';
+  drawSounds.innerText = 'pull';
 
   const start = document.createElement('div');
   start.classList.add('header__start');
@@ -96,14 +104,15 @@ export function drawfield() {
   minesweeper.classList.add('minesweeper');
   container.appendChild(minesweeper);
 
-  const bombsArr = Array(countBombs).fill('bomb');
-  const emptyArr = Array(countFields * countFields - countBombs).fill('field');
-  const gameShuflArr = emptyArr
+  /// /первоначальная отрисовка///
+  countFields = 10;
+  countBombs = 10;
+
+  bombsArr = Array(countBombs).fill('bomb');
+  emptyArr = Array(countFields * countFields - countBombs).fill('field');
+  gameShuflArr = emptyArr
     .concat(bombsArr)
     .sort(() => Math.random() - 0.5);
-
-  /// отрисовка поля///
-  /// перерисовка после первого клика////
 
   for (let i = 0; i < countFields * countFields; i++) {
     const field = document.createElement('div');
@@ -121,14 +130,96 @@ export function drawfield() {
     const isRightEdge = i % (countFields) === countFields - 1;
 
     if (fieldsArr[i].classList.contains('field')) {
-     if (i - 1 >= 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb')) numbers++;
-     if (i + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && fieldsArr[i + (countFields - 1)].classList.contains('bomb')) numbers++;
-     if (i - countFields >= 0 && fieldsArr[i - countFields].classList.contains('bomb')) numbers++;
-     if (i - (countFields - 1) >= 0 && !isRightEdge && fieldsArr[i - (countFields - 1)].classList.contains('bomb')) numbers++;
-     if (i + 1 <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + 1].classList.contains('bomb')) numbers++;
-     if (i - (countFields + 1) >= 0 && !isLeftEdge && fieldsArr[i - (countFields + 1)].classList.contains('bomb')) numbers++;
-     if (i + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains('bomb')) numbers++;
-     if (i + countFields <= ((countFields * countFields) - 1) && fieldsArr[i + countFields].classList.contains('bomb')) numbers++;
+      if (i - 1 >= 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb')) numbers++;
+      if (i + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && fieldsArr[i + (countFields - 1)].classList.contains('bomb')) numbers++;
+      if (i - countFields >= 0 && fieldsArr[i - countFields].classList.contains('bomb')) numbers++;
+      if (i - (countFields - 1) >= 0 && !isRightEdge && fieldsArr[i - (countFields - 1)].classList.contains('bomb')) numbers++;
+      if (i + 1 <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + 1].classList.contains('bomb')) numbers++;
+      if (i - (countFields + 1) >= 0 && !isLeftEdge && fieldsArr[i - (countFields + 1)].classList.contains('bomb')) numbers++;
+      if (i + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains('bomb')) numbers++;
+      if (i + countFields <= ((countFields * countFields) - 1) && fieldsArr[i + countFields].classList.contains('bomb')) numbers++;
+      fieldsArr[i].setAttribute('data', numbers);
+    }
+  }
+
+  easy.addEventListener('click', (event) => {
+    event.preventDefault();
+    minesweeper.innerHTML = '';
+    if (!easy.classList.contains('active-easy')) {
+      easy.classList.add('active-easy');
+      hard.classList.remove('active-hard');
+      medium.classList.remove('active-medium');
+      levels = 1;
+      countFields = 10;
+      countBombs = 10;
+      sizeFlag = 'flag-easy';
+      sizeField = 'field-easy';
+      sizeBomb = 'bomb-easy';
+      initFields(countFields, countBombs, sizeBomb, sizeField);
+      console.log('now level', levels);
+    }
+  });
+
+  medium.addEventListener('click', (event) => {
+    event.preventDefault();
+    minesweeper.innerHTML = '';
+    if (!medium.classList.contains('active-medium')) {
+      medium.classList.add('active-medium');
+      hard.classList.remove('active-hard');
+      easy.classList.remove('active-easy');
+      levels = 2;
+      countFields = 15;
+      countBombs = 15;
+      console.log('now level', levels);
+    }
+  });
+
+  hard.addEventListener('click', (event) => {
+    event.preventDefault();
+    minesweeper.innerHTML = '';
+    if (!hard.classList.contains('active-hard')) {
+      hard.classList.add('active-hard');
+      medium.classList.remove('active-medium');
+      easy.classList.remove('active-easy');
+      levels = 3;
+      countFields = 25;
+      countBombs = 25;
+      console.log('now level', levels);
+    }
+  });
+}
+
+function initFields(countFields, countBombs, sizeBomb, sizeField) {
+  bombsArr = Array(countBombs).fill(sizeBomb);
+  emptyArr = Array(countFields * countFields - countBombs).fill(sizeField);
+  gameShuflArr = emptyArr
+    .concat(bombsArr)
+    .sort(() => Math.random() - 0.5);
+
+  for (let i = 0; i < countFields * countFields; i++) {
+    const field = document.createElement('div');
+    field.classList.add(gameShuflArr[i]);
+    field.setAttribute('id', i);
+    document.querySelector('.minesweeper').appendChild(field);
+    fieldsArr.push(field);
+  }
+
+  // /// write numbers ///
+
+  for (let i = 0; i < fieldsArr.length; i++) {
+    let numbers = 0;
+    const isLeftEdge = i % (countFields) === 0;
+    const isRightEdge = i % (countFields) === countFields - 1;
+
+    if (fieldsArr[i].classList.contains(sizeField)) {
+      if (i - 1 >= 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains(sizeBomb)) numbers++;
+      if (i + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && fieldsArr[i + (countFields - 1)].classList.contains(sizeBomb)) numbers++;
+      if (i - countFields >= 0 && fieldsArr[i - countFields].classList.contains(sizeBomb)) numbers++;
+      if (i - (countFields - 1) >= 0 && !isRightEdge && fieldsArr[i - (countFields - 1)].classList.contains(sizeBomb)) numbers++;
+      if (i + 1 <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + 1].classList.contains(sizeBomb)) numbers++;
+      if (i - (countFields + 1) >= 0 && !isLeftEdge && fieldsArr[i - (countFields + 1)].classList.contains(sizeBomb)) numbers++;
+      if (i + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains(sizeBomb)) numbers++;
+      if (i + countFields <= ((countFields * countFields) - 1) && fieldsArr[i + countFields].classList.contains(sizeBomb)) numbers++;
       fieldsArr[i].setAttribute('data', numbers);
     }
   }

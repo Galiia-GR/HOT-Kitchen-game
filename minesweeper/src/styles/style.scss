@@ -47,32 +47,104 @@ font-family: 'RobotoBig' ;
 }
 
 .field {
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
   border: solid 1px white;
 }
 
-.bomb {
-  width: 20px;
+ .field-easy {
+    width: 50px;
+  height: 50px;
+  border: solid 1px white;
+  }
+
+  .field-medium {
+    width: 33px;
+  height: 33px;
+  border: solid 1px white;
+  }
+
+  .field-hard {
+    width: 20px;
   height: 20px;
+  border: solid 1px white;
+  }
+
+
+.bomb {
+  width: 50px;
+  height: 50px;
   border: solid 1px white;
   background-repeat: no-repeat;
   background-color: aqua;
   background-size: 100%;
 }
+  .bomb-easy {
+  width: 50px;
+  height: 50px;
+  border: solid 1px white;
+  background-repeat: no-repeat;
+  background-color: aqua;
+  background-size: 100%;
+  }
+
+  .bomb-medium {
+    width: 33px;
+  height: 33px;
+  border: solid 1px white;
+  background-repeat: no-repeat;
+  background-color: aqua;
+  background-size: 100%;
+  }
+
+  .bomb-hard {
+    width: 20px;
+  height: 20px;
+  border: solid 1px white;
+  background-repeat: no-repeat;
+  background-color: aqua;
+  background-size: 100%;
+  }
 
 .flag {
-  width: 20px;
-  height: 20px;
+  width: 50px;
+  height: 50px;
   border: solid 1px white;
   background-repeat: no-repeat;
   background-size: 70%;
   background-image:url('../../image/flag.jpg');
 }
 
+  .flag-easy {
+    width: 50px;
+  height: 50px;
+  border: solid 1px white;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-image:url('../../image/flag.jpg');
+  }
+
+  .flag-medium {
+    width: 33px;
+  height: 33px;
+  border: solid 1px white;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-image:url('../../image/flag.jpg');
+  }
+
+  .flag-hard {
+    width: 20px;
+  height: 20px;
+  border: solid 1px white;
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-image:url('../../image/flag.jpg');
+  }
+
 .open, .number {
   text-align: right;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: bold;
   background-color: rgb(230, 227, 226);
 }
@@ -112,7 +184,7 @@ font-family: 'RobotoBig' ;
 .drawBombs{
   background-image:url('../../image/mine1.png');
   background-repeat: no-repeat;
-  background-size: 60%;
+  background-size: 70%;
   background-position: top right 5px;
 }
 
@@ -120,7 +192,7 @@ font-family: 'RobotoBig' ;
     background-image:url('../../image/sound.png');
     background-repeat: no-repeat;
     background-size:60%;
-    background-position: top right 2px;
+    background-position: top right -8px;
 }
 
 .drawStart{
@@ -137,24 +209,58 @@ font-family: 'RobotoBig' ;
   background-position: top right 0px;
 }
 
-.header__level:hover{
+.active-hard, .level__hard:hover{
   color: red;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 2px, -2px);
 }
 
-.drawList:hover{
+.active-medium, .level__medium:hover{
+  color: red;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 2px, -2px);
+}
+
+.active-easy, .level__easy:hover{
+  color: red;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 2px, -2px);
+}
+
+.active-list, .drawList:hover{
   color: blue;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 2px, -2px);
 }
 
-.drawSounds:hover{
+.active-music, .drawSounds:hover{
   color: green;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 2px, -2px);
 }
 
 .drawStart:hover{
   color: orange;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 2px, -2px);
 }
 
 
@@ -162,4 +268,5 @@ font-family: 'RobotoBig' ;
   text-align: center;
   font-size: 26px;
 color: red;
+padding-bottom: 15px;
 }
