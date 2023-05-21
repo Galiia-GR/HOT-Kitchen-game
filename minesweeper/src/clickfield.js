@@ -1,8 +1,10 @@
-import { fieldsArr, countFields, countBombs } from './drawfield.js';
-import { isGameOver } from './index.js';
+import {
+  fieldsArr, countFields, countBombs, isGameOver,
+} from './drawfield.js';
 
 export let flagCount = 0;
 let id;
+
 
 export function clickfield(field) {
   id = Number(field.getAttribute('id'));
@@ -51,7 +53,6 @@ function emptyFieldGrow(id) {
       const newId = fieldsArr[id + 1].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
-      console.log('1');
     }
     if (id - 1 >= 0 && !isLeftEdge && !fieldsArr[id].classList.contains('number')
       && !fieldsArr[id - 1].classList.contains('open')
@@ -60,7 +61,6 @@ function emptyFieldGrow(id) {
       const newId = fieldsArr[id - 1].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
-      console.log('2');
     }
     if (id + countFields <= ((countFields * countFields) - 1) && !fieldsArr[id].classList.contains('number') /// нижнее поле (проверка на вариабельность)
    && !fieldsArr[id + countFields].classList.contains('open')
@@ -69,7 +69,6 @@ function emptyFieldGrow(id) {
       const newId = fieldsArr[id + countFields].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
-      console.log('3');
     }
     if (id + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr[id].classList.contains('number') /// нижнее правое поле
     && !fieldsArr[id + (countFields + 1)].classList.contains('open')
@@ -78,7 +77,6 @@ function emptyFieldGrow(id) {
       const newId = fieldsArr[id + (countFields + 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
-      console.log('4');
     }
     if (id + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && !fieldsArr[id].classList.contains('number') /// нижнее левое поле
     && !fieldsArr[id + (countFields - 1)].classList.contains('open')
@@ -87,7 +85,6 @@ function emptyFieldGrow(id) {
       const newId = fieldsArr[id + (countFields - 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
-      console.log('5');
     }
     if (id - (countFields - 1) >= 0 && !isRightEdge && !fieldsArr[id].classList.contains('number') /// верхнее правое поле
       && !fieldsArr[id - (countFields - 1)].classList.contains('open')
@@ -96,7 +93,6 @@ function emptyFieldGrow(id) {
       const newId = fieldsArr[id - (countFields - 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
-      console.log('6');
     }
     if (id - countFields >= 0 && !fieldsArr[id].classList.contains('number') /// /верхнее поле
     && !fieldsArr[id - countFields].classList.contains('open')
@@ -105,7 +101,6 @@ function emptyFieldGrow(id) {
       const newId = fieldsArr[id - countFields].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
-      console.log('7');
     }
     if (id - (countFields + 1) >= 0 && !isLeftEdge && !fieldsArr[id].classList.contains('number') /// /верхнее левое поле
       && !fieldsArr[id - (countFields + 1)].classList.contains('open')
@@ -114,7 +109,6 @@ function emptyFieldGrow(id) {
       const newId = fieldsArr[id - (countFields + 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
-      console.log('8');
     }
   }, 50);
 }
@@ -143,10 +137,9 @@ function winWin() {
   let checkWin = 0;
   for (let i = 0; i < fieldsArr.length; i++) {
     if (fieldsArr[i].classList.contains('flag') && fieldsArr[i].classList.contains('bomb')) {
-      console.log('win count');
       checkWin++;
     } if (checkWin === countBombs) {
-      console.log('You win win');
+      document.querySelector('.gameSummary').innerText = 'HOORAY YOU WON!!!';
       for (let i = 0; i < fieldsArr.length; i++) {
         fieldsArr[i].classList.add('open');
       }

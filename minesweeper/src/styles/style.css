@@ -20,7 +20,7 @@
 
 .header {
   padding: 10px;
-  width: 500px;
+  width: 450px;
 }
 
 .header__title {
@@ -30,8 +30,8 @@
 }
 
 .minesweeper {
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   display: flex;
   flex-wrap: wrap;
   background-image: linear-gradient(to bottom, #d5cabd, #ddc9c2, #dfc9cb, #ddcbd5, #d5cede);
@@ -39,100 +39,67 @@
 }
 
 .field {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border: solid 1px white;
 }
 
 .field-easy {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border: solid 1px white;
 }
 
 .field-medium {
-  width: 33px;
-  height: 33px;
+  width: 30px;
+  height: 30px;
   border: solid 1px white;
 }
 
 .field-hard {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border: solid 1px white;
 }
 
 .bomb {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border: solid 1px white;
   background-repeat: no-repeat;
-  background-color: aqua;
   background-size: 100%;
 }
 
 .bomb-easy {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border: solid 1px white;
   background-repeat: no-repeat;
-  background-color: aqua;
   background-size: 100%;
 }
 
 .bomb-medium {
-  width: 33px;
-  height: 33px;
+  width: 30px;
+  height: 30px;
   border: solid 1px white;
   background-repeat: no-repeat;
-  background-color: aqua;
   background-size: 100%;
 }
 
 .bomb-hard {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border: solid 1px white;
   background-repeat: no-repeat;
-  background-color: aqua;
   background-size: 100%;
 }
 
 .flag {
-  width: 50px;
-  height: 50px;
-  border: solid 1px white;
   background-repeat: no-repeat;
   background-size: 70%;
   background-image: url("../../image/flag.jpg");
 }
 
-.flag-easy {
-  width: 50px;
-  height: 50px;
-  border: solid 1px white;
-  background-repeat: no-repeat;
-  background-size: 70%;
-  background-image: url("../../image/flag.jpg");
-}
-
-.flag-medium {
-  width: 33px;
-  height: 33px;
-  border: solid 1px white;
-  background-repeat: no-repeat;
-  background-size: 50%;
-  background-image: url("../../image/flag.jpg");
-}
-
-.flag-hard {
-  width: 20px;
-  height: 20px;
-  border: solid 1px white;
-  background-repeat: no-repeat;
-  background-size: 35%;
-  background-image: url("../../image/flag.jpg");
-}
 
 .open, .number {
   text-align: right;

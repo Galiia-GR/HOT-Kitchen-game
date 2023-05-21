@@ -1,16 +1,13 @@
+import { clickfield, ticFlags } from './clickfield.js';
+
 const { body } = document;
+export let isGameOver = false;
 export const fieldsArr = [];
 export let countFields;
-export let countBombs = 10;
-export let sizeFlag;
-export let sizeField;
-export let sizeBomb;
-let levels;
+export let countBombs;
 let bombsArr;
 let emptyArr;
-let gameShuflArr = [];
-
-console.log('1 func');
+let gameShuflArr;
 
 export function drawfield() {
   const container = document.createElement('div');
@@ -29,7 +26,7 @@ export function drawfield() {
   const gamesSummary = document.createElement('p');
   gamesSummary.classList.add('gameSummary');
   header.appendChild(gamesSummary);
-  gamesSummary.innerText = 'Games Over Games Play';
+  gamesSummary.innerText = 'Please choose level';
 
   const wrap = document.createElement('div');
   wrap.classList.add('header__wrapper');
@@ -51,7 +48,6 @@ export function drawfield() {
   const drawBombs = document.createElement('div');
   drawBombs.classList.add('drawBombs');
   mines.appendChild(drawBombs);
-  drawBombs.innerText = countBombs;
 
   const sound = document.createElement('div');
   sound.classList.add('header__sound');
@@ -104,94 +100,166 @@ export function drawfield() {
   minesweeper.classList.add('minesweeper');
   container.appendChild(minesweeper);
 
-  /// /первоначальная отрисовка///
-  countFields = 10;
-  countBombs = 10;
-
-  bombsArr = Array(countBombs).fill('bomb');
-  emptyArr = Array(countFields * countFields - countBombs).fill('field');
-  gameShuflArr = emptyArr
-    .concat(bombsArr)
-    .sort(() => Math.random() - 0.5);
-
-  for (let i = 0; i < countFields * countFields; i++) {
-    const field = document.createElement('div');
-    field.classList.add(gameShuflArr[i]);
-    field.setAttribute('id', i);
-    minesweeper.appendChild(field);
-    fieldsArr.push(field);
-  }
-
-  /// write numbers ///
-
-  for (let i = 0; i < fieldsArr.length; i++) {
-    let numbers = 0;
-    const isLeftEdge = i % (countFields) === 0;
-    const isRightEdge = i % (countFields) === countFields - 1;
-
-    if (fieldsArr[i].classList.contains('field')) {
-      if (i - 1 >= 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb')) numbers++;
-      if (i + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && fieldsArr[i + (countFields - 1)].classList.contains('bomb')) numbers++;
-      if (i - countFields >= 0 && fieldsArr[i - countFields].classList.contains('bomb')) numbers++;
-      if (i - (countFields - 1) >= 0 && !isRightEdge && fieldsArr[i - (countFields - 1)].classList.contains('bomb')) numbers++;
-      if (i + 1 <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + 1].classList.contains('bomb')) numbers++;
-      if (i - (countFields + 1) >= 0 && !isLeftEdge && fieldsArr[i - (countFields + 1)].classList.contains('bomb')) numbers++;
-      if (i + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains('bomb')) numbers++;
-      if (i + countFields <= ((countFields * countFields) - 1) && fieldsArr[i + countFields].classList.contains('bomb')) numbers++;
-      fieldsArr[i].setAttribute('data', numbers);
-    }
-  }
-
-  easy.addEventListener('click', (event) => {
+  drawStart.addEventListener('click', (event) => {
     event.preventDefault();
-    minesweeper.innerHTML = '';
-    if (!easy.classList.contains('active-easy')) {
+    location.reload();
+  });
+
+  level.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (event.target.classList.contains('level__easy')) {
       easy.classList.add('active-easy');
-      hard.classList.remove('active-hard');
-      medium.classList.remove('active-medium');
-      levels = 1;
+      eventEasy();
+    }
+    if (event.target.classList.contains('level__medium')) {
+      medium.classList.add('active-medium');
+      eventMedium();
+    }
+    if (event.target.classList.contains('level__hard')) {
+      hard.classList.add('active-hard');
+      eventHard();
+    }
+    if (hard.classList.contains('active-hard') && medium.classList.contains('active-medium')) {
+      location.reload();
+    }
+    if (medium.classList.contains('active-medium') && easy.classList.contains('active-easy')) {
+      location.reload();
+    }
+    if (hard.classList.contains('active-hard') && easy.classList.contains('active-easy')) {
+      location.reload();
+    }
+    if (hard.classList.contains('active-hard') && easy.classList.contains('active-easy')
+    && medium.classList.contains('active-medium')) {
+      location.reload();
+    }
+  });
+
+  function eventEasy() {
+    if (easy.classList.contains('active-easy')) {
       countFields = 10;
       countBombs = 10;
-      sizeFlag = 'flag-easy';
-      sizeField = 'field-easy';
-      sizeBomb = 'bomb-easy';
-      initFields(countFields, countBombs, sizeBomb, sizeField);
-      console.log('now level', levels);
-    }
-  });
+      drawBombs.innerText = countBombs;
+      initFields(countFields, countBombs);
 
-  medium.addEventListener('click', (event) => {
-    event.preventDefault();
-    minesweeper.innerHTML = '';
-    if (!medium.classList.contains('active-medium')) {
-      medium.classList.add('active-medium');
-      hard.classList.remove('active-hard');
-      easy.classList.remove('active-easy');
-      levels = 2;
+      fieldsArr.forEach((el) => {
+        el.addEventListener('click', (event) => {
+          event.preventDefault();
+          if (el.classList.contains('bomb')) {
+            isGameOver = true;
+            gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+            fieldsArr.forEach((el) => {
+              if (el.classList.contains('bomb')) {
+                el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
+                el.style.backgroundColor = 'rgb(230, 227, 226)';
+              }
+            });
+          } if (el.classList.contains('flag')) {
+            return;
+          }
+          clickfield(el);
+        });
+      });
+
+      fieldsArr.forEach((el) => {
+        el.addEventListener('contextmenu', (event) => {
+          event.preventDefault();
+          ticFlags(event.target);
+        });
+      });
+    }
+  }
+
+  function eventMedium() {
+    if (medium.classList.contains('active-medium')) {
       countFields = 15;
       countBombs = 15;
-      console.log('now level', levels);
-    }
-  });
+      drawBombs.innerText = countBombs;
+      initFields(countFields, countBombs);
 
-  hard.addEventListener('click', (event) => {
-    event.preventDefault();
-    minesweeper.innerHTML = '';
-    if (!hard.classList.contains('active-hard')) {
-      hard.classList.add('active-hard');
-      medium.classList.remove('active-medium');
-      easy.classList.remove('active-easy');
-      levels = 3;
-      countFields = 25;
-      countBombs = 25;
-      console.log('now level', levels);
+      for (let i = 0; i < fieldsArr.length; i++) {
+        if (fieldsArr[i].classList.contains('field')) {
+          fieldsArr[i].classList.add('field-medium');
+        }
+        if (fieldsArr[i].classList.contains('bomb')) {
+          fieldsArr[i].classList.add('bomb-medium');
+        }
+      }
+
+      fieldsArr.forEach((el) => {
+        el.addEventListener('click', (event) => {
+          event.preventDefault();
+          if (el.classList.contains('bomb')) {
+            isGameOver = true;
+            gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+            fieldsArr.forEach((el) => {
+              if (el.classList.contains('bomb')) {
+                el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
+                el.style.backgroundColor = 'rgb(230, 227, 226)';
+              }
+            });
+          } if (el.classList.contains('flag')) {
+            return;
+          }
+          clickfield(el);
+        });
+      });
     }
-  });
+    fieldsArr.forEach((el) => {
+      el.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        ticFlags(event.target);
+      });
+    });
+  }
+
+  function eventHard() {
+    if (hard.classList.contains('active-hard')) {
+      countFields = 25;
+      countBombs = 35;
+      drawBombs.innerText = countBombs;
+      initFields(countFields, countBombs);
+
+      for (let i = 0; i < fieldsArr.length; i++) {
+        if (fieldsArr[i].classList.contains('field')) {
+          fieldsArr[i].classList.add('field-hard');
+        }
+        if (fieldsArr[i].classList.contains('bomb')) {
+          fieldsArr[i].classList.add('bomb-hard');
+        }
+      }
+
+      fieldsArr.forEach((el) => {
+        el.addEventListener('click', (event) => {
+          event.preventDefault();
+          if (el.classList.contains('bomb')) {
+            isGameOver = true;
+            gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+            fieldsArr.forEach((el) => {
+              if (el.classList.contains('bomb')) {
+                el.style.backgroundImage = 'url(\'../../image/mine1.png\')';
+                el.style.backgroundColor = 'rgb(230, 227, 226)';
+              }
+            });
+          } if (el.classList.contains('flag')) {
+            return;
+          }
+          clickfield(el);
+        });
+      });
+
+      fieldsArr.forEach((el) => {
+        el.addEventListener('contextmenu', (event) => {
+          event.preventDefault();
+          ticFlags(event.target);
+        });
+      });
+    }
+  }
 }
 
-function initFields(countFields, countBombs, sizeBomb, sizeField) {
-  bombsArr = Array(countBombs).fill(sizeBomb);
-  emptyArr = Array(countFields * countFields - countBombs).fill(sizeField);
+function initFields(countFields, countBombs) {
+  bombsArr = Array(countBombs).fill('bomb');
+  emptyArr = Array(countFields * countFields - countBombs).fill('field');
   gameShuflArr = emptyArr
     .concat(bombsArr)
     .sort(() => Math.random() - 0.5);
@@ -211,16 +279,32 @@ function initFields(countFields, countBombs, sizeBomb, sizeField) {
     const isLeftEdge = i % (countFields) === 0;
     const isRightEdge = i % (countFields) === countFields - 1;
 
-    if (fieldsArr[i].classList.contains(sizeField)) {
-      if (i - 1 >= 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains(sizeBomb)) numbers++;
-      if (i + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && fieldsArr[i + (countFields - 1)].classList.contains(sizeBomb)) numbers++;
-      if (i - countFields >= 0 && fieldsArr[i - countFields].classList.contains(sizeBomb)) numbers++;
-      if (i - (countFields - 1) >= 0 && !isRightEdge && fieldsArr[i - (countFields - 1)].classList.contains(sizeBomb)) numbers++;
-      if (i + 1 <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + 1].classList.contains(sizeBomb)) numbers++;
-      if (i - (countFields + 1) >= 0 && !isLeftEdge && fieldsArr[i - (countFields + 1)].classList.contains(sizeBomb)) numbers++;
-      if (i + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains(sizeBomb)) numbers++;
-      if (i + countFields <= ((countFields * countFields) - 1) && fieldsArr[i + countFields].classList.contains(sizeBomb)) numbers++;
+    if (fieldsArr[i].classList.contains('field')) {
+      if (i - 1 >= 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb')) numbers++;
+      // console.log(fieldsArr[i], numbers, "левое");
+      if (i + (countFields - 1) <= ((countFields * countFields) - 1)
+      && !isLeftEdge && fieldsArr[i + (countFields - 1)].classList.contains('bomb')) numbers++;
+      // console.log(fieldsArr[i], numbers, "левое - нижнее");
+      if (i - countFields >= 0
+      && fieldsArr[i - countFields].classList.contains('bomb')) numbers++;
+      // console.log(fieldsArr[i], numbers, "верхнее");
+      if (i - (countFields - 1) >= 0 && !isRightEdge
+      && fieldsArr[i - (countFields - 1)].classList.contains('bomb')) numbers++;
+      // console.log(fieldsArr[i], numbers, "верхнее право");
+      if (i + 1 <= ((countFields * countFields) - 1)
+      && !isRightEdge && fieldsArr[i + 1].classList.contains('bomb')) numbers++;
+      // console.log(fieldsArr[i], numbers, "правое");
+      if (i - (countFields + 1) >= 0 && !isLeftEdge
+      && fieldsArr[i - (countFields + 1)].classList.contains('bomb')) numbers++;
+      // console.log(fieldsArr[i], numbers, "верхнее левое");
+      if (i + (countFields + 1) <= ((countFields * countFields) - 1)
+      && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains('bomb')) numbers++;
+      // console.log(fieldsArr[i], numbers, "нижнее правое");
+      if (i + countFields <= ((countFields * countFields) - 1)
+      && fieldsArr[i + countFields].classList.contains('bomb')) numbers++;
+      // console.log(fieldsArr[i], numbers, "нижнее");
       fieldsArr[i].setAttribute('data', numbers);
     }
   }
+  return fieldsArr;
 }

@@ -14,5 +14,6 @@ module.exports = {
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
     'no-plusplus': 'off',
+    'import/no-mutable-exports': 'off',
   },
 };
