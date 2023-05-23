@@ -5,7 +5,6 @@ import {
 export let flagCount = 0;
 let id;
 
-
 export function clickfield(field) {
   console.log(uroven);
 

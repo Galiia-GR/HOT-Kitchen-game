@@ -21,7 +21,7 @@ font-family: 'RobotoBig' ;
 
 .header{
    padding:10px;
-   width: 450px;
+   width: 600px;
 }
 
 .header__title{
@@ -44,6 +44,16 @@ font-family: 'RobotoBig' ;
     #d5cede
   );
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark{
+  background-image: linear-gradient( to top, #4a5f9c, #556caa, #6079b8,#6eb1ed, #69bff8, #52cffe);
+  background-repeat: no-repeat;
+}
+
+
+.body__light{
+  background-color: white;
 }
 
 .hide {
@@ -185,6 +195,23 @@ font-family: 'RobotoBig' ;
   background-repeat: no-repeat;
   background-size:30%;
   background-position: top right 0px;
+}
+
+.drawTheme{
+  background-image:url('../../image/moon.png');
+  background-repeat: no-repeat;
+  background-size:35%;
+  background-position: top right 0px;
+}
+
+
+.active-dark, .drawTheme:hover{
+  color: rgb(140, 42, 170);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translate3d(0, 2px, -2px);
 }
 
 .active-hard, .level__hard:hover{
