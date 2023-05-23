@@ -45,10 +45,6 @@ export function drawfield() {
   header.appendChild(title);
   title.innerText = 'minesweeper';
 
-  gamesSummary.classList.add('gameSummary');
-  header.appendChild(gamesSummary);
-  gamesSummary.innerText = 'Please choose level';
-
   wrap.classList.add('header__wrapper');
   header.appendChild(wrap);
 
@@ -111,6 +107,10 @@ export function drawfield() {
   minesweeper3.classList.add('minesweeper3');
   container.appendChild(minesweeper3);
 
+  gamesSummary.classList.add('gameSummary');
+  container.appendChild(gamesSummary);
+  gamesSummary.innerText = '';
+
   if (!hard.classList.contains('active-hard') && !easy.classList.contains('active-easy')
   && !medium.classList.contains('active-medium')) {
     easy.classList.add('active-easy');
@@ -119,6 +119,7 @@ export function drawfield() {
     uroven = 1;
     countFields = 10;
     countBombs = 10;
+    drawBombs.innerText = countBombs;
     initFields(countFields, countBombs, uroven);
     findNeibr(fieldsArr);
     eventClick(fieldsArr);
@@ -130,16 +131,8 @@ export function drawfield() {
     uroven = 2;
     countFields = 15;
     countBombs = 25;
+    drawBombs.innerText = countBombs;
     initFields(countFields, countBombs, uroven);
-
-    for (let i = 0; i < fieldsArr1.length; i++) {
-      if (fieldsArr1[i].classList.contains('field')) {
-        fieldsArr1[i].classList.add('field-medium');
-      }
-      if (fieldsArr1[i].classList.contains('bomb')) {
-        fieldsArr1[i].classList.add('bomb-medium');
-      }
-    }
     findNeibrMedium(fieldsArr1);
     eventClickMedium(fieldsArr1);
     console.log(fieldsArr1);
@@ -149,16 +142,8 @@ export function drawfield() {
     uroven = 3;
     countFields = 25;
     countBombs = 65;
+    drawBombs.innerText = countBombs;
     initFields(countFields, countBombs, uroven);
-
-    for (let i = 0; i < fieldsArr2.length; i++) {
-      if (fieldsArr2[i].classList.contains('field')) {
-        fieldsArr2[i].classList.add('field-hard');
-      }
-      if (fieldsArr2[i].classList.contains('bomb')) {
-        fieldsArr2[i].classList.add('bomb-hard');
-      }
-    }
     findNeibrHard(fieldsArr2);
     eventClickHard(fieldsArr2);
     console.log(fieldsArr2);
@@ -240,15 +225,13 @@ function eventClickMedium(fieldsArr1) {
   fieldsArr1.forEach((el) => {
     el.addEventListener('click', (event) => {
       event.preventDefault();
-      if (el.classList.contains('bomb')) {
+      if (el.classList.contains('bomb-medium')) {
         isGameOver = true;
         gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
         fieldsArr1.forEach((el) => {
-          if (el.classList.contains('bomb')) {
-            if (el.classList.contains('bomb')) {
+          if (el.classList.contains('bomb-medium')) {
               el.classList.add('bomb-open');
             }
-          }
         });
       } if (el.classList.contains('flag')) {
         return;
@@ -269,15 +252,13 @@ function eventClickHard(fieldsArr2) {
   fieldsArr2.forEach((el) => {
     el.addEventListener('click', (event) => {
       event.preventDefault();
-      if (el.classList.contains('bomb')) {
+      if (el.classList.contains('bomb-hard')) {
         isGameOver = true;
         gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
         fieldsArr2.forEach((el) => {
-          if (el.classList.contains('bomb')) {
-            if (el.classList.contains('bomb')) {
+          if (el.classList.contains('bomb-hard')) {
               el.classList.add('bomb-open');
             }
-          }
         });
       } if (el.classList.contains('flag')) {
         return;
@@ -293,94 +274,6 @@ function eventClickHard(fieldsArr2) {
     });
   });
 }
-
-
-// function eventMedium() {
-//   if (medium.classList.contains('active-medium')) {
-//     countFields = 15;
-//     countBombs = 15;
-//     drawBombs.innerText = countBombs;
-//     initFields(countFields, countBombs);
-
-//     for (let i = 0; i < fieldsArr.length; i++) {
-//       if (fieldsArr[i].classList.contains('field')) {
-//         fieldsArr[i].classList.add('field-medium');
-//       }
-//       if (fieldsArr[i].classList.contains('bomb')) {
-//         fieldsArr[i].classList.add('bomb-medium');
-//       }
-//     }
-
-//     fieldsArr.forEach((el) => {
-//       el.addEventListener('click', (event) => {
-//         event.preventDefault();
-//         if (el.classList.contains('bomb')) {
-//           isGameOver = true;
-//           gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
-//           fieldsArr.forEach((el) => {
-//             if (el.classList.contains('bomb')) {
-//               if (el.classList.contains('bomb')) {
-//                 el.classList.add('bomb-open');
-//               }
-//             }
-//           });
-//         } if (el.classList.contains('flag')) {
-//           return;
-//         }
-//         clickfield(el);
-//       });
-//     });
-//   }
-//   fieldsArr.forEach((el) => {
-//     el.addEventListener('contextmenu', (event) => {
-//       event.preventDefault();
-//       ticFlags(event.target);
-//     });
-//   });
-// }
-
-// function eventHard() {
-//   if (hard.classList.contains('active-hard')) {
-//     countFields = 25;
-//     countBombs = 35;
-//     drawBombs.innerText = countBombs;
-//     initFields(countFields, countBombs);
-
-//     for (let i = 0; i < fieldsArr.length; i++) {
-//       if (fieldsArr[i].classList.contains('field')) {
-//         fieldsArr[i].classList.add('field-hard');
-//       }
-//       if (fieldsArr[i].classList.contains('bomb')) {
-//         fieldsArr[i].classList.add('bomb-hard');
-//       }
-//     }
-
-//     fieldsArr.forEach((el) => {
-//       el.addEventListener('click', (event) => {
-//         event.preventDefault();
-//         if (el.classList.contains('bomb')) {
-//           isGameOver = true;
-//           gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
-//           fieldsArr.forEach((el) => {
-//             if (el.classList.contains('bomb')) {
-//               el.classList.add('bomb-open');
-//             }
-//           });
-//         } if (el.classList.contains('flag')) {
-//           return;
-//         }
-//         clickfield(el);
-//       });
-//     });
-
-//     fieldsArr.forEach((el) => {
-//       el.addEventListener('contextmenu', (event) => {
-//         event.preventDefault();
-//         ticFlags(event.target);
-//       });
-//     });
-//   }
-// }
 
 function initFields(countFields, countBombs, uroven) {
   if (uroven === 1) {
@@ -400,8 +293,8 @@ function initFields(countFields, countBombs, uroven) {
   }
 
   if (uroven === 2) {
-    bombsArr = Array(countBombs).fill('bomb');
-    emptyArr = Array(countFields * countFields - countBombs).fill('field');
+    bombsArr = Array(countBombs).fill('bomb-medium');
+    emptyArr = Array(countFields * countFields - countBombs).fill('field-medium');
     gameShuflArr = emptyArr
       .concat(bombsArr)
       .sort(() => Math.random() - 0.5);
@@ -416,8 +309,8 @@ function initFields(countFields, countBombs, uroven) {
   }
 
   if (uroven === 3) {
-    bombsArr = Array(countBombs).fill('bomb');
-    emptyArr = Array(countFields * countFields - countBombs).fill('field');
+    bombsArr = Array(countBombs).fill('bomb-hard');
+    emptyArr = Array(countFields * countFields - countBombs).fill('field-hard');
     gameShuflArr = emptyArr
       .concat(bombsArr)
       .sort(() => Math.random() - 0.5);
@@ -474,29 +367,29 @@ function findNeibrMedium(fieldsArr1) {
     const isLeftEdge = i % (countFields) === 0;
     const isRightEdge = i % (countFields) === countFields - 1;
 
-    if (fieldsArr1[i].classList.contains('field')) {
-      if (i - 1 >= 0 && !isLeftEdge && fieldsArr1[i - 1].classList.contains('bomb')) numbers++;
+    if (fieldsArr1[i].classList.contains('field-medium')) {
+      if (i - 1 >= 0 && !isLeftEdge && fieldsArr1[i - 1].classList.contains('bomb-medium')) numbers++;
       // console.log(fieldsArr1[i], numbers, "левое");
       if (i + (countFields - 1) <= ((countFields * countFields) - 1)
-      && !isLeftEdge && fieldsArr1[i + (countFields - 1)].classList.contains('bomb')) numbers++;
+      && !isLeftEdge && fieldsArr1[i + (countFields - 1)].classList.contains('bomb-medium')) numbers++;
       // console.log(fieldsArr1[i], numbers, "левое - нижнее");
       if (i - countFields >= 0
-      && fieldsArr1[i - countFields].classList.contains('bomb')) numbers++;
+      && fieldsArr1[i - countFields].classList.contains('bomb-medium')) numbers++;
       // console.log(fieldsArr1[i], numbers, "верхнее");
       if (i - (countFields - 1) >= 0 && !isRightEdge
-      && fieldsArr1[i - (countFields - 1)].classList.contains('bomb')) numbers++;
+      && fieldsArr1[i - (countFields - 1)].classList.contains('bomb-medium')) numbers++;
       // console.log(fieldsArr1[i], numbers, "верхнее право");
       if (i + 1 <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr1[i + 1].classList.contains('bomb')) numbers++;
+      && !isRightEdge && fieldsArr1[i + 1].classList.contains('bomb-medium')) numbers++;
       // console.log(fieldsArr1[i], numbers, "правое");
       if (i - (countFields + 1) >= 0 && !isLeftEdge
-      && fieldsArr1[i - (countFields + 1)].classList.contains('bomb')) numbers++;
+      && fieldsArr1[i - (countFields + 1)].classList.contains('bomb-medium')) numbers++;
       // console.log(fieldsArr1[i], numbers, "верхнее левое");
       if (i + (countFields + 1) <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr1[i + (countFields + 1)].classList.contains('bomb')) numbers++;
+      && !isRightEdge && fieldsArr1[i + (countFields + 1)].classList.contains('bomb-medium')) numbers++;
       // console.log(fieldsArr1[i], numbers, "нижнее правое");
       if (i + countFields <= ((countFields * countFields) - 1)
-      && fieldsArr1[i + countFields].classList.contains('bomb')) numbers++;
+      && fieldsArr1[i + countFields].classList.contains('bomb-medium')) numbers++;
       // console.log(fieldsArr1[i], numbers, "нижнее");
       fieldsArr1[i].setAttribute('data', numbers);
     }
@@ -509,29 +402,29 @@ function findNeibrHard(fieldsArr2) {
     const isLeftEdge = i % (countFields) === 0;
     const isRightEdge = i % (countFields) === countFields - 1;
 
-    if (fieldsArr2[i].classList.contains('field')) {
-      if (i - 1 >= 0 && !isLeftEdge && fieldsArr2[i - 1].classList.contains('bomb')) numbers++;
+    if (fieldsArr2[i].classList.contains('field-hard')) {
+      if (i - 1 >= 0 && !isLeftEdge && fieldsArr2[i - 1].classList.contains('bomb-hard')) numbers++;
       // console.log(fieldsArr2[i], numbers, "левое");
       if (i + (countFields - 1) <= ((countFields * countFields) - 1)
-      && !isLeftEdge && fieldsArr2[i + (countFields - 1)].classList.contains('bomb')) numbers++;
+      && !isLeftEdge && fieldsArr2[i + (countFields - 1)].classList.contains('bomb-hard')) numbers++;
       // console.log(fieldsArr2[i], numbers, "левое - нижнее");
       if (i - countFields >= 0
-      && fieldsArr2[i - countFields].classList.contains('bomb')) numbers++;
+      && fieldsArr2[i - countFields].classList.contains('bomb-hard')) numbers++;
       // console.log(fieldsArr2[i], numbers, "верхнее");
       if (i - (countFields - 1) >= 0 && !isRightEdge
-      && fieldsArr2[i - (countFields - 1)].classList.contains('bomb')) numbers++;
+      && fieldsArr2[i - (countFields - 1)].classList.contains('bomb-hard')) numbers++;
       // console.log(fieldsArr2[i], numbers, "верхнее право");
       if (i + 1 <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr2[i + 1].classList.contains('bomb')) numbers++;
+      && !isRightEdge && fieldsArr2[i + 1].classList.contains('bomb-hard')) numbers++;
       // console.log(fieldsArr2[i], numbers, "правое");
       if (i - (countFields + 1) >= 0 && !isLeftEdge
-      && fieldsArr2[i - (countFields + 1)].classList.contains('bomb')) numbers++;
+      && fieldsArr2[i - (countFields + 1)].classList.contains('bomb-hard')) numbers++;
       // console.log(fieldsArr2[i], numbers, "верхнее левое");
       if (i + (countFields + 1) <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr2[i + (countFields + 1)].classList.contains('bomb')) numbers++;
+      && !isRightEdge && fieldsArr2[i + (countFields + 1)].classList.contains('bomb-hard')) numbers++;
       // console.log(fieldsArr2[i], numbers, "нижнее правое");
       if (i + countFields <= ((countFields * countFields) - 1)
-      && fieldsArr2[i + countFields].classList.contains('bomb')) numbers++;
+      && fieldsArr2[i + countFields].classList.contains('bomb-hard')) numbers++;
       // console.log(fieldsArr2[i], numbers, "нижнее");
       fieldsArr2[i].setAttribute('data', numbers);
     }

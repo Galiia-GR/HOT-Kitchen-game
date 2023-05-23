@@ -8,11 +8,12 @@ let id;
 
 export function clickfield(field) {
   console.log(uroven);
+
   id = Number(field.getAttribute('id'));
 
   if (field.classList.contains('open') || field.classList.contains('flag')) return;
   if (isGameOver) return;
-  if (field.classList.contains('bomb')) return;
+  if (field.classList.contains('bomb') || (field.classList.contains('bomb-medium') || (field.classList.contains('bomb-hard')))) return;
 
   const numbers = field.getAttribute('data');
   if (numbers != 0) {
@@ -139,7 +140,7 @@ function emptyFieldGrowMedium(id) {
     if (id + 1 <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr1[id].classList.contains('number')
   && !fieldsArr1[id + 1].classList.contains('open')
   && !fieldsArr1[id + 1].classList.contains('flag')
-  && !fieldsArr1[id + 1].classList.contains('bomb')) {
+  && !fieldsArr1[id + 1].classList.contains('bomb-medium')) {
       const newId = fieldsArr1[id + 1].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -147,7 +148,7 @@ function emptyFieldGrowMedium(id) {
     if (id - 1 >= 0 && !isLeftEdge && !fieldsArr1[id].classList.contains('number')
       && !fieldsArr1[id - 1].classList.contains('open')
 && !fieldsArr1[id - 1].classList.contains('flag')
-&& !fieldsArr1[id - 1].classList.contains('bomb')) {
+&& !fieldsArr1[id - 1].classList.contains('bomb-medium')) {
       const newId = fieldsArr1[id - 1].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -155,7 +156,7 @@ function emptyFieldGrowMedium(id) {
     if (id + countFields <= ((countFields * countFields) - 1) && !fieldsArr1[id].classList.contains('number') /// нижнее поле (проверка на вариабельность)
    && !fieldsArr1[id + countFields].classList.contains('open')
    && !fieldsArr1[id + countFields].classList.contains('flag')
-   && !fieldsArr1[id + countFields].classList.contains('bomb')) {
+   && !fieldsArr1[id + countFields].classList.contains('bomb-medium')) {
       const newId = fieldsArr1[id + countFields].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -163,7 +164,7 @@ function emptyFieldGrowMedium(id) {
     if (id + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr1[id].classList.contains('number') /// нижнее правое поле
     && !fieldsArr1[id + (countFields + 1)].classList.contains('open')
     && !fieldsArr1[id + (countFields + 1)].classList.contains('flag')
-    && !fieldsArr1[id + (countFields + 1)].classList.contains('bomb')) {
+    && !fieldsArr1[id + (countFields + 1)].classList.contains('bomb-medium')) {
       const newId = fieldsArr1[id + (countFields + 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -171,7 +172,7 @@ function emptyFieldGrowMedium(id) {
     if (id + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && !fieldsArr1[id].classList.contains('number') /// нижнее левое поле
     && !fieldsArr1[id + (countFields - 1)].classList.contains('open')
     && !fieldsArr1[id + (countFields - 1)].classList.contains('flag')
-    && !fieldsArr1[id + (countFields - 1)].classList.contains('bomb')) {
+    && !fieldsArr1[id + (countFields - 1)].classList.contains('bomb-medium')) {
       const newId = fieldsArr1[id + (countFields - 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -179,7 +180,7 @@ function emptyFieldGrowMedium(id) {
     if (id - (countFields - 1) >= 0 && !isRightEdge && !fieldsArr1[id].classList.contains('number') /// верхнее правое поле
       && !fieldsArr1[id - (countFields - 1)].classList.contains('open')
       && !fieldsArr1[id - (countFields - 1)].classList.contains('flag')
-      && !fieldsArr1[id - (countFields - 1)].classList.contains('bomb')) {
+      && !fieldsArr1[id - (countFields - 1)].classList.contains('bomb-medium')) {
       const newId = fieldsArr1[id - (countFields - 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -187,7 +188,7 @@ function emptyFieldGrowMedium(id) {
     if (id - countFields >= 0 && !fieldsArr1[id].classList.contains('number') /// /верхнее поле
     && !fieldsArr1[id - countFields].classList.contains('open')
    && !fieldsArr1[id - countFields].classList.contains('flag')
-   && !fieldsArr1[id - countFields].classList.contains('bomb')) {
+   && !fieldsArr1[id - countFields].classList.contains('bomb-medium')) {
       const newId = fieldsArr1[id - countFields].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -195,7 +196,7 @@ function emptyFieldGrowMedium(id) {
     if (id - (countFields + 1) >= 0 && !isLeftEdge && !fieldsArr1[id].classList.contains('number') /// /верхнее левое поле
       && !fieldsArr1[id - (countFields + 1)].classList.contains('open')
       && !fieldsArr1[id - (countFields + 1)].classList.contains('flag')
-      && !fieldsArr1[id - (countFields + 1)].classList.contains('bomb')) {
+      && !fieldsArr1[id - (countFields + 1)].classList.contains('bomb-medium')) {
       const newId = fieldsArr1[id - (countFields + 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -212,7 +213,7 @@ function emptyFieldGrowHard(id) {
     if (id + 1 <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr2[id].classList.contains('number')
   && !fieldsArr2[id + 1].classList.contains('open')
   && !fieldsArr2[id + 1].classList.contains('flag')
-  && !fieldsArr2[id + 1].classList.contains('bomb')) {
+  && !fieldsArr2[id + 1].classList.contains('bomb-hard')) {
       const newId = fieldsArr2[id + 1].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -220,7 +221,7 @@ function emptyFieldGrowHard(id) {
     if (id - 1 >= 0 && !isLeftEdge && !fieldsArr2[id].classList.contains('number')
       && !fieldsArr2[id - 1].classList.contains('open')
 && !fieldsArr2[id - 1].classList.contains('flag')
-&& !fieldsArr2[id - 1].classList.contains('bomb')) {
+&& !fieldsArr2[id - 1].classList.contains('bomb-hard')) {
       const newId = fieldsArr2[id - 1].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -228,7 +229,7 @@ function emptyFieldGrowHard(id) {
     if (id + countFields <= ((countFields * countFields) - 1) && !fieldsArr2[id].classList.contains('number') /// нижнее поле (проверка на вариабельность)
    && !fieldsArr2[id + countFields].classList.contains('open')
    && !fieldsArr2[id + countFields].classList.contains('flag')
-   && !fieldsArr2[id + countFields].classList.contains('bomb')) {
+   && !fieldsArr2[id + countFields].classList.contains('bomb-hard')) {
       const newId = fieldsArr2[id + countFields].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -236,7 +237,7 @@ function emptyFieldGrowHard(id) {
     if (id + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr2[id].classList.contains('number') /// нижнее правое поле
     && !fieldsArr2[id + (countFields + 1)].classList.contains('open')
     && !fieldsArr2[id + (countFields + 1)].classList.contains('flag')
-    && !fieldsArr2[id + (countFields + 1)].classList.contains('bomb')) {
+    && !fieldsArr2[id + (countFields + 1)].classList.contains('bomb-hard')) {
       const newId = fieldsArr2[id + (countFields + 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -244,7 +245,7 @@ function emptyFieldGrowHard(id) {
     if (id + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && !fieldsArr2[id].classList.contains('number') /// нижнее левое поле
     && !fieldsArr2[id + (countFields - 1)].classList.contains('open')
     && !fieldsArr2[id + (countFields - 1)].classList.contains('flag')
-    && !fieldsArr2[id + (countFields - 1)].classList.contains('bomb')) {
+    && !fieldsArr2[id + (countFields - 1)].classList.contains('bomb-hard')) {
       const newId = fieldsArr2[id + (countFields - 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -252,7 +253,7 @@ function emptyFieldGrowHard(id) {
     if (id - (countFields - 1) >= 0 && !isRightEdge && !fieldsArr2[id].classList.contains('number') /// верхнее правое поле
       && !fieldsArr2[id - (countFields - 1)].classList.contains('open')
       && !fieldsArr2[id - (countFields - 1)].classList.contains('flag')
-      && !fieldsArr2[id - (countFields - 1)].classList.contains('bomb')) {
+      && !fieldsArr2[id - (countFields - 1)].classList.contains('bomb-hard')) {
       const newId = fieldsArr2[id - (countFields - 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -260,7 +261,7 @@ function emptyFieldGrowHard(id) {
     if (id - countFields >= 0 && !fieldsArr2[id].classList.contains('number') /// /верхнее поле
     && !fieldsArr2[id - countFields].classList.contains('open')
    && !fieldsArr2[id - countFields].classList.contains('flag')
-   && !fieldsArr2[id - countFields].classList.contains('bomb')) {
+   && !fieldsArr2[id - countFields].classList.contains('bomb-hard')) {
       const newId = fieldsArr2[id - countFields].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
@@ -268,7 +269,7 @@ function emptyFieldGrowHard(id) {
     if (id - (countFields + 1) >= 0 && !isLeftEdge && !fieldsArr2[id].classList.contains('number') /// /верхнее левое поле
       && !fieldsArr2[id - (countFields + 1)].classList.contains('open')
       && !fieldsArr2[id - (countFields + 1)].classList.contains('flag')
-      && !fieldsArr2[id - (countFields + 1)].classList.contains('bomb')) {
+      && !fieldsArr2[id - (countFields + 1)].classList.contains('bomb-hard')) {
       const newId = fieldsArr2[id - (countFields + 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
