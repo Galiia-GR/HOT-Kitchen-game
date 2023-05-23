@@ -8,204 +8,176 @@ export let countBombs;
 let bombsArr;
 let emptyArr;
 let gameShuflArr;
+const container = document.createElement('div');
+const header = document.createElement('header');
+const title = document.createElement('h1');
+const gamesSummary = document.createElement('p');
+const wrap = document.createElement('div');
+const flag = document.createElement('div');
+const drawFlag = document.createElement('div');
+const mines = document.createElement('div');
+const drawBombs = document.createElement('div');
+const sound = document.createElement('div');
+const drawSounds = document.createElement('div');
+const start = document.createElement('div');
+const drawStart = document.createElement('div');
+const score = document.createElement('div');
+const drawlist = document.createElement('div');
+const level = document.createElement('div');
+const easy = document.createElement('div');
+const medium = document.createElement('div');
+const hard = document.createElement('div');
+const minesweeper = document.createElement('div');
 
 export function drawfield() {
-  const container = document.createElement('div');
   container.classList.add('container');
   body.appendChild(container);
 
-  const header = document.createElement('header');
   header.classList.add('header');
   container.appendChild(header);
 
-  const title = document.createElement('h1');
   title.classList.add('header__title');
   header.appendChild(title);
   title.innerText = 'minesweeper';
 
-  const gamesSummary = document.createElement('p');
   gamesSummary.classList.add('gameSummary');
   header.appendChild(gamesSummary);
   gamesSummary.innerText = 'Please choose level';
 
-  const wrap = document.createElement('div');
   wrap.classList.add('header__wrapper');
   header.appendChild(wrap);
 
-  const flag = document.createElement('div');
   flag.classList.add('header__flag');
   wrap.appendChild(flag);
   flag.innerText = 'flags';
-  const drawFlag = document.createElement('div');
   drawFlag.classList.add('drawFlag');
   flag.appendChild(drawFlag);
   drawFlag.innerText = 0;
 
-  const mines = document.createElement('div');
   mines.classList.add('header__mines');
   wrap.appendChild(mines);
   mines.innerText = 'mines';
-  const drawBombs = document.createElement('div');
   drawBombs.classList.add('drawBombs');
   mines.appendChild(drawBombs);
 
-  const sound = document.createElement('div');
   sound.classList.add('header__sound');
   wrap.appendChild(sound);
   sound.innerText = 'sound';
-  const drawSounds = document.createElement('div');
   drawSounds.classList.add('drawSounds');
   sound.appendChild(drawSounds);
   drawSounds.innerText = 'pull';
 
-  const start = document.createElement('div');
   start.classList.add('header__start');
   wrap.appendChild(start);
   start.innerText = 'start';
-  const drawStart = document.createElement('div');
   drawStart.classList.add('drawStart');
   start.appendChild(drawStart);
   drawStart.innerText = 'pull';
 
-  const score = document.createElement('div');
   score.classList.add('header__score');
   wrap.appendChild(score);
   score.innerText = 'score';
-  const drawlist = document.createElement('div');
   drawlist.classList.add('drawList');
   score.appendChild(drawlist);
   drawlist.innerText = 'list';
 
-  const level = document.createElement('div');
   level.classList.add('header__level');
   wrap.appendChild(level);
   level.innerText = 'level';
 
-  const easy = document.createElement('div');
   easy.classList.add('level__easy');
   level.appendChild(easy);
   easy.innerText = 'easy';
 
-  const medium = document.createElement('div');
   medium.classList.add('level__medium');
   level.appendChild(medium);
   medium.innerText = 'medium';
 
-  const hard = document.createElement('div');
   hard.classList.add('level__hard');
   level.appendChild(hard);
   hard.innerText = 'hard';
 
-  const minesweeper = document.createElement('div');
   minesweeper.classList.add('minesweeper');
   container.appendChild(minesweeper);
 
-  drawStart.addEventListener('click', (event) => {
-    event.preventDefault();
-    location.reload();
-  });
+  if (!hard.classList.contains('active-hard') && !easy.classList.contains('active-easy')
+  && !medium.classList.contains('active-medium')) {
+    easy.classList.add('active-easy');
+    eventEasy();
+  }
+}
 
-  level.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (event.target.classList.contains('level__easy')) {
-      easy.classList.add('active-easy');
-      eventEasy();
-    }
-    if (event.target.classList.contains('level__medium')) {
-      medium.classList.add('active-medium');
-      eventMedium();
-    }
-    if (event.target.classList.contains('level__hard')) {
-      hard.classList.add('active-hard');
-      eventHard();
-    }
-    if (hard.classList.contains('active-hard') && medium.classList.contains('active-medium')) {
-      location.reload();
-    }
-    if (medium.classList.contains('active-medium') && easy.classList.contains('active-easy')) {
-      location.reload();
-    }
-    if (hard.classList.contains('active-hard') && easy.classList.contains('active-easy')) {
-      location.reload();
-    }
-    if (hard.classList.contains('active-hard') && easy.classList.contains('active-easy')
-    && medium.classList.contains('active-medium')) {
-      location.reload();
-    }
-  });
-
-  function eventEasy() {
-    if (easy.classList.contains('active-easy')) {
-      countFields = 10;
-      countBombs = 10;
-      drawBombs.innerText = countBombs;
-      initFields(countFields, countBombs);
-
-      fieldsArr.forEach((el) => {
-        el.addEventListener('click', (event) => {
-          event.preventDefault();
-          if (el.classList.contains('bomb')) {
-            isGameOver = true;
-            gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
-            fieldsArr.forEach((el) => {
-              if (el.classList.contains('bomb')) {
-                if (el.classList.contains('bomb')) {
-                  el.classList.add('bomb-open');
-                }
-              }
-            });
-          } if (el.classList.contains('flag')) {
-            return;
-          }
-          clickfield(el);
-        });
-      });
-
-      fieldsArr.forEach((el) => {
-        el.addEventListener('contextmenu', (event) => {
-          event.preventDefault();
-          ticFlags(event.target);
-        });
-      });
+drawStart.addEventListener('click', (event) => {
+  event.preventDefault();
+  console.log('restart');
+  function clearBody() {
+    const list = document.body.childNodes;
+    console.log(list);
+    for (let i = list.length - 1; i >= 0; i--) {
+      document.body.removeChild(list[i]);
     }
   }
+  clearBody();
+  location.reload();
+ // setTimeout(drawfield, 1000);
+});
 
-  function eventMedium() {
-    if (medium.classList.contains('active-medium')) {
-      countFields = 15;
-      countBombs = 15;
-      drawBombs.innerText = countBombs;
-      initFields(countFields, countBombs);
+level.addEventListener('click', (event) => {
+  event.preventDefault();
+  if (event.target.classList.contains('level__easy')) {
+    easy.classList.add('active-easy');
+    eventEasy();
+  }
+  if (event.target.classList.contains('level__medium')) {
+    medium.classList.add('active-medium');
+    eventMedium();
+  }
+  if (event.target.classList.contains('level__hard')) {
+    hard.classList.add('active-hard');
+    eventHard();
+  }
+  if (hard.classList.contains('active-hard') && medium.classList.contains('active-medium')) {
+    location.reload();
+  }
+  if (medium.classList.contains('active-medium') && easy.classList.contains('active-easy')) {
+    location.reload();
+  }
+  if (hard.classList.contains('active-hard') && easy.classList.contains('active-easy')) {
+    location.reload();
+  }
+  if (hard.classList.contains('active-hard') && easy.classList.contains('active-easy')
+    && medium.classList.contains('active-medium')) {
+    location.reload();
+  }
+});
 
-      for (let i = 0; i < fieldsArr.length; i++) {
-        if (fieldsArr[i].classList.contains('field')) {
-          fieldsArr[i].classList.add('field-medium');
-        }
-        if (fieldsArr[i].classList.contains('bomb')) {
-          fieldsArr[i].classList.add('bomb-medium');
-        }
-      }
+function eventEasy() {
+  if (easy.classList.contains('active-easy')) {
+    countFields = 10;
+    countBombs = 10;
+    drawBombs.innerText = countBombs;
+    initFields(countFields, countBombs);
 
-      fieldsArr.forEach((el) => {
-        el.addEventListener('click', (event) => {
-          event.preventDefault();
-          if (el.classList.contains('bomb')) {
-            isGameOver = true;
-            gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
-            fieldsArr.forEach((el) => {
+    fieldsArr.forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (el.classList.contains('bomb')) {
+          isGameOver = true;
+          gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+          fieldsArr.forEach((el) => {
+            if (el.classList.contains('bomb')) {
               if (el.classList.contains('bomb')) {
-                if (el.classList.contains('bomb')) {
-                  el.classList.add('bomb-open');
-                }
+                el.classList.add('bomb-open');
               }
-            });
-          } if (el.classList.contains('flag')) {
-            return;
-          }
-          clickfield(el);
-        });
+            }
+          });
+        } if (el.classList.contains('flag')) {
+          return;
+        }
+        clickfield(el);
       });
-    }
+    });
+
     fieldsArr.forEach((el) => {
       el.addEventListener('contextmenu', (event) => {
         event.preventDefault();
@@ -213,48 +185,92 @@ export function drawfield() {
       });
     });
   }
+}
 
-  function eventHard() {
-    if (hard.classList.contains('active-hard')) {
-      countFields = 25;
-      countBombs = 35;
-      drawBombs.innerText = countBombs;
-      initFields(countFields, countBombs);
+function eventMedium() {
+  if (medium.classList.contains('active-medium')) {
+    countFields = 15;
+    countBombs = 15;
+    drawBombs.innerText = countBombs;
+    initFields(countFields, countBombs);
 
-      for (let i = 0; i < fieldsArr.length; i++) {
-        if (fieldsArr[i].classList.contains('field')) {
-          fieldsArr[i].classList.add('field-hard');
-        }
-        if (fieldsArr[i].classList.contains('bomb')) {
-          fieldsArr[i].classList.add('bomb-hard');
-        }
+    for (let i = 0; i < fieldsArr.length; i++) {
+      if (fieldsArr[i].classList.contains('field')) {
+        fieldsArr[i].classList.add('field-medium');
       }
+      if (fieldsArr[i].classList.contains('bomb')) {
+        fieldsArr[i].classList.add('bomb-medium');
+      }
+    }
 
-      fieldsArr.forEach((el) => {
-        el.addEventListener('click', (event) => {
-          event.preventDefault();
-          if (el.classList.contains('bomb')) {
-            isGameOver = true;
-            gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
-            fieldsArr.forEach((el) => {
+    fieldsArr.forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (el.classList.contains('bomb')) {
+          isGameOver = true;
+          gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+          fieldsArr.forEach((el) => {
+            if (el.classList.contains('bomb')) {
               if (el.classList.contains('bomb')) {
                 el.classList.add('bomb-open');
               }
-            });
-          } if (el.classList.contains('flag')) {
-            return;
-          }
-          clickfield(el);
-        });
+            }
+          });
+        } if (el.classList.contains('flag')) {
+          return;
+        }
+        clickfield(el);
       });
+    });
+  }
+  fieldsArr.forEach((el) => {
+    el.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+      ticFlags(event.target);
+    });
+  });
+}
 
-      fieldsArr.forEach((el) => {
-        el.addEventListener('contextmenu', (event) => {
-          event.preventDefault();
-          ticFlags(event.target);
-        });
-      });
+function eventHard() {
+  if (hard.classList.contains('active-hard')) {
+    countFields = 25;
+    countBombs = 35;
+    drawBombs.innerText = countBombs;
+    initFields(countFields, countBombs);
+
+    for (let i = 0; i < fieldsArr.length; i++) {
+      if (fieldsArr[i].classList.contains('field')) {
+        fieldsArr[i].classList.add('field-hard');
+      }
+      if (fieldsArr[i].classList.contains('bomb')) {
+        fieldsArr[i].classList.add('bomb-hard');
+      }
     }
+
+    fieldsArr.forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (el.classList.contains('bomb')) {
+          isGameOver = true;
+          gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+          fieldsArr.forEach((el) => {
+            if (el.classList.contains('bomb')) {
+              el.classList.add('bomb-open');
+            }
+          });
+        } if (el.classList.contains('flag')) {
+          return;
+        }
+        clickfield(el);
+      });
+    });
+
+    fieldsArr.forEach((el) => {
+      el.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        ticFlags(event.target);
+      });
+    });
   }
 }
 
@@ -307,5 +323,4 @@ function initFields(countFields, countBombs) {
       fieldsArr[i].setAttribute('data', numbers);
     }
   }
-  return fieldsArr;
 }
