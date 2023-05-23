@@ -29,13 +29,17 @@
   padding-bottom: 20px;
 }
 
-.minesweeper {
+.minesweeper1, .minesweeper2, .minesweeper3 {
   width: 450px;
   height: 450px;
   display: flex;
   flex-wrap: wrap;
   background-image: linear-gradient(to bottom, #d5cabd, #ddc9c2, #dfc9cb, #ddcbd5, #d5cede);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.hide {
+  display: none;
 }
 
 .field {

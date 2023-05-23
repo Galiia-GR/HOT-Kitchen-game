@@ -1,11 +1,13 @@
 import {
-  fieldsArr, countFields, countBombs, isGameOver,
+  fieldsArr, fieldsArr1, fieldsArr2, uroven, countFields, countBombs, isGameOver,
 } from './drawfield.js';
 
 export let flagCount = 0;
 let id;
 
+
 export function clickfield(field) {
+  console.log(uroven);
   id = Number(field.getAttribute('id'));
 
   if (field.classList.contains('open') || field.classList.contains('flag')) return;
@@ -35,8 +37,24 @@ export function clickfield(field) {
                 // do nothing;
     }
   }
-  emptyFieldGrow(id);
-  fieldsArr[id].classList.add('open');
+
+  if (document.querySelector('.active-easy')) {
+    emptyFieldGrow(id);
+    console.log(id);
+    fieldsArr[id].classList.add('open');
+  }
+
+  if (document.querySelector('.active-medium')) {
+    emptyFieldGrowMedium(id);
+    console.log(id);
+    fieldsArr1[id].classList.add('open');
+  }
+
+  if (document.querySelector('.active-hard')) {
+    emptyFieldGrowHard(id);
+    console.log(id);
+    fieldsArr2[id].classList.add('open');
+  }
 }
 
 function emptyFieldGrow(id) {
@@ -106,6 +124,152 @@ function emptyFieldGrow(id) {
       && !fieldsArr[id - (countFields + 1)].classList.contains('flag')
       && !fieldsArr[id - (countFields + 1)].classList.contains('bomb')) {
       const newId = fieldsArr[id - (countFields + 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+  }, 50);
+}
+
+function emptyFieldGrowMedium(id) {
+  const isLeftEdge = (id % countFields === 0);
+
+  const isRightEdge = (id % countFields === countFields - 1);
+
+  setTimeout(() => {
+    if (id + 1 <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr1[id].classList.contains('number')
+  && !fieldsArr1[id + 1].classList.contains('open')
+  && !fieldsArr1[id + 1].classList.contains('flag')
+  && !fieldsArr1[id + 1].classList.contains('bomb')) {
+      const newId = fieldsArr1[id + 1].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id - 1 >= 0 && !isLeftEdge && !fieldsArr1[id].classList.contains('number')
+      && !fieldsArr1[id - 1].classList.contains('open')
+&& !fieldsArr1[id - 1].classList.contains('flag')
+&& !fieldsArr1[id - 1].classList.contains('bomb')) {
+      const newId = fieldsArr1[id - 1].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id + countFields <= ((countFields * countFields) - 1) && !fieldsArr1[id].classList.contains('number') /// нижнее поле (проверка на вариабельность)
+   && !fieldsArr1[id + countFields].classList.contains('open')
+   && !fieldsArr1[id + countFields].classList.contains('flag')
+   && !fieldsArr1[id + countFields].classList.contains('bomb')) {
+      const newId = fieldsArr1[id + countFields].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr1[id].classList.contains('number') /// нижнее правое поле
+    && !fieldsArr1[id + (countFields + 1)].classList.contains('open')
+    && !fieldsArr1[id + (countFields + 1)].classList.contains('flag')
+    && !fieldsArr1[id + (countFields + 1)].classList.contains('bomb')) {
+      const newId = fieldsArr1[id + (countFields + 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && !fieldsArr1[id].classList.contains('number') /// нижнее левое поле
+    && !fieldsArr1[id + (countFields - 1)].classList.contains('open')
+    && !fieldsArr1[id + (countFields - 1)].classList.contains('flag')
+    && !fieldsArr1[id + (countFields - 1)].classList.contains('bomb')) {
+      const newId = fieldsArr1[id + (countFields - 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id - (countFields - 1) >= 0 && !isRightEdge && !fieldsArr1[id].classList.contains('number') /// верхнее правое поле
+      && !fieldsArr1[id - (countFields - 1)].classList.contains('open')
+      && !fieldsArr1[id - (countFields - 1)].classList.contains('flag')
+      && !fieldsArr1[id - (countFields - 1)].classList.contains('bomb')) {
+      const newId = fieldsArr1[id - (countFields - 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id - countFields >= 0 && !fieldsArr1[id].classList.contains('number') /// /верхнее поле
+    && !fieldsArr1[id - countFields].classList.contains('open')
+   && !fieldsArr1[id - countFields].classList.contains('flag')
+   && !fieldsArr1[id - countFields].classList.contains('bomb')) {
+      const newId = fieldsArr1[id - countFields].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id - (countFields + 1) >= 0 && !isLeftEdge && !fieldsArr1[id].classList.contains('number') /// /верхнее левое поле
+      && !fieldsArr1[id - (countFields + 1)].classList.contains('open')
+      && !fieldsArr1[id - (countFields + 1)].classList.contains('flag')
+      && !fieldsArr1[id - (countFields + 1)].classList.contains('bomb')) {
+      const newId = fieldsArr1[id - (countFields + 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+  }, 50);
+}
+
+function emptyFieldGrowHard(id) {
+  const isLeftEdge = (id % countFields === 0);
+
+  const isRightEdge = (id % countFields === countFields - 1);
+
+  setTimeout(() => {
+    if (id + 1 <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr2[id].classList.contains('number')
+  && !fieldsArr2[id + 1].classList.contains('open')
+  && !fieldsArr2[id + 1].classList.contains('flag')
+  && !fieldsArr2[id + 1].classList.contains('bomb')) {
+      const newId = fieldsArr2[id + 1].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id - 1 >= 0 && !isLeftEdge && !fieldsArr2[id].classList.contains('number')
+      && !fieldsArr2[id - 1].classList.contains('open')
+&& !fieldsArr2[id - 1].classList.contains('flag')
+&& !fieldsArr2[id - 1].classList.contains('bomb')) {
+      const newId = fieldsArr2[id - 1].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id + countFields <= ((countFields * countFields) - 1) && !fieldsArr2[id].classList.contains('number') /// нижнее поле (проверка на вариабельность)
+   && !fieldsArr2[id + countFields].classList.contains('open')
+   && !fieldsArr2[id + countFields].classList.contains('flag')
+   && !fieldsArr2[id + countFields].classList.contains('bomb')) {
+      const newId = fieldsArr2[id + countFields].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id + (countFields + 1) <= ((countFields * countFields) - 1) && !isRightEdge && !fieldsArr2[id].classList.contains('number') /// нижнее правое поле
+    && !fieldsArr2[id + (countFields + 1)].classList.contains('open')
+    && !fieldsArr2[id + (countFields + 1)].classList.contains('flag')
+    && !fieldsArr2[id + (countFields + 1)].classList.contains('bomb')) {
+      const newId = fieldsArr2[id + (countFields + 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id + (countFields - 1) <= ((countFields * countFields) - 1) && !isLeftEdge && !fieldsArr2[id].classList.contains('number') /// нижнее левое поле
+    && !fieldsArr2[id + (countFields - 1)].classList.contains('open')
+    && !fieldsArr2[id + (countFields - 1)].classList.contains('flag')
+    && !fieldsArr2[id + (countFields - 1)].classList.contains('bomb')) {
+      const newId = fieldsArr2[id + (countFields - 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id - (countFields - 1) >= 0 && !isRightEdge && !fieldsArr2[id].classList.contains('number') /// верхнее правое поле
+      && !fieldsArr2[id - (countFields - 1)].classList.contains('open')
+      && !fieldsArr2[id - (countFields - 1)].classList.contains('flag')
+      && !fieldsArr2[id - (countFields - 1)].classList.contains('bomb')) {
+      const newId = fieldsArr2[id - (countFields - 1)].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id - countFields >= 0 && !fieldsArr2[id].classList.contains('number') /// /верхнее поле
+    && !fieldsArr2[id - countFields].classList.contains('open')
+   && !fieldsArr2[id - countFields].classList.contains('flag')
+   && !fieldsArr2[id - countFields].classList.contains('bomb')) {
+      const newId = fieldsArr2[id - countFields].id;
+      const newField = document.getElementById(newId);
+      clickfield(newField);
+    }
+    if (id - (countFields + 1) >= 0 && !isLeftEdge && !fieldsArr2[id].classList.contains('number') /// /верхнее левое поле
+      && !fieldsArr2[id - (countFields + 1)].classList.contains('open')
+      && !fieldsArr2[id - (countFields + 1)].classList.contains('flag')
+      && !fieldsArr2[id - (countFields + 1)].classList.contains('bomb')) {
+      const newId = fieldsArr2[id - (countFields + 1)].id;
       const newField = document.getElementById(newId);
       clickfield(newField);
     }

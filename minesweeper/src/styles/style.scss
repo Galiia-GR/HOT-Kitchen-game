@@ -30,7 +30,7 @@ font-family: 'RobotoBig' ;
   padding-bottom: 20px;
 }
 
-.minesweeper {
+.minesweeper1, .minesweeper2, .minesweeper3{
   width: 450px;
   height: 450px;
   display: flex;
@@ -44,6 +44,10 @@ font-family: 'RobotoBig' ;
     #d5cede
   );
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.hide {
+  display: none;
 }
 
 .field {
