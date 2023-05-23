@@ -130,6 +130,7 @@ font-family: 'RobotoBig' ;
   background-repeat: no-repeat;
   background-size: 70%;
   background-image:url('../../image/flag.jpg');
+
 }
 
 .open, .number {
@@ -277,4 +278,10 @@ font-family: 'RobotoBig' ;
   font-size: 52px;
 color: red;
 padding-bottom: 15px;
+}
+
+.win {
+  background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: rgb(230, 227, 226);
 }

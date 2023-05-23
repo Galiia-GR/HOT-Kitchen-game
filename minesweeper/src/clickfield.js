@@ -1,6 +1,10 @@
 import {
-  fieldsArr, fieldsArr1, fieldsArr2, uroven, countFields, countBombs, isGameOver,
+  fieldsArr, fieldsArr1, fieldsArr2, uroven, countFields, countBombs, isGameOver, isSound,
 } from './drawfield.js';
+
+import win from '../audio/win.wav';
+import flag from '../audio/flag.wav';
+import open from '../audio/open.wav';
 
 export let flagCount = 0;
 let id;
@@ -42,18 +46,30 @@ export function clickfield(field) {
     emptyFieldGrow(id);
     console.log(id);
     fieldsArr[id].classList.add('open');
+    if (isSound) {
+      const audio1 = new Audio(open);
+      audio1.play();
+    }
   }
 
   if (document.querySelector('.active-medium')) {
     emptyFieldGrowMedium(id);
     console.log(id);
     fieldsArr1[id].classList.add('open');
+    if (isSound) {
+      const audio1 = new Audio(open);
+      audio1.play();
+    }
   }
 
   if (document.querySelector('.active-hard')) {
     emptyFieldGrowHard(id);
     console.log(id);
     fieldsArr2[id].classList.add('open');
+    if (isSound) {
+      const audio1 = new Audio(open);
+      audio1.play();
+    }
   }
 }
 
@@ -282,6 +298,10 @@ export function ticFlags(field) {
   if (isGameOver) return;
   if (!field.classList.contains('open') && flagCount < countBombs) {
     if (!field.classList.contains('flag')) {
+      if (isSound) {
+        const audio2 = new Audio(flag);
+        audio2.play();
+      }
       field.classList.add('flag');
       flagCount++;
       drawFlag.innerText = flagCount;
@@ -299,12 +319,48 @@ export function ticFlags(field) {
 function winWin() {
   let checkWin = 0;
   for (let i = 0; i < fieldsArr.length; i++) {
-    if (fieldsArr[i].classList.contains('flag') && fieldsArr[i].classList.contains('bomb')) {
+    if
+    (fieldsArr[i].classList.contains('flag') && fieldsArr[i].classList.contains('bomb')) {
       checkWin++;
     } if (checkWin === countBombs) {
       document.querySelector('.gameSummary').innerText = 'HOORAY YOU WON!!!';
+      if (isSound) {
+        const audio3 = new Audio(win);
+        audio3.play();
+      }
       for (let i = 0; i < fieldsArr.length; i++) {
-        fieldsArr[i].classList.add('open');
+        fieldsArr[i].classList.add('win');
+      }
+    }
+  }
+
+  for (let i = 0; i < fieldsArr1.length; i++) {
+    if
+    (fieldsArr1[i].classList.contains('flag') && fieldsArr1[i].classList.contains('bomb-medium')) {
+      checkWin++;
+    } if (checkWin === countBombs) {
+      document.querySelector('.gameSummary').innerText = 'HOORAY YOU WON!!!';
+      if (isSound) {
+        const audio3 = new Audio(win);
+        audio3.play();
+      }
+      for (let i = 0; i < fieldsArr1.length; i++) {
+        fieldsArr1[i].classList.add('win');
+      }
+    }
+  }
+  for (let i = 0; i < fieldsArr2.length; i++) {
+    if
+    (fieldsArr2[i].classList.contains('flag') && fieldsArr2[i].classList.contains('bomb-hard')) {
+      checkWin++;
+    } if (checkWin === countBombs) {
+      document.querySelector('.gameSummary').innerText = 'HOORAY YOU WON!!!';
+      if (isSound) {
+        const audio3 = new Audio(win);
+        audio3.play();
+      }
+      for (let i = 0; i < fieldsArr2.length; i++) {
+        fieldsArr2[i].classList.add('win');
       }
     }
   }

@@ -1,7 +1,9 @@
 import { clickfield, ticFlags } from './clickfield.js';
+import loose from '../audio/loose.wav';
 
 const { body } = document;
 export let isGameOver = false;
+export let isSound = true;
 export const fieldsArr = [];
 export const fieldsArr1 = [];
 export const fieldsArr2 = [];
@@ -120,6 +122,10 @@ export function drawfield() {
   container.appendChild(gamesSummary);
   gamesSummary.innerText = '';
 
+  if (isSound) {
+    drawSounds.classList.add('active-music');
+  }
+
   if (!hard.classList.contains('active-hard') && !easy.classList.contains('active-easy')
   && !medium.classList.contains('active-medium')) {
     easy.classList.add('active-easy');
@@ -197,7 +203,6 @@ export function drawfield() {
   });
 }
 
-
 function eventClick(fieldsArr) {
   fieldsArr.forEach((el) => {
     el.addEventListener('click', (event) => {
@@ -205,6 +210,10 @@ function eventClick(fieldsArr) {
       if (el.classList.contains('bomb')) {
         isGameOver = true;
         gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+        if (isSound) {
+          const audio = new Audio(loose);
+          audio.play();
+        }
         fieldsArr.forEach((el) => {
           if (el.classList.contains('bomb')) {
             if (el.classList.contains('bomb')) {
@@ -233,6 +242,10 @@ function eventClickMedium(fieldsArr1) {
       if (el.classList.contains('bomb-medium')) {
         isGameOver = true;
         gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+        if (isSound) {
+          const audio = new Audio(loose);
+          audio.play();
+        }
         fieldsArr1.forEach((el) => {
           if (el.classList.contains('bomb-medium')) {
             el.classList.add('bomb-open');
@@ -260,6 +273,10 @@ function eventClickHard(fieldsArr2) {
       if (el.classList.contains('bomb-hard')) {
         isGameOver = true;
         gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
+        if (isSound) {
+          const audio = new Audio(loose);
+          audio.play();
+        }
         fieldsArr2.forEach((el) => {
           if (el.classList.contains('bomb-hard')) {
             el.classList.add('bomb-open');
@@ -285,8 +302,8 @@ function initFields(countFields, countBombs, uroven) {
     bombsArr = Array(countBombs).fill('bomb');
     emptyArr = Array(countFields * countFields - countBombs).fill('field');
     gameShuflArr = emptyArr
-    .concat(bombsArr)
-    .sort(() => Math.random() - 0.5);
+      .concat(bombsArr)
+      .sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < countFields * countFields; i++) {
       const field = document.createElement('div');
@@ -308,17 +325,17 @@ function initFields(countFields, countBombs, uroven) {
         // console.log(fieldsArr[i], numbers, "левое - нижнее");
         if (i - countFields >= 0
           && fieldsArr[i - countFields].classList.contains('bomb')) numbers++;
-          // console.log(fieldsArr[i], numbers, "верхнее");
-          if (i - (countFields - 1) >= 0 && !isRightEdge
+        // console.log(fieldsArr[i], numbers, "верхнее");
+        if (i - (countFields - 1) >= 0 && !isRightEdge
           && fieldsArr[i - (countFields - 1)].classList.contains('bomb')) numbers++;
-          // console.log(fieldsArr[i], numbers, "верхнее право");
-          if (i + 1 <= ((countFields * countFields) - 1)
+        // console.log(fieldsArr[i], numbers, "верхнее право");
+        if (i + 1 <= ((countFields * countFields) - 1)
           && !isRightEdge && fieldsArr[i + 1].classList.contains('bomb')) numbers++;
-          // console.log(fieldsArr[i], numbers, "правое");
-          if (i - (countFields + 1) >= 0 && !isLeftEdge
+        // console.log(fieldsArr[i], numbers, "правое");
+        if (i - (countFields + 1) >= 0 && !isLeftEdge
           && fieldsArr[i - (countFields + 1)].classList.contains('bomb')) numbers++;
-          // console.log(fieldsArr[i], numbers, "верхнее левое");
-          if (i + (countFields + 1) <= ((countFields * countFields) - 1)
+        // console.log(fieldsArr[i], numbers, "верхнее левое");
+        if (i + (countFields + 1) <= ((countFields * countFields) - 1)
           && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains('bomb')) numbers++;
         // console.log(fieldsArr[i], numbers, "нижнее правое");
         if (i + countFields <= ((countFields * countFields) - 1)
@@ -333,8 +350,8 @@ function initFields(countFields, countBombs, uroven) {
     bombsArr = Array(countBombs).fill('bomb-medium');
     emptyArr = Array(countFields * countFields - countBombs).fill('field-medium');
     gameShuflArr = emptyArr
-    .concat(bombsArr)
-    .sort(() => Math.random() - 0.5);
+      .concat(bombsArr)
+      .sort(() => Math.random() - 0.5);
 
     for (let i = 0; i < countFields * countFields; i++) {
       const field = document.createElement('div');
@@ -356,89 +373,99 @@ function initFields(countFields, countBombs, uroven) {
         // console.log(fieldsArr1[i], numbers, "левое - нижнее");
         if (i - countFields >= 0
           && fieldsArr1[i - countFields].classList.contains('bomb-medium')) numbers++;
-          // console.log(fieldsArr1[i], numbers, "верхнее");
-          if (i - (countFields - 1) >= 0 && !isRightEdge
+        // console.log(fieldsArr1[i], numbers, "верхнее");
+        if (i - (countFields - 1) >= 0 && !isRightEdge
           && fieldsArr1[i - (countFields - 1)].classList.contains('bomb-medium')) numbers++;
-          // console.log(fieldsArr1[i], numbers, "верхнее право");
-          if (i + 1 <= ((countFields * countFields) - 1)
+        // console.log(fieldsArr1[i], numbers, "верхнее право");
+        if (i + 1 <= ((countFields * countFields) - 1)
           && !isRightEdge && fieldsArr1[i + 1].classList.contains('bomb-medium')) numbers++;
-          // console.log(fieldsArr1[i], numbers, "правое");
-          if (i - (countFields + 1) >= 0 && !isLeftEdge
+        // console.log(fieldsArr1[i], numbers, "правое");
+        if (i - (countFields + 1) >= 0 && !isLeftEdge
           && fieldsArr1[i - (countFields + 1)].classList.contains('bomb-medium')) numbers++;
-          // console.log(fieldsArr1[i], numbers, "верхнее левое");
-          if (i + (countFields + 1) <= ((countFields * countFields) - 1)
+        // console.log(fieldsArr1[i], numbers, "верхнее левое");
+        if (i + (countFields + 1) <= ((countFields * countFields) - 1)
           && !isRightEdge && fieldsArr1[i + (countFields + 1)].classList.contains('bomb-medium')) numbers++;
-          // console.log(fieldsArr1[i], numbers, "нижнее правое");
-          if (i + countFields <= ((countFields * countFields) - 1)
+        // console.log(fieldsArr1[i], numbers, "нижнее правое");
+        if (i + countFields <= ((countFields * countFields) - 1)
           && fieldsArr1[i + countFields].classList.contains('bomb-medium')) numbers++;
-          // console.log(fieldsArr1[i], numbers, "нижнее");
-          fieldsArr1[i].setAttribute('data', numbers);
-        }
+        // console.log(fieldsArr1[i], numbers, "нижнее");
+        fieldsArr1[i].setAttribute('data', numbers);
       }
     }
+  }
 
-    if (uroven === 3) {
-      bombsArr = Array(countBombs).fill('bomb-hard');
-      emptyArr = Array(countFields * countFields - countBombs).fill('field-hard');
-      gameShuflArr = emptyArr
+  if (uroven === 3) {
+    bombsArr = Array(countBombs).fill('bomb-hard');
+    emptyArr = Array(countFields * countFields - countBombs).fill('field-hard');
+    gameShuflArr = emptyArr
       .concat(bombsArr)
       .sort(() => Math.random() - 0.5);
 
-      for (let i = 0; i < countFields * countFields; i++) {
-        const field = document.createElement('div');
-        field.classList.add(gameShuflArr[i]);
-        field.setAttribute('id', i);
-        document.querySelector('.minesweeper3').appendChild(field);
-        fieldsArr2.push(field);
-      }
-      for (let i = 0; i < fieldsArr2.length; i++) {
-        let numbers = 0;
-        const isLeftEdge = i % (countFields) === 0;
-        const isRightEdge = i % (countFields) === countFields - 1;
+    for (let i = 0; i < countFields * countFields; i++) {
+      const field = document.createElement('div');
+      field.classList.add(gameShuflArr[i]);
+      field.setAttribute('id', i);
+      document.querySelector('.minesweeper3').appendChild(field);
+      fieldsArr2.push(field);
+    }
+    for (let i = 0; i < fieldsArr2.length; i++) {
+      let numbers = 0;
+      const isLeftEdge = i % (countFields) === 0;
+      const isRightEdge = i % (countFields) === countFields - 1;
 
-        if (fieldsArr2[i].classList.contains('field-hard')) {
-          if (i - 1 >= 0 && !isLeftEdge && fieldsArr2[i - 1].classList.contains('bomb-hard')) numbers++;
-          // console.log(fieldsArr2[i], numbers, "левое");
-          if (i + (countFields - 1) <= ((countFields * countFields) - 1)
+      if (fieldsArr2[i].classList.contains('field-hard')) {
+        if (i - 1 >= 0 && !isLeftEdge && fieldsArr2[i - 1].classList.contains('bomb-hard')) numbers++;
+        // console.log(fieldsArr2[i], numbers, "левое");
+        if (i + (countFields - 1) <= ((countFields * countFields) - 1)
           && !isLeftEdge && fieldsArr2[i + (countFields - 1)].classList.contains('bomb-hard')) numbers++;
-          // console.log(fieldsArr2[i], numbers, "левое - нижнее");
-          if (i - countFields >= 0
+        // console.log(fieldsArr2[i], numbers, "левое - нижнее");
+        if (i - countFields >= 0
             && fieldsArr2[i - countFields].classList.contains('bomb-hard')) numbers++;
-            // console.log(fieldsArr2[i], numbers, "верхнее");
-            if (i - (countFields - 1) >= 0 && !isRightEdge
+        // console.log(fieldsArr2[i], numbers, "верхнее");
+        if (i - (countFields - 1) >= 0 && !isRightEdge
             && fieldsArr2[i - (countFields - 1)].classList.contains('bomb-hard')) numbers++;
-            // console.log(fieldsArr2[i], numbers, "верхнее право");
+        // console.log(fieldsArr2[i], numbers, "верхнее право");
         if (i + 1 <= ((countFields * countFields) - 1)
             && !isRightEdge && fieldsArr2[i + 1].classList.contains('bomb-hard')) numbers++;
-            // console.log(fieldsArr2[i], numbers, "правое");
-            if (i - (countFields + 1) >= 0 && !isLeftEdge
+        // console.log(fieldsArr2[i], numbers, "правое");
+        if (i - (countFields + 1) >= 0 && !isLeftEdge
             && fieldsArr2[i - (countFields + 1)].classList.contains('bomb-hard')) numbers++;
-            // console.log(fieldsArr2[i], numbers, "верхнее левое");
-            if (i + (countFields + 1) <= ((countFields * countFields) - 1)
+        // console.log(fieldsArr2[i], numbers, "верхнее левое");
+        if (i + (countFields + 1) <= ((countFields * countFields) - 1)
             && !isRightEdge && fieldsArr2[i + (countFields + 1)].classList.contains('bomb-hard')) numbers++;
-            // console.log(fieldsArr2[i], numbers, "нижнее правое");
-            if (i + countFields <= ((countFields * countFields) - 1)
+        // console.log(fieldsArr2[i], numbers, "нижнее правое");
+        if (i + countFields <= ((countFields * countFields) - 1)
             && fieldsArr2[i + countFields].classList.contains('bomb-hard')) numbers++;
-            // console.log(fieldsArr2[i], numbers, "нижнее");
-            fieldsArr2[i].setAttribute('data', numbers);
-          }
-        }
+        // console.log(fieldsArr2[i], numbers, "нижнее");
+        fieldsArr2[i].setAttribute('data', numbers);
       }
     }
+  }
+}
 
-    drawStart.addEventListener('click', (event) => {
-      event.preventDefault();
-      console.log('restart');
-      location.reload();
-      drawfield();
-    });
+drawStart.addEventListener('click', (event) => {
+  event.preventDefault();
+  console.log('restart');
+  location.reload();
+  drawfield();
+});
 
-    drawDarkTheme.addEventListener('click', () => {
-      if (!drawDarkTheme.classList.contains('active-dark')) {
+drawDarkTheme.addEventListener('click', () => {
+  if (!drawDarkTheme.classList.contains('active-dark')) {
     drawDarkTheme.classList.add('active-dark');
     document.body.classList.add('dark');
   } else {
     drawDarkTheme.classList.remove('active-dark');
     document.body.classList.remove('dark');
+  }
+});
+
+drawSounds.addEventListener('click', () => {
+  if (!drawSounds.classList.contains('active-music')) {
+    drawSounds.classList.add('active-music');
+    isSound = true;
+  } else {
+    drawSounds.classList.remove('active-music');
+    isSound = false;
   }
 });
