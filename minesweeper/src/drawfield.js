@@ -120,10 +120,10 @@ export function drawfield() {
     countFields = 10;
     countBombs = 10;
     drawBombs.innerText = countBombs;
+    minesweeper2.innerHTML = '';
+    minesweeper3.innerHTML = '';
     initFields(countFields, countBombs, uroven);
-    findNeibr(fieldsArr);
     eventClick(fieldsArr);
-
     console.log(fieldsArr);
   }
 
@@ -132,8 +132,9 @@ export function drawfield() {
     countFields = 15;
     countBombs = 25;
     drawBombs.innerText = countBombs;
+    minesweeper1.innerHTML = '';
+    minesweeper3.innerHTML = '';
     initFields(countFields, countBombs, uroven);
-    findNeibrMedium(fieldsArr1);
     eventClickMedium(fieldsArr1);
     console.log(fieldsArr1);
   }
@@ -143,8 +144,9 @@ export function drawfield() {
     countFields = 25;
     countBombs = 65;
     drawBombs.innerText = countBombs;
+    minesweeper1.innerHTML = '';
+    minesweeper2.innerHTML = '';
     initFields(countFields, countBombs, uroven);
-    findNeibrHard(fieldsArr2);
     eventClickHard(fieldsArr2);
     console.log(fieldsArr2);
   }
@@ -290,6 +292,38 @@ function initFields(countFields, countBombs, uroven) {
       document.querySelector('.minesweeper1').appendChild(field);
       fieldsArr.push(field);
     }
+    for (let i = 0; i < fieldsArr.length; i++) {
+      let numbers = 0;
+      const isLeftEdge = i % (countFields) === 0;
+      const isRightEdge = i % (countFields) === countFields - 1;
+
+      if (fieldsArr[i].classList.contains('field')) {
+        if (i - 1 >= 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb')) numbers++;
+        // console.log(fieldsArr[i], numbers, "левое");
+        if (i + (countFields - 1) <= ((countFields * countFields) - 1)
+        && !isLeftEdge && fieldsArr[i + (countFields - 1)].classList.contains('bomb')) numbers++;
+        // console.log(fieldsArr[i], numbers, "левое - нижнее");
+        if (i - countFields >= 0
+        && fieldsArr[i - countFields].classList.contains('bomb')) numbers++;
+        // console.log(fieldsArr[i], numbers, "верхнее");
+        if (i - (countFields - 1) >= 0 && !isRightEdge
+        && fieldsArr[i - (countFields - 1)].classList.contains('bomb')) numbers++;
+        // console.log(fieldsArr[i], numbers, "верхнее право");
+        if (i + 1 <= ((countFields * countFields) - 1)
+        && !isRightEdge && fieldsArr[i + 1].classList.contains('bomb')) numbers++;
+        // console.log(fieldsArr[i], numbers, "правое");
+        if (i - (countFields + 1) >= 0 && !isLeftEdge
+        && fieldsArr[i - (countFields + 1)].classList.contains('bomb')) numbers++;
+        // console.log(fieldsArr[i], numbers, "верхнее левое");
+        if (i + (countFields + 1) <= ((countFields * countFields) - 1)
+        && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains('bomb')) numbers++;
+        // console.log(fieldsArr[i], numbers, "нижнее правое");
+        if (i + countFields <= ((countFields * countFields) - 1)
+        && fieldsArr[i + countFields].classList.contains('bomb')) numbers++;
+        // console.log(fieldsArr[i], numbers, "нижнее");
+        fieldsArr[i].setAttribute('data', numbers);
+      }
+    }
   }
 
   if (uroven === 2) {
@@ -306,6 +340,38 @@ function initFields(countFields, countBombs, uroven) {
       document.querySelector('.minesweeper2').appendChild(field);
       fieldsArr1.push(field);
     }
+    for (let i = 0; i < fieldsArr1.length; i++) {
+          let numbers = 0;
+          const isLeftEdge = i % (countFields) === 0;
+          const isRightEdge = i % (countFields) === countFields - 1;
+
+          if (fieldsArr1[i].classList.contains('field-medium')) {
+            if (i - 1 >= 0 && !isLeftEdge && fieldsArr1[i - 1].classList.contains('bomb-medium')) numbers++;
+            // console.log(fieldsArr1[i], numbers, "левое");
+            if (i + (countFields - 1) <= ((countFields * countFields) - 1)
+            && !isLeftEdge && fieldsArr1[i + (countFields - 1)].classList.contains('bomb-medium')) numbers++;
+            // console.log(fieldsArr1[i], numbers, "левое - нижнее");
+            if (i - countFields >= 0
+            && fieldsArr1[i - countFields].classList.contains('bomb-medium')) numbers++;
+            // console.log(fieldsArr1[i], numbers, "верхнее");
+            if (i - (countFields - 1) >= 0 && !isRightEdge
+            && fieldsArr1[i - (countFields - 1)].classList.contains('bomb-medium')) numbers++;
+            // console.log(fieldsArr1[i], numbers, "верхнее право");
+            if (i + 1 <= ((countFields * countFields) - 1)
+            && !isRightEdge && fieldsArr1[i + 1].classList.contains('bomb-medium')) numbers++;
+            // console.log(fieldsArr1[i], numbers, "правое");
+            if (i - (countFields + 1) >= 0 && !isLeftEdge
+            && fieldsArr1[i - (countFields + 1)].classList.contains('bomb-medium')) numbers++;
+            // console.log(fieldsArr1[i], numbers, "верхнее левое");
+            if (i + (countFields + 1) <= ((countFields * countFields) - 1)
+            && !isRightEdge && fieldsArr1[i + (countFields + 1)].classList.contains('bomb-medium')) numbers++;
+            // console.log(fieldsArr1[i], numbers, "нижнее правое");
+            if (i + countFields <= ((countFields * countFields) - 1)
+            && fieldsArr1[i + countFields].classList.contains('bomb-medium')) numbers++;
+            // console.log(fieldsArr1[i], numbers, "нижнее");
+            fieldsArr1[i].setAttribute('data', numbers);
+          }
+        }
   }
 
   if (uroven === 3) {
@@ -322,111 +388,37 @@ function initFields(countFields, countBombs, uroven) {
       document.querySelector('.minesweeper3').appendChild(field);
       fieldsArr2.push(field);
     }
-  }
+    for (let i = 0; i < fieldsArr2.length; i++) {
+          let numbers = 0;
+          const isLeftEdge = i % (countFields) === 0;
+          const isRightEdge = i % (countFields) === countFields - 1;
 
+          if (fieldsArr2[i].classList.contains('field-hard')) {
+            if (i - 1 >= 0 && !isLeftEdge && fieldsArr2[i - 1].classList.contains('bomb-hard')) numbers++;
+            // console.log(fieldsArr2[i], numbers, "левое");
+            if (i + (countFields - 1) <= ((countFields * countFields) - 1)
+            && !isLeftEdge && fieldsArr2[i + (countFields - 1)].classList.contains('bomb-hard')) numbers++;
+            // console.log(fieldsArr2[i], numbers, "левое - нижнее");
+            if (i - countFields >= 0
+            && fieldsArr2[i - countFields].classList.contains('bomb-hard')) numbers++;
+            // console.log(fieldsArr2[i], numbers, "верхнее");
+            if (i - (countFields - 1) >= 0 && !isRightEdge
+            && fieldsArr2[i - (countFields - 1)].classList.contains('bomb-hard')) numbers++;
+            // console.log(fieldsArr2[i], numbers, "верхнее право");
+            if (i + 1 <= ((countFields * countFields) - 1)
+            && !isRightEdge && fieldsArr2[i + 1].classList.contains('bomb-hard')) numbers++;
+            // console.log(fieldsArr2[i], numbers, "правое");
+            if (i - (countFields + 1) >= 0 && !isLeftEdge
+            && fieldsArr2[i - (countFields + 1)].classList.contains('bomb-hard')) numbers++;
+            // console.log(fieldsArr2[i], numbers, "верхнее левое");
+            if (i + (countFields + 1) <= ((countFields * countFields) - 1)
+            && !isRightEdge && fieldsArr2[i + (countFields + 1)].classList.contains('bomb-hard')) numbers++;
+            // console.log(fieldsArr2[i], numbers, "нижнее правое");
+            if (i + countFields <= ((countFields * countFields) - 1)
+            && fieldsArr2[i + countFields].classList.contains('bomb-hard')) numbers++;
+            // console.log(fieldsArr2[i], numbers, "нижнее");
+            fieldsArr2[i].setAttribute('data', numbers);
+          }
 }
-
-function findNeibr(fieldsArr) {
-  for (let i = 0; i < fieldsArr.length; i++) {
-    let numbers = 0;
-    const isLeftEdge = i % (countFields) === 0;
-    const isRightEdge = i % (countFields) === countFields - 1;
-
-    if (fieldsArr[i].classList.contains('field')) {
-      if (i - 1 >= 0 && !isLeftEdge && fieldsArr[i - 1].classList.contains('bomb')) numbers++;
-      // console.log(fieldsArr[i], numbers, "левое");
-      if (i + (countFields - 1) <= ((countFields * countFields) - 1)
-      && !isLeftEdge && fieldsArr[i + (countFields - 1)].classList.contains('bomb')) numbers++;
-      // console.log(fieldsArr[i], numbers, "левое - нижнее");
-      if (i - countFields >= 0
-      && fieldsArr[i - countFields].classList.contains('bomb')) numbers++;
-      // console.log(fieldsArr[i], numbers, "верхнее");
-      if (i - (countFields - 1) >= 0 && !isRightEdge
-      && fieldsArr[i - (countFields - 1)].classList.contains('bomb')) numbers++;
-      // console.log(fieldsArr[i], numbers, "верхнее право");
-      if (i + 1 <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr[i + 1].classList.contains('bomb')) numbers++;
-      // console.log(fieldsArr[i], numbers, "правое");
-      if (i - (countFields + 1) >= 0 && !isLeftEdge
-      && fieldsArr[i - (countFields + 1)].classList.contains('bomb')) numbers++;
-      // console.log(fieldsArr[i], numbers, "верхнее левое");
-      if (i + (countFields + 1) <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr[i + (countFields + 1)].classList.contains('bomb')) numbers++;
-      // console.log(fieldsArr[i], numbers, "нижнее правое");
-      if (i + countFields <= ((countFields * countFields) - 1)
-      && fieldsArr[i + countFields].classList.contains('bomb')) numbers++;
-      // console.log(fieldsArr[i], numbers, "нижнее");
-      fieldsArr[i].setAttribute('data', numbers);
-    }
-  }
 }
-
-function findNeibrMedium(fieldsArr1) {
-  for (let i = 0; i < fieldsArr1.length; i++) {
-    let numbers = 0;
-    const isLeftEdge = i % (countFields) === 0;
-    const isRightEdge = i % (countFields) === countFields - 1;
-
-    if (fieldsArr1[i].classList.contains('field-medium')) {
-      if (i - 1 >= 0 && !isLeftEdge && fieldsArr1[i - 1].classList.contains('bomb-medium')) numbers++;
-      // console.log(fieldsArr1[i], numbers, "левое");
-      if (i + (countFields - 1) <= ((countFields * countFields) - 1)
-      && !isLeftEdge && fieldsArr1[i + (countFields - 1)].classList.contains('bomb-medium')) numbers++;
-      // console.log(fieldsArr1[i], numbers, "левое - нижнее");
-      if (i - countFields >= 0
-      && fieldsArr1[i - countFields].classList.contains('bomb-medium')) numbers++;
-      // console.log(fieldsArr1[i], numbers, "верхнее");
-      if (i - (countFields - 1) >= 0 && !isRightEdge
-      && fieldsArr1[i - (countFields - 1)].classList.contains('bomb-medium')) numbers++;
-      // console.log(fieldsArr1[i], numbers, "верхнее право");
-      if (i + 1 <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr1[i + 1].classList.contains('bomb-medium')) numbers++;
-      // console.log(fieldsArr1[i], numbers, "правое");
-      if (i - (countFields + 1) >= 0 && !isLeftEdge
-      && fieldsArr1[i - (countFields + 1)].classList.contains('bomb-medium')) numbers++;
-      // console.log(fieldsArr1[i], numbers, "верхнее левое");
-      if (i + (countFields + 1) <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr1[i + (countFields + 1)].classList.contains('bomb-medium')) numbers++;
-      // console.log(fieldsArr1[i], numbers, "нижнее правое");
-      if (i + countFields <= ((countFields * countFields) - 1)
-      && fieldsArr1[i + countFields].classList.contains('bomb-medium')) numbers++;
-      // console.log(fieldsArr1[i], numbers, "нижнее");
-      fieldsArr1[i].setAttribute('data', numbers);
-    }
-  }
-}
-
-function findNeibrHard(fieldsArr2) {
-  for (let i = 0; i < fieldsArr2.length; i++) {
-    let numbers = 0;
-    const isLeftEdge = i % (countFields) === 0;
-    const isRightEdge = i % (countFields) === countFields - 1;
-
-    if (fieldsArr2[i].classList.contains('field-hard')) {
-      if (i - 1 >= 0 && !isLeftEdge && fieldsArr2[i - 1].classList.contains('bomb-hard')) numbers++;
-      // console.log(fieldsArr2[i], numbers, "левое");
-      if (i + (countFields - 1) <= ((countFields * countFields) - 1)
-      && !isLeftEdge && fieldsArr2[i + (countFields - 1)].classList.contains('bomb-hard')) numbers++;
-      // console.log(fieldsArr2[i], numbers, "левое - нижнее");
-      if (i - countFields >= 0
-      && fieldsArr2[i - countFields].classList.contains('bomb-hard')) numbers++;
-      // console.log(fieldsArr2[i], numbers, "верхнее");
-      if (i - (countFields - 1) >= 0 && !isRightEdge
-      && fieldsArr2[i - (countFields - 1)].classList.contains('bomb-hard')) numbers++;
-      // console.log(fieldsArr2[i], numbers, "верхнее право");
-      if (i + 1 <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr2[i + 1].classList.contains('bomb-hard')) numbers++;
-      // console.log(fieldsArr2[i], numbers, "правое");
-      if (i - (countFields + 1) >= 0 && !isLeftEdge
-      && fieldsArr2[i - (countFields + 1)].classList.contains('bomb-hard')) numbers++;
-      // console.log(fieldsArr2[i], numbers, "верхнее левое");
-      if (i + (countFields + 1) <= ((countFields * countFields) - 1)
-      && !isRightEdge && fieldsArr2[i + (countFields + 1)].classList.contains('bomb-hard')) numbers++;
-      // console.log(fieldsArr2[i], numbers, "нижнее правое");
-      if (i + countFields <= ((countFields * countFields) - 1)
-      && fieldsArr2[i + countFields].classList.contains('bomb-hard')) numbers++;
-      // console.log(fieldsArr2[i], numbers, "нижнее");
-      fieldsArr2[i].setAttribute('data', numbers);
-    }
-  }
 }
