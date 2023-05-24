@@ -1,5 +1,6 @@
 import { clickfield, ticFlags } from './clickfield.js';
 import loose from '../audio/loose.wav';
+import open2 from '../audio/open2.wav';
 
 const { body } = document;
 export let isGameOver = false;
@@ -10,6 +11,8 @@ export const fieldsArr2 = [];
 export let countFields;
 export let countBombs;
 export let uroven;
+export let sec;
+let moves = 0;
 let bombsArr;
 let emptyArr;
 let gameShuflArr;
@@ -43,32 +46,12 @@ const timerMovDraw = document.createElement('div');
 const timerSec = document.createElement('div');
 const timerMov = document.createElement('div');
 
-
 export function drawfield() {
   container.classList.add('container');
   body.appendChild(container);
 
   header.classList.add('header');
   container.appendChild(header);
-
-  timer.classList.add('timer');
-  container.appendChild(timer);
-
-  timerSecDraw.classList.add('timer__draw');
-  timer.appendChild(timerSecDraw);
-  timerSecDraw.innerText = 'YOU TIME: ';
-
-  timerMovDraw.classList.add('timer__draw');
-  timer.appendChild(timerMovDraw);
-  timerMovDraw.innerText = 'YOU MOV: ';
-
-  timerSec.classList.add('timer__sec');
-  timerSecDraw.appendChild(timerSec);
-  timerSec.innerText = "1";
-
-  timerMov.classList.add('timer__mov');
-  timerMovDraw.appendChild(timerMov);
-  timerMov.innerText = "1";
 
   title.classList.add('header__title');
   header.appendChild(title);
@@ -146,6 +129,25 @@ export function drawfield() {
   gamesSummary.classList.add('gameSummary');
   container.appendChild(gamesSummary);
   gamesSummary.innerText = '';
+
+  timer.classList.add('timer');
+  container.appendChild(timer);
+
+  timerSecDraw.classList.add('timer__draw');
+  timer.appendChild(timerSecDraw);
+  timerSecDraw.innerText = 'YOU TIME: ';
+
+  timerMovDraw.classList.add('timer__draw');
+  timer.appendChild(timerMovDraw);
+  timerMovDraw.innerText = 'YOU MOVE: ';
+
+  timerSec.classList.add('timer__sec');
+  timerSecDraw.appendChild(timerSec);
+  timerSec.innerText = '0';
+
+  timerMov.classList.add('timer__mov');
+  timerMovDraw.appendChild(timerMov);
+  timerMov.innerText = moves;
 
   if (isSound) {
     drawSounds.classList.add('active-music');
@@ -232,8 +234,11 @@ function eventClick(fieldsArr) {
   fieldsArr.forEach((el) => {
     el.addEventListener('click', (event) => {
       event.preventDefault();
+      moves++;
+      timerMov.innerText = moves;
       if (el.classList.contains('bomb')) {
         isGameOver = true;
+        clearInterval(sec);
         gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
         if (isSound) {
           const audio = new Audio(loose);
@@ -250,6 +255,10 @@ function eventClick(fieldsArr) {
         return;
       }
       clickfield(el);
+      if (isSound) {
+        const audio1 = new Audio(open2);
+        audio1.play();
+      }
     });
   });
 
@@ -263,9 +272,12 @@ function eventClick(fieldsArr) {
 function eventClickMedium(fieldsArr1) {
   fieldsArr1.forEach((el) => {
     el.addEventListener('click', (event) => {
+      moves++;
+      timerMov.innerText = moves;
       event.preventDefault();
       if (el.classList.contains('bomb-medium')) {
         isGameOver = true;
+        clearInterval(sec);
         gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
         if (isSound) {
           const audio = new Audio(loose);
@@ -280,6 +292,10 @@ function eventClickMedium(fieldsArr1) {
         return;
       }
       clickfield(el);
+      if (isSound) {
+        const audio1 = new Audio(open2);
+        audio1.play();
+      }
     });
   });
 
@@ -294,9 +310,12 @@ function eventClickMedium(fieldsArr1) {
 function eventClickHard(fieldsArr2) {
   fieldsArr2.forEach((el) => {
     el.addEventListener('click', (event) => {
+      moves++;
+      timerMov.innerText = moves;
       event.preventDefault();
       if (el.classList.contains('bomb-hard')) {
         isGameOver = true;
+        clearInterval(sec);
         gamesSummary.innerText = 'BOOM! OOPS YOU LOST!';
         if (isSound) {
           const audio = new Audio(loose);
@@ -311,6 +330,10 @@ function eventClickHard(fieldsArr2) {
         return;
       }
       clickfield(el);
+      if (isSound) {
+          const audio1 = new Audio(open2);
+          audio1.play();
+        }
     });
   });
 
@@ -494,3 +517,18 @@ drawSounds.addEventListener('click', () => {
     isSound = false;
   }
 });
+
+export function startSec(event) {
+  console.log(event.target);
+  if ((event.target.parentNode.classList.contains('minesweeper1'))
+  || (event.target.parentNode.classList.contains('minesweeper2'))
+  || (event.target.parentNode.classList.contains('minesweeper2'))) {
+    document.removeEventListener('mousedown', startSec);
+    console.log("I work");
+    sec = setInterval(() => {
+      timerSec.innerText = +timerSec.innerText + 1;
+    }, 1000);
+  }
+}
+
+document.addEventListener('mousedown', startSec);

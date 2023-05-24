@@ -21,11 +21,8 @@
 }
 
 .timer {
-  position: absolute;
   display: flex;
   flex-direction: column;
-  left: 380px;
-  top: 160px;
   padding: 5px;
   border: solid 3px red;
   border-radius: 5px;
