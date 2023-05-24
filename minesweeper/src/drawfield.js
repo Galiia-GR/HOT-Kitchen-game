@@ -31,6 +31,7 @@ const start = document.createElement('div');
 const drawStart = document.createElement('div');
 const score = document.createElement('div');
 const drawlist = document.createElement('div');
+const scoreList = document.createElement('div');
 const level = document.createElement('div');
 const easy = document.createElement('div');
 const medium = document.createElement('div');
@@ -45,6 +46,7 @@ const timerSecDraw = document.createElement('div');
 const timerMovDraw = document.createElement('div');
 const timerSec = document.createElement('div');
 const timerMov = document.createElement('div');
+
 
 export function drawfield() {
   container.classList.add('container');
@@ -93,6 +95,7 @@ export function drawfield() {
   drawlist.classList.add('drawList');
   score.appendChild(drawlist);
   drawlist.innerText = 'list';
+
 
   swithDark.classList.add('header__dark');
   wrap.appendChild(swithDark);
@@ -148,6 +151,11 @@ export function drawfield() {
   timerMov.classList.add('timer__mov');
   timerMovDraw.appendChild(timerMov);
   timerMov.innerText = moves;
+
+  scoreList.classList.add('score__list');
+  container.appendChild(scoreList);
+  scoreList.innerText = 'RESULTS';
+  scoreList.classList.add('score__hide');
 
   if (isSound) {
     drawSounds.classList.add('active-music');
@@ -532,3 +540,14 @@ export function startSec(event) {
 }
 
 document.addEventListener('mousedown', startSec);
+
+
+drawlist.addEventListener('click', () => {
+  if (!drawlist.classList.contains('active-list')) {
+    drawlist.classList.add('active-list');
+    scoreList.classList.remove('score__hide');
+  } else {
+    drawlist.classList.remove('active-list');
+    scoreList.classList.add('score__hide');
+  }
+})

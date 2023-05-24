@@ -351,4 +351,12 @@ function winWin() {
       }
     }
   }
+
+  if (isWin) {
+    document.querySelector('.score__list').innerHTML += `
+     <span class="time__result"> your time
+     ${document.querySelector('.timer__sec').textContent} sec
+     </span> <span class="moves__result">${document.querySelector('.timer__mov').textContent} moves</span>`;
+  }
+  document.querySelector('.score__list').classList.remove('score__hide');
 }

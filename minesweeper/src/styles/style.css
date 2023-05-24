@@ -255,6 +255,28 @@
   border-radius: 1px;
   background-color: rgba(0, 0, 0, 0.1);
   transform: translate3d(0, 2px, -2px);
+  display: block;
+}
+
+.score__list {
+  padding-top: 10px;
+  position: relative;
+  left: 120px;
+  bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border: solid 3px blue;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.score__hide {
+  display: none;
+}
+
+.time__result, .moves__result {
+  font-size: 10px;
 }
 
 .active-music, .drawSounds:hover {
