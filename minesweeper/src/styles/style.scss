@@ -21,6 +21,22 @@ align-items: center;
 font-family: 'RobotoBig' ;
 }
 
+.timer{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 380px;
+  top: 160px;
+  padding: 5px;
+  border: solid 3px red;
+  border-radius: 5px;
+}
+
+.timer__draw{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .header{
    padding:10px;
    width: 600px;

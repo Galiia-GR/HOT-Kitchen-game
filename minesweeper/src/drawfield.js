@@ -37,6 +37,12 @@ const minesweeper2 = document.createElement('div');
 const minesweeper3 = document.createElement('div');
 const swithDark = document.createElement('div');
 const drawDarkTheme = document.createElement('div');
+const timer = document.createElement('div');
+const timerSecDraw = document.createElement('div');
+const timerMovDraw = document.createElement('div');
+const timerSec = document.createElement('div');
+const timerMov = document.createElement('div');
+
 
 export function drawfield() {
   container.classList.add('container');
@@ -44,6 +50,25 @@ export function drawfield() {
 
   header.classList.add('header');
   container.appendChild(header);
+
+  timer.classList.add('timer');
+  container.appendChild(timer);
+
+  timerSecDraw.classList.add('timer__draw');
+  timer.appendChild(timerSecDraw);
+  timerSecDraw.innerText = 'YOU TIME: ';
+
+  timerMovDraw.classList.add('timer__draw');
+  timer.appendChild(timerMovDraw);
+  timerMovDraw.innerText = 'YOU MOV: ';
+
+  timerSec.classList.add('timer__sec');
+  timerSecDraw.appendChild(timerSec);
+  timerSec.innerText = "1";
+
+  timerMov.classList.add('timer__mov');
+  timerMovDraw.appendChild(timerMov);
+  timerMov.innerText = "1";
 
   title.classList.add('header__title');
   header.appendChild(title);

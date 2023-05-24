@@ -4,7 +4,7 @@ import {
 
 import win from '../audio/win.wav';
 import flag from '../audio/flag.wav';
-import open from '../audio/open.wav';
+import open2 from '../audio/open2.wav';
 
 export let flagCount = 0;
 let id;
@@ -47,7 +47,7 @@ export function clickfield(field) {
     console.log(id);
     fieldsArr[id].classList.add('open');
     if (isSound) {
-      const audio1 = new Audio(open);
+      const audio1 = new Audio(open2);
       audio1.play();
     }
   }
@@ -57,7 +57,7 @@ export function clickfield(field) {
     console.log(id);
     fieldsArr1[id].classList.add('open');
     if (isSound) {
-      const audio1 = new Audio(open);
+      const audio1 = new Audio(open2);
       audio1.play();
     }
   }
@@ -67,7 +67,7 @@ export function clickfield(field) {
     console.log(id);
     fieldsArr2[id].classList.add('open');
     if (isSound) {
-      const audio1 = new Audio(open);
+      const audio1 = new Audio(open2);
       audio1.play();
     }
   }
