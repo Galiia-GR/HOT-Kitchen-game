@@ -4,10 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const baseConfig = {
-    entry: path.resolve(__dirname, './src/index.js'),
+    entry: path.resolve(__dirname, 'src/index.js'),
     mode: 'development',
     module: {
         rules: [
+            { test: /\.ts/i, use: 'ts-loader' },
             {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
@@ -15,15 +16,15 @@ const baseConfig = {
         ],
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.ts'],
     },
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(`${__dirname}/dist`),
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, './src/index.html'),
+            template: path.resolve(__dirname, 'src/index.html'),
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
