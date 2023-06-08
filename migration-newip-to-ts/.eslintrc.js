@@ -4,19 +4,13 @@ module.exports = {
         browser: true,
         node: true,
     },
-    extends: [
-        'airbnb-base',
-        'airbnb-typescript/base',
-        'plugin: @typescript-eslint/recommended',
-        'plugin: prettier/recomemded',
-    ],
-    plugins: ['@typescript-eslint'],
+    extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['prettier', '@typescript-eslint'],
+    plugins: ['@typescript-eslint'],
     overrides: [
         {
             files: ['*.ts', '*.tsx'],
@@ -32,34 +26,6 @@ module.exports = {
     ],
     ignorePatterns: ['.eslintrc.js'],
     rules: {
-        'import/extensions': 'off',
-        'prettier/prettier': 'error',
-        'no-debugger': 'off',
-        'no-console': 0,
-        'class-methods-use-this': 'off',
-        '@typescript-eslint/no-explicit-any': 'error',
-        '@typescript-eslint/array-type': [
-            'error',
-            {
-                default: 'array',
-            },
-        ],
-        '@typescript-eslint/explicit-member-accessibility': [
-            'error',
-            {
-                accessibility: 'explicit',
-                overrides: {
-                    accessors: 'explicit',
-                    constructors: 'off',
-                    methods: 'explicit',
-                    properties: 'explicit',
-                    parameterProperties: 'explicit',
-                },
-            },
-        ],
-        'max-lines-per-function': [error, 40],
-        '@typescript-eslint/explicit-function-return-type': 'error',
-        '@typescript-eslint/no-unnecessary-type-assertion': 'error',
-        '@typescript-eslint/no-non-null-assertion': 'error',
+        '@typescript-eslint/no-explicit-any': 2,
     },
 };
