@@ -1,5 +1,5 @@
 import './news.css';
-interface NewsItems {
+export interface NewsItems {
     urlToImage: string;
     author: string;
     source: {
@@ -12,7 +12,7 @@ interface NewsItems {
 }
 
 class News<T extends NewsItems> {
-    draw(data: T[]) {
+    public draw(data: T[]) {
         const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment = document.createDocumentFragment();
