@@ -1,13 +1,13 @@
 class Loader {
-    baseLink: string;
-    options: object;
+    public baseLink: string;
+    public options: object;
 
     constructor(baseLink: string, options: object) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
-    getResp(
+    public getResp(
         {
             endpoint,
             options = {},
@@ -23,7 +23,7 @@ class Loader {
         this.load({ method: 'GET', endpoint, callback, options });
     }
 
-    errorHandler = (res: Response) => {
+    public errorHandler = (res: Response) => {
         if (!res.ok) {
             if (res.status === 401 || res.status === 404)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -33,7 +33,7 @@ class Loader {
         return res;
     };
 
-    makeUrl = (options: object, endpoint: string) => {
+    public makeUrl = (options: object, endpoint: string) => {
         const urlOptions: { [key: string]: string } = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -44,7 +44,7 @@ class Loader {
         return url.slice(0, -1);
     };
 
-    load({
+    public load({
         method,
         endpoint,
         callback,
@@ -52,13 +52,13 @@ class Loader {
     }: {
         method: string;
         endpoint: string;
-        callback: () => void;
+        callback: (data: string) => void;
         options?: object;
     }) {
         fetch(this.makeUrl(options, endpoint), { method: String(method) })
             .then(this.errorHandler)
             .then((res) => res.json())
-            .then(() => callback())
+            .then((data: string) => callback(data))
             .catch((err) => console.error(err));
     }
 }
