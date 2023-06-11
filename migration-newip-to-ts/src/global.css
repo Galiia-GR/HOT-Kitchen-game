@@ -29,7 +29,15 @@ footer .copyright a {
 }
 footer .copyright a:hover {
     color: #70d6ff;
+    font-weight: bold;
 }
 footer .copyright:before {
     content: '©';
+}
+
+footer a:link {
+    text-decoration: none;
+}
+footer a:visited {
+    color: #1098ad;
 }

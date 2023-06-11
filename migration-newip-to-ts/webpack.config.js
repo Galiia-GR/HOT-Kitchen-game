@@ -15,15 +15,13 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                generator: {
-                    filename: './image/[contenthash][ext]',
-                },
+                test: /\.(png|jpe?g|gif|svg|webp|ico|avif)$/i,
+                type: 'asset/resource',
             },
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.js', '.svg'],
     },
     output: {
         filename: 'index.js',
