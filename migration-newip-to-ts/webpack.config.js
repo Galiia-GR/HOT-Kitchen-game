@@ -14,6 +14,12 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                generator: {
+                    filename: './image/[contenthash][ext]',
+                },
+            },
         ],
     },
     resolve: {

@@ -1,6 +1,6 @@
 body {
     color: #fff;
-    background: #17181c;
+    background: #364954;
     font-family: sans-serif;
 }
 
@@ -21,14 +21,14 @@ footer {
 }
 footer .copyright {
     font-size: 14px;
-    color: #333;
+    color: #f4f4f4;
     text-align: center;
 }
 footer .copyright a {
-    color: #444;
+    color: #f4f4f4;
 }
 footer .copyright a:hover {
-    color: #555;
+    color: #70d6ff;
 }
 footer .copyright:before {
     content: '©';
