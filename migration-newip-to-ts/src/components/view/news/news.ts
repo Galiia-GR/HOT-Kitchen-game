@@ -42,7 +42,10 @@ class News<T extends NewsItems> {
                     newsCloneCont &&
                     newCloneRead
                 ) {
-                    newsClonePhoto.setAttribute('src', item.urlToImage || 'img/news_placeholder.jpg');
+                    newsClonePhoto.setAttribute(
+                        'style',
+                        `background-image: url('${item.urlToImage || 'img/news_placeholder.jpg'}')`
+                    );
 
                     newsCloneAutor.textContent = item.author || item.source.name;
                     newsCloneDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');

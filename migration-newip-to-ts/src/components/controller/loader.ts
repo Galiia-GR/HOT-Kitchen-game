@@ -1,8 +1,12 @@
+type LoadOptions = {
+    [key: string]: string;
+};
+
 class Loader {
     public baseLink: string;
-    public options: object;
+    public options: LoadOptions;
 
-    constructor(baseLink: string, options: object) {
+    constructor(baseLink: string, options: LoadOptions) {
         this.baseLink = baseLink;
         this.options = options;
     }
@@ -13,7 +17,7 @@ class Loader {
             options = {},
         }: {
             endpoint: string;
-            options: object;
+            options: LoadOptions;
             callback: () => void;
         },
         callback = () => {
@@ -33,7 +37,7 @@ class Loader {
         return res;
     };
 
-    public makeUrl = (options: object, endpoint: string) => {
+    public makeUrl = (options: LoadOptions, endpoint: string) => {
         const urlOptions: { [key: string]: string } = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -53,7 +57,7 @@ class Loader {
         method: string;
         endpoint: string;
         callback: (data: string) => void;
-        options?: object;
+        options?: LoadOptions;
     }) {
         fetch(this.makeUrl(options, endpoint), { method: String(method) })
             .then(this.errorHandler)
