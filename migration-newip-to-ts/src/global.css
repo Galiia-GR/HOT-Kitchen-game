@@ -32,7 +32,7 @@ footer .copyright a:hover {
     font-weight: bold;
 }
 footer .copyright:before {
-    content: ' ©';
+    content: '  ©';
 }
 
 footer a:link {
