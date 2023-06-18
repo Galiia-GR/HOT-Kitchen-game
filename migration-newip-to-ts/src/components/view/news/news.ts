@@ -24,7 +24,6 @@ class News<T extends NewsItems> {
 
                 if (idx % 2) newsClone.querySelector('.news__item')?.classList.add('alt');
 
-                //  const NewsItems = item as NewsItems;
                 const newsClonePhoto = newsClone.querySelector('.news__meta-photo');
                 const newsCloneAutor = newsClone.querySelector('.news__meta-author');
                 const newsCloneDate = newsClone.querySelector('.news__meta-date');
