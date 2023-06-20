@@ -1,0 +1,11 @@
+.editor {
+    display: flex;
+    justify-content: center;
+}
+
+.editor-css,
+.editor-html {
+    width: 300px;
+    height: 300px;
+    border: 3px solid #fff;
+}

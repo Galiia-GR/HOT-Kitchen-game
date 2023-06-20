@@ -5,23 +5,12 @@
     overflow: hidden;
 }
 
-*::before,
-*::after {
-    border: 1px solid rgb(0, 102, 255);
-
-    #wrapper {
-        min-height: 100%;
-    }
+body {
+    background-color: rgb(0, 102, 255);
 }
 
-header {
-    background-color: antiquewhite;
-    height: 50px;
-}
-
-footer {
-    background-color: aquamarine;
-    height: 50px;
+#wrapper {
+    min-height: 100%;
 }
 
 #container {
@@ -31,35 +20,20 @@ footer {
     height: 800px;
 }
 
+header {
+    background-color: antiquewhite;
+    height: 50px;
+}
+
+footer {
+    background-color: antiquewhite;
+    height: 50px;
+}
+
 .game {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     width: 1400px;
     background-color: rgba(149, 151, 153, 0.555);
-}
-
-.table {
-    width: 800px;
-    height: 200px;
-}
-
-.table-img {
-    max-width: 100%;
-}
-
-.levels {
-    background-color: rgb(214, 144, 214);
-    width: 600px;
-}
-
-.editor {
-    display: flex;
-    justify-content: center;
-}
-
-.editor-css,
-.editor-html {
-    width: 300px;
-    height: 300px;
-    border: 2px solid #fff;
 }
