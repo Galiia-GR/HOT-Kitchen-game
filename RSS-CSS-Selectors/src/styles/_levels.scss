@@ -1,6 +1,19 @@
 .levels {
-    background-color: rgba(216, 205, 216, 0.116);
     width: 20%;
     display: flex;
     flex-direction: column;
+}
+
+.levels-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.levels__item {
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
 }

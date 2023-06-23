@@ -2,31 +2,29 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
-}
-
-body {
-    background-color: rgb(0, 102, 255);
 }
 
 #wrapper {
+    overflow: hidden;
     min-height: 100%;
+    max-width: 1920px;
+    background-image: url('../images/133Z_2106.w026.n002.486B.p1.486.jpg');
+    padding: 50px 50px;
 }
 
 #container {
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     background-color: rgba(217, 223, 230, 0.301);
 }
 
+footer,
 header {
-    background-color: antiquewhite;
-    height: 50px;
-}
-
-footer {
-    background-color: antiquewhite;
-    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .game {
@@ -34,5 +32,4 @@ footer {
     flex-direction: column;
     justify-content: space-around;
     width: 80%;
-    background-color: rgba(224, 228, 233, 0.555);
 }
