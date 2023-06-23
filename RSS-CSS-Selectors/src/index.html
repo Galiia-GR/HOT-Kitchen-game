@@ -10,13 +10,17 @@
             <header><div>I'm HEADER</div></header>
             <div id="container">
                 <section class="game">
-                    <h1>SELECT SELECTOR</h1>
+                    <h1 class="main-title">SELECT SELECTOR</h1>
                     <div class="board">
-                        <img class="board-img" src="./image/232780cf3eb6eadcafd8.jpg" alt="img" />
+                        <img class="board-img" src="./images/232780cf3eb6eadcafd8.jpg" alt="board" />
+                        <div class="board__buns">
+                            <img class="white__bun" src="./images/whiteD.png" alt="bun" width="90" height="57" />
+                            <img class="white__bun" src="./images/whiteD.png" alt="bun" width="90" height="57" />
+                        </div>
                     </div>
                     <section class="editor">
+                        <h2 class="editor-title">editor-html</h2>
                         <div class="editor-html">
-                            <h2>editor-html</h2>
                             <div class="column-numbers">
                                 1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />
                             </div>
@@ -36,13 +40,14 @@
                     </div>
                     <div class="levels-show"></div>
                     <div class="editor-css">
-                        <h2>editor-css</h2>
-                        <div class="column-numbers">
-                            1<br />2<br />3<br />
+                        <div class="column-numbers">1<br />2<br />3<br />4<br /></div>
+                        <div class="editor-css__markup">
                             <input class="editor-css__input" type="text" placeholder="type your style CSS selector" />
-                            {<br />
-                            /* Styles would go here. */<br />
+
+                            { <br />
+                            /* Styles would be here. */<br />
                             }
+                            <div class="editor-css__submit"><button class="editor-css__button">SUBMIT</button></div>
                         </div>
                     </div>
                 </section>

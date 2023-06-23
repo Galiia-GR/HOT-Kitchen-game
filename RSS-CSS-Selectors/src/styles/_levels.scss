@@ -2,6 +2,7 @@
     width: 20%;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 
 .levels-container {
@@ -12,8 +13,13 @@
 .levels__item {
     cursor: pointer;
     border: 1px solid white;
+    padding-top: 5px;
     border-radius: 50%;
     width: 30px;
     height: 30px;
     text-align: center;
+}
+
+.win {
+    background-color: rgba(73, 36, 158, 0.61);
 }
