@@ -8,7 +8,7 @@ interface DefaultLevel {
     help: string;
     tag: string;
     animation: boolean;
-    html: string;
+    html: string[];
 }
 
 class DefaultLevel implements DefaultLevel {
@@ -19,7 +19,7 @@ class DefaultLevel implements DefaultLevel {
         help: string,
         tag: string,
         animation: boolean,
-        html: string
+        html: string[]
     ) {
         this.level = level;
         this.title = title;
@@ -35,21 +35,35 @@ class DefaultLevel implements DefaultLevel {
         const levHistory = document.createElement('p');
         const levHelp = document.createElement('p');
 
-        levHelp.textContent = this.help;
-        showLevel?.appendChild(levHelp);
         levTitle.textContent = this.title;
         showLevel?.appendChild(levTitle);
         showLevel?.appendChild(levHistory);
         levHistory.textContent = this.history;
+        levHelp.textContent = this.help;
+        showLevel?.appendChild(levHelp);
+    }
 
-        const html = document.createElement('div');
-        html.classList.add('markup__item');
-        showHtml?.appendChild(html);
+    createHtmlMarkUp() {
+        const [temp0, temp1, temp2, temp3] = this.html;
+        const html0 = document.createElement('div');
+        html0.classList.add('markup__item');
+        showHtml?.appendChild(html0);
+        html0.textContent = temp0;
+
         const html1 = document.createElement('div');
         html1.classList.add('markup__item');
         showHtml?.appendChild(html1);
-        html.textContent = this.html;
-        html1.textContent = this.html;
+        html1.textContent = temp1;
+
+        const html2 = document.createElement('div');
+        html2.classList.add('markup__item');
+        showHtml?.appendChild(html2);
+        html2.textContent = temp2;
+
+        const html3 = document.createElement('div');
+        html3.classList.add('markup__item');
+        showHtml?.appendChild(html3);
+        html3.textContent = temp3;
     }
 }
 

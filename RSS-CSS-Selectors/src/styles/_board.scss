@@ -16,11 +16,46 @@
     background-image: url('../images/232780cf3eb6eadcafd8.jpg');
 }
 
-.board__buns {
-    top: 150px;
+.board-buns__level0,
+.board-buns__level1,
+.board-buns__level2,
+.board-buns__level3,
+.board-buns__level4,
+.board-buns__level5 {
+    top: 170px;
     position: absolute;
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    gap: 50px;
     z-index: 11;
+}
+
+.board-buns__level1 {
+    display: none;
+    top: 160px;
+}
+
+.board-buns__level2 {
+    display: none;
+    top: 150px;
+}
+
+.board-buns__level3 {
+    display: none;
+    top: 140px;
+}
+
+.board-buns__level4 {
+    display: none;
+    top: 130px;
+}
+.board-buns__level5 {
+    display: none;
+    top: 120px;
+}
+
+.black__bun,
+.white__bun {
+    width: 90px;
+    height: 55px;
 }

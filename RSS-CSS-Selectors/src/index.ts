@@ -18,6 +18,7 @@ function drawLevel(level: number) {
         levelsList[level].html
     );
     myObj.createAppendLevel();
+    myObj.createHtmlMarkUp();
 }
 
 drawLevel(currentLevel);

@@ -63,13 +63,49 @@ header {
   background-image: url("../images/232780cf3eb6eadcafd8.jpg");
 }
 
-.board__buns {
-  top: 150px;
+.board-buns__level0,
+.board-buns__level1,
+.board-buns__level2,
+.board-buns__level3,
+.board-buns__level4,
+.board-buns__level5 {
+  top: 170px;
   position: absolute;
   display: flex;
   justify-content: space-between;
-  gap: 30px;
+  gap: 50px;
   z-index: 11;
+}
+
+.board-buns__level1 {
+  display: none;
+  top: 160px;
+}
+
+.board-buns__level2 {
+  display: none;
+  top: 150px;
+}
+
+.board-buns__level3 {
+  display: none;
+  top: 140px;
+}
+
+.board-buns__level4 {
+  display: none;
+  top: 130px;
+}
+
+.board-buns__level5 {
+  display: none;
+  top: 120px;
+}
+
+.black__bun,
+.white__bun {
+  width: 90px;
+  height: 55px;
 }
 
 .editor {
@@ -89,12 +125,14 @@ header {
   width: 60%;
   border: 3px solid #fff;
   margin-bottom: 40px;
+  background-color: rgba(255, 255, 255, 0.6039215686);
 }
 
 .editor-css {
   display: flex;
   width: 100%;
   border: 3px solid #fff;
+  background-color: rgba(255, 255, 255, 0.6980392157);
 }
 
 .column-numbers {
@@ -103,15 +141,17 @@ header {
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   line-height: 1.5;
-  color: rgba(91, 147, 231, 0.671);
+  font-size: 18px;
+  color: rgb(78, 78, 78);
 }
 
 .editor-html__markup {
-  color: #fff;
+  color: rgb(78, 78, 78);
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   cursor: pointer;
   line-height: 1.5;
+  font-size: 18px;
 }
 
 .markup__item:hover {
@@ -121,10 +161,11 @@ header {
 .editor-css__markup {
   display: flex;
   flex-direction: column;
-  color: #fff;
+  color: rgb(151, 151, 151);
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   line-height: 1.5;
+  font-size: 18px;
 }
 
 .editor-css__button {
@@ -172,6 +213,11 @@ header {
 
 .win {
   background-color: rgba(73, 36, 158, 0.61);
+}
+
+.levels-show {
+  line-height: 1.5;
+  padding-bottom: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

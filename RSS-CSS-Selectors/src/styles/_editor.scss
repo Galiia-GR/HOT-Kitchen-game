@@ -15,11 +15,13 @@
     width: 60%;
     border: 3px solid #fff;
     margin-bottom: 40px;
+    background-color: #ffffff9a;
 }
 .editor-css {
     display: flex;
     width: 100%;
     border: 3px solid #fff;
+    background-color: #ffffffb2;
 }
 
 .column-numbers {
@@ -28,15 +30,17 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     line-height: 1.5;
-    color: rgba(91, 147, 231, 0.671);
+    font-size: 18px;
+    color: rgb(78, 78, 78);
 }
 
 .editor-html__markup {
-    color: #fff;
+    color: rgb(78, 78, 78);
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     cursor: pointer;
     line-height: 1.5;
+    font-size: 18px;
 }
 
 .markup__item:hover {
@@ -46,10 +50,11 @@
 .editor-css__markup {
     display: flex;
     flex-direction: column;
-    color: #fff;
+    color: rgb(151, 151, 151);
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     line-height: 1.5;
+    font-size: 18px;
 }
 
 .editor-css__button {
