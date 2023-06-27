@@ -72,8 +72,7 @@ header {
   top: 170px;
   position: absolute;
   display: flex;
-  justify-content: space-between;
-  gap: 50px;
+  gap: 30px;
   z-index: 11;
 }
 
@@ -102,12 +101,41 @@ header {
   top: 120px;
 }
 
-.black__bun,
-.white__bun {
+.blackFirst,
+.blackSecond,
+.whiteFirst,
+.whiteSecond {
+  border: 3px solid red;
+  display: flex;
+  width: 120px;
+  justify-content: center;
+}
+
+.hover {
+  background-color: beige;
+}
+
+.bun {
   width: 90px;
   height: 55px;
 }
 
+.shake {
+  cursor: pointer;
+  animation: bbb 2s infinite ease-out;
+}
+
+@keyframes bbb {
+  0% {
+    width: 90px;
+  }
+  50% {
+    width: 100px;
+  }
+  100% {
+    width: 90px;
+  }
+}
 .editor {
   display: flex;
   flex-direction: column;
