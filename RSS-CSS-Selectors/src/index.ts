@@ -9,6 +9,7 @@ const htmlMarkUp = document.querySelector('.editor-html__markup');
 const arrLevels = document.querySelectorAll('.levels__item');
 const levels = document.querySelectorAll('.levels-container');
 const inputPlace = document.querySelector('.editor-css__input');
+const buttonReset = document.querySelector('.editor-css__reset');
 const dataLevel: number[] = [];
 
 let currentLevel: number = levelsList[0].level;
@@ -130,5 +131,10 @@ function winStore() {
         });
     }
 }
+
+// buttonReset?.addEventListener('click', () => {
+//     localStorage.clear();
+//     console.log('РЕСЕД');
+// });
 
 winStore();

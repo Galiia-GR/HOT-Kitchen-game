@@ -67,7 +67,8 @@
     border-radius: 15px;
 }
 
-.editor-css__submit {
+.editor-css__submit,
+.editor-css__reset {
     display: flex;
     margin: 5px;
     justify-content: start;
@@ -76,6 +77,11 @@
 .editor-css__button:hover {
     transform: translate3d(0, 2px, -2px);
     background-color: rgba(73, 36, 158, 0.315);
+}
+
+.editor-css__reset {
+    padding-top: 20px;
+    justify-content: end;
 }
 
 .editor-css__input {

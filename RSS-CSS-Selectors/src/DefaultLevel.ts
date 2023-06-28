@@ -102,7 +102,8 @@ class DefaultLevel implements DefaultLevel {
     win() {
         const button = document.querySelector('.editor-css__button');
         const inputPlace = document.querySelector('.editor-css__input') as HTMLInputElement;
-        button?.addEventListener('click', () => {
+
+        const handleButtonClick = () => {
             if (inputPlace) {
                 if (this.tag === inputPlace.value) {
                     arrLevels.forEach((item) => {
@@ -112,7 +113,16 @@ class DefaultLevel implements DefaultLevel {
                     });
                 }
             }
-        });
+        };
+
+        const handleInputKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                handleButtonClick();
+            }
+        };
+
+        button?.addEventListener('click', handleButtonClick);
+        inputPlace?.addEventListener('keydown', handleInputKeyDown);
     }
 }
 

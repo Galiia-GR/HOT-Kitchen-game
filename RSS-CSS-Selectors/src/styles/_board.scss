@@ -56,7 +56,27 @@
 .blackFirst,
 .blackSecond,
 .whiteFirst,
-.whiteSecond {
+.whiteSecond,
+.meetBlackFirst,
+.meetWhiteFirst,
+.meetBlackSecond,
+.meetWhiteSecond,
+.cheeseBlackFirst,
+.cheeseWhiteFirst,
+.cheeseBlackSecond,
+.cheeseWhiteSecond,
+.tomatBlackFirst,
+.tomatWhiteFirst,
+.tomatBlackSecond,
+.tomatWhiteSecond,
+.salatBlackFirst,
+.salatWhiteFirst,
+.salatBlackSecond,
+.salatWhiteSecond,
+.headBlackFirst,
+.headWhiteFirst,
+.headBlackSecond,
+.headWhiteSecond {
     display: flex;
     width: 100px;
     border-radius: 50%;
