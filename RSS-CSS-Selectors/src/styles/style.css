@@ -218,7 +218,8 @@ header {
   font-size: 18px;
 }
 
-.editor-css__button {
+.editor-css__button,
+.editor-css__reset {
   background-color: rgba(91, 147, 231, 0.671);
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -229,18 +230,19 @@ header {
 }
 
 .editor-css__submit,
-.editor-css__reset {
+.editor-css__resetLev {
   display: flex;
   margin: 5px;
   justify-content: start;
 }
 
-.editor-css__button:hover {
+.editor-css__button:hover,
+.editor-css__reset:hover {
   transform: translate3d(0, 2px, -2px);
   background-color: rgba(73, 36, 158, 0.315);
 }
 
-.editor-css__reset {
+.editor-css__resetLev {
   padding-top: 20px;
   justify-content: end;
 }
