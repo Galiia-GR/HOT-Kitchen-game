@@ -7,6 +7,8 @@ const showLevel = document.querySelector('.levels-show');
 const arrBoardPictires = document.querySelectorAll('.bun');
 const htmlMarkUp = document.querySelector('.editor-html__markup');
 const arrLevels = document.querySelectorAll('.levels__item');
+const levels = document.querySelectorAll('.levels-container');
+const inputPlace = document.querySelector('.editor-css__input');
 const dataLevel: number[] = [];
 
 let currentLevel: number = levelsList[0].level;
@@ -42,16 +44,13 @@ function clearDrawLevel() {
 
 console.log('я попадаю сюда пам пам пам и нажимаю уровни');
 
-const levels = document.querySelectorAll('.levels-container');
-const inputPlace = document.querySelector('.editor-css__input') as HTMLInputElement;
-
 levels.forEach((el) =>
     el.addEventListener('click', (e) => {
         const temp = e.target;
 
         if ((temp as HTMLElement)?.getAttribute('id')) {
             currentLevel = Number((temp as HTMLElement)?.getAttribute('id'));
-            inputPlace.value = '';
+            (inputPlace as HTMLInputElement).value = '';
             clearDrawLevel();
 
             drawLevel(currentLevel);
@@ -103,6 +102,7 @@ const checkWin = new MutationObserver((mutationsList) => {
                 dataLevel.push(Number(targetElement.getAttribute('id')));
                 localStorage.setItem('dataLevel', JSON.stringify(dataLevel));
                 clearDrawLevel();
+                (inputPlace as HTMLInputElement).value = '';
                 currentLevel = Number(targetElement.getAttribute('id')) + 1;
                 console.log(currentLevel);
 

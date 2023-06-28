@@ -57,14 +57,16 @@
 .blackSecond,
 .whiteFirst,
 .whiteSecond {
-    border: 3px solid red;
     display: flex;
-    width: 120px;
+    width: 100px;
+    border-radius: 50%;
     justify-content: center;
 }
 
 .hover {
-    background-color: beige;
+    background-color: #ff7a415a;
+    opacity: 1;
+    box-shadow: 0 0 30px #ff7941;
 }
 
 .bun {
