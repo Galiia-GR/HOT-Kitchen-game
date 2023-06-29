@@ -23,7 +23,8 @@ function drawLevel(level: number) {
         levelsList[level].tag,
         levelsList[level].id,
         levelsList[level].html,
-        levelsList[level].child
+        levelsList[level].childFist,
+        levelsList[level].childSecond
     );
     myObj.createAppendLevel();
     myObj.createHtmlMarkUp();

@@ -105,10 +105,10 @@ header {
 .blackSecond,
 .whiteFirst,
 .whiteSecond,
-.meetBlackFirst,
-.meetWhiteFirst,
-.meetBlackSecond,
-.meetWhiteSecond,
+.meatBlackFirst,
+.meatWhiteFirst,
+.meatBlackSecond,
+.meatWhiteSecond,
 .cheeseBlackFirst,
 .cheeseWhiteFirst,
 .cheeseBlackSecond,
@@ -144,7 +144,7 @@ header {
 
 .shake {
   cursor: pointer;
-  animation: bbb 2s infinite ease-out;
+  animation: bbb 1s infinite ease-out;
 }
 
 @keyframes bbb {

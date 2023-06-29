@@ -11,7 +11,8 @@ interface DefaultLevel {
     tag: string;
     id: string;
     html: string[];
-    child: string[];
+    childFirst: string[];
+    childSecond: string[];
 }
 
 class DefaultLevel implements DefaultLevel {
@@ -23,7 +24,8 @@ class DefaultLevel implements DefaultLevel {
         tag: string,
         id: string,
         html: string[],
-        child: string[]
+        childFirst: string[],
+        childSecond: string[]
     ) {
         this.level = level;
         this.title = title;
@@ -32,7 +34,8 @@ class DefaultLevel implements DefaultLevel {
         this.tag = tag;
         this.id = id;
         this.html = html;
-        this.child = child;
+        this.childFirst = childFirst;
+        this.childSecond = childSecond;
     }
 
     createAppendLevel() {
@@ -53,8 +56,9 @@ class DefaultLevel implements DefaultLevel {
 
         arrHtml.forEach((element, index: number) => {
             const tempDiv = document.createElement('div');
+            const tempSpan = document.createElement('span');
             tempDiv.classList.add('markup__item');
-
+            tempDiv.classList.add('general');
             switch (index) {
                 case 0:
                     tempDiv.setAttribute('data', `${element}First`);
@@ -78,24 +82,129 @@ class DefaultLevel implements DefaultLevel {
                     console.log('Opps');
                     break;
             }
-            const tempSpan = document.createElement('span');
             tempDiv?.appendChild(tempSpan);
             if (typeof element === 'string' && this.id !== '' && index === 1) {
                 tempSpan.textContent = `<${element} id=${this.id}>
-                </${element}>`;
+                                    </${element}>`;
                 tempDiv.classList.add(`${element}`);
             } else {
                 tempSpan.textContent = `<${element}>
-                </${element}>`;
+                                    </${element}>`;
                 tempDiv.classList.add(`${element}`);
             }
         });
+
+        if (this.childFirst.length !== 0) {
+            const [...arrChildFirstHtml] = this.childFirst;
+            const boardLev1 = document.querySelector('.board-buns__level1') as HTMLElement;
+            if (boardLev1) {
+                boardLev1.style.display = 'flex';
+            }
+
+            const arrGeneralBunsHtml = document.querySelectorAll('.general');
+
+            arrChildFirstHtml.forEach((element, index: number) => {
+                const tempSpan = document.createElement('span');
+                const tempDiv = document.createElement('div');
+                tempDiv.classList.add('markup__item');
+                tempDiv.classList.add('level1');
+
+                switch (index) {
+                    case 0:
+                        tempDiv.setAttribute('data', `${element}BlackFirst`);
+                        showHtml?.appendChild(tempDiv);
+                        arrGeneralBunsHtml[index].appendChild(tempDiv);
+                        break;
+
+                    case 1:
+                        tempDiv.setAttribute('data', `${element}WhiteFirst`);
+                        showHtml?.appendChild(tempDiv);
+                        arrGeneralBunsHtml[index].appendChild(tempDiv);
+                        break;
+
+                    case 2:
+                        tempDiv.setAttribute('data', `${element}BlackSecond`);
+                        showHtml?.appendChild(tempDiv);
+                        arrGeneralBunsHtml[index].appendChild(tempDiv);
+                        break;
+                    case 3:
+                        tempDiv.setAttribute('data', `${element}WhiteSecond`);
+                        showHtml?.appendChild(tempDiv);
+                        arrGeneralBunsHtml[index].appendChild(tempDiv);
+
+                        break;
+                    default:
+                        console.log('Opps');
+                        break;
+                }
+                tempDiv?.appendChild(tempSpan);
+                tempSpan.textContent = `<${element}>
+                                    </${element}>`;
+                tempDiv.classList.add(`${element}`);
+            });
+        }
+
+        if (this.childSecond.length !== 0) {
+            const [...arrChildSecondHtml] = this.childSecond;
+            console.log(arrChildSecondHtml);
+
+            const boardLev2 = document.querySelector('.board-buns__level2') as HTMLElement;
+            if (boardLev2) {
+                boardLev2.style.display = 'flex';
+            }
+
+            const arrGeneralBunsHtml = document.querySelectorAll('.general');
+
+            arrChildSecondHtml.forEach((element, index: number) => {
+                const tempSpan = document.createElement('span');
+                const tempDiv = document.createElement('div');
+                tempDiv.classList.add('markup__item');
+                tempDiv.classList.add('level2');
+
+                switch (index) {
+                    case 0:
+                        tempDiv.setAttribute('data', `${element}BlackFirst`);
+                        showHtml?.appendChild(tempDiv);
+                        arrGeneralBunsHtml[index].appendChild(tempDiv);
+                        break;
+
+                    case 1:
+                        tempDiv.setAttribute('data', `${element}WhiteFirst`);
+                        showHtml?.appendChild(tempDiv);
+                        arrGeneralBunsHtml[index].appendChild(tempDiv);
+                        break;
+
+                    case 2:
+                        tempDiv.setAttribute('data', `${element}BlackSecond`);
+                        showHtml?.appendChild(tempDiv);
+                        arrGeneralBunsHtml[index].appendChild(tempDiv);
+                        break;
+                    case 3:
+                        tempDiv.setAttribute('data', `${element}WhiteSecond`);
+                        showHtml?.appendChild(tempDiv);
+                        arrGeneralBunsHtml[index].appendChild(tempDiv);
+
+                        break;
+                    default:
+                        console.log('Opps');
+                        break;
+                }
+                tempDiv?.appendChild(tempSpan);
+                tempSpan.textContent = `<${element} class = "slice" >
+                                    </${element}>`;
+                tempDiv.classList.add(`${element}`);
+            });
+        }
     }
 
     createHintsShakeElements() {
-        console.log('this шейк');
         arrBoardPictires.forEach((element) => {
             if (element.classList.contains(this.tag)) element.classList.add('shake');
+            if (Number(this.level) === 2 && element.getAttribute('data') === 'whiteFirst')
+                element.classList.add('shake');
+            if (Number(this.level) === 4 && element.classList.contains('white') && element.classList.contains('meat'))
+                element.classList.add('shake');
+            if (Number(this.level) === 5 && element.classList.contains('cheese')) element.classList.add('shake');
         });
     }
 
