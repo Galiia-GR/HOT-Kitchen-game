@@ -61,15 +61,11 @@ levels.forEach((el) =>
     })
 );
 
-console.log(htmlMarkUp);
-
 htmlMarkUp?.addEventListener('mouseover', (e) => {
     const targetNode = e.target as Node;
     if (targetNode.parentNode) {
         const parentElement = targetNode.parentNode as HTMLElement;
         const dataHtml = parentElement.getAttribute('data');
-
-        console.log(dataHtml);
 
         arrBoardPictires.forEach((el) => {
             if (dataHtml) {
@@ -86,8 +82,6 @@ htmlMarkUp?.addEventListener('mouseout', (e) => {
     if (targetNode.parentNode) {
         const parentElement = targetNode.parentNode as HTMLElement;
         const dataHtml = parentElement.getAttribute('data');
-
-        console.log(dataHtml);
 
         arrBoardPictires.forEach((el) => {
             if (dataHtml && el.parentElement?.classList.contains(dataHtml)) {
@@ -106,10 +100,13 @@ const checkWin = new MutationObserver((mutationsList) => {
                 localStorage.setItem('dataLevel', JSON.stringify(dataLevel));
                 clearDrawLevel();
                 (inputPlace as HTMLInputElement).value = '';
-                currentLevel = Number(targetElement.getAttribute('id')) + 1;
-                console.log(currentLevel);
 
-                drawLevel(currentLevel);
+                if (currentLevel !== 10) {
+                    currentLevel = Number(targetElement.getAttribute('id')) + 1;
+                    drawLevel(currentLevel);
+                } else {
+                    console.log('!!!!You win !!!!');
+                }
             }
         }
     });

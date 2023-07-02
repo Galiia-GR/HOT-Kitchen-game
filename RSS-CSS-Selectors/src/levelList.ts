@@ -118,7 +118,7 @@ export const levelsList = [
         level: 8,
         title: 'Comma Combinator',
         history:
-            'Combine, selectors, with... commas! You can combine any selectors this way, and you can specify more than two.',
+            'Combine, selectors, with... commas! You can combine any selectors this way, and you can specify more than two. Select cheese, tomato and salat.',
         tag: 'cheese, .tomato, salat',
         id: '',
         html: ['black', 'white', 'black', 'white'],
@@ -130,9 +130,9 @@ export const levelsList = [
     },
     {
         level: 9,
-        title: '',
-        history: '',
-        tag: '',
+        title: 'Combine the skills  :)',
+        history: `Let's selected only black hamburgers.`,
+        tag: '.my__order',
         id: '',
         html: ['black', 'white', 'black', 'white'],
         childFist: ['meat', 'meat', 'meat', 'meat'],
