@@ -16,6 +16,8 @@
     border: 3px solid #fff;
     margin-bottom: 40px;
     background-color: #ffffff9a;
+    overflow: auto;
+    max-height: 350px;
 }
 .editor-css {
     display: flex;
@@ -29,8 +31,8 @@
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    line-height: 1.5;
-    font-size: 18px;
+    line-height: 1.2;
+    font-size: 17px;
     color: rgb(78, 78, 78);
 }
 
@@ -39,8 +41,8 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     cursor: pointer;
-    line-height: 1.5;
-    font-size: 18px;
+    line-height: 1.2;
+    font-size: 17px;
 }
 
 .markup__item:hover {
@@ -53,7 +55,7 @@
     color: rgb(151, 151, 151);
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    line-height: 1.5;
+    line-height: 1.2;
     font-size: 18px;
 }
 
