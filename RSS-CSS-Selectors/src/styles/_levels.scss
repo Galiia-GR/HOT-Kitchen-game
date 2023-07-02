@@ -1,20 +1,27 @@
 .levels {
-    width: 20%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     color: white;
 }
 
 .levels-title {
-    padding-bottom: 20px;
+    padding-bottom: 18px;
+
+    @include media-mobile {
+        padding-bottom: 10px;
+    }
 }
 
 .levels-container {
-    width: 100;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-bottom: 20px;
+
+    @include media-mobile {
+        padding-bottom: 10px;
+    }
 }
 
 .levels__item {
@@ -25,6 +32,11 @@
     width: 30px;
     height: 30px;
     text-align: center;
+
+    @include media-mobile {
+        width: 25px;
+        height: 25px;
+    }
 }
 
 .win {
@@ -35,4 +47,9 @@
     line-height: 1.5;
     padding-bottom: 20px;
     font-size: 18px;
+
+    @include media-mobile {
+        padding-bottom: 10px;
+        font-size: 14px;
+    }
 }

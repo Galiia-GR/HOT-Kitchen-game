@@ -1,6 +1,7 @@
 .editor {
     display: flex;
     flex-direction: column;
+    margin: -20px;
 }
 
 .editor-title {
@@ -12,10 +13,11 @@
 .editor-html {
     display: flex;
     align-self: center;
-    width: 60%;
+    width: 65%;
     border: 3px solid #fff;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     background-color: #ffffff9a;
+    overflow: auto;
 }
 .editor-css {
     display: flex;
@@ -29,9 +31,12 @@
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    line-height: 1;
-    font-size: 17px;
+    font-size: 16px;
     color: rgb(78, 78, 78);
+
+    @include media-mobile {
+        font-size: 12px;
+    }
 }
 
 .editor-html__markup {
@@ -39,8 +44,11 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     cursor: pointer;
-    line-height: 1;
-    font-size: 17px;
+    font-size: 16px;
+
+    @include media-mobile {
+        font-size: 12px;
+    }
 }
 
 .markup__item:hover {
@@ -53,8 +61,11 @@
     color: rgb(151, 151, 151);
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
-    line-height: 1.2;
     font-size: 18px;
+
+    @include media-mobile {
+        font-size: 12px;
+    }
 }
 
 .editor-css__button,
@@ -103,4 +114,12 @@
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     color: rgb(73, 36, 158);
+
+    @include media-tablet {
+        font-size: 12px;
+    }
+
+    @include media-mobile {
+        font-size: 9px;
+    }
 }
