@@ -19,7 +19,6 @@ function drawLevel(level: number) {
         levelsList[level].level,
         levelsList[level].title,
         levelsList[level].history,
-        levelsList[level].help,
         levelsList[level].tag,
         levelsList[level].id,
         levelsList[level].html,
@@ -30,6 +29,7 @@ function drawLevel(level: number) {
     myObj.createHtmlMarkUp();
     myObj.createHintsShakeElements();
     myObj.win();
+    myObj.pressHelp();
 }
 
 drawLevel(currentLevel);
@@ -43,8 +43,6 @@ function clearDrawLevel() {
         });
     }
 }
-
-console.log('я попадаю сюда пам пам пам и нажимаю уровни');
 
 levels.forEach((el) =>
     el.addEventListener('click', (e) => {
@@ -135,7 +133,6 @@ function winStore() {
 
 buttonReset?.addEventListener('click', () => {
     localStorage.clear();
-    console.log('РЕСЕД');
     location.reload();
 });
 

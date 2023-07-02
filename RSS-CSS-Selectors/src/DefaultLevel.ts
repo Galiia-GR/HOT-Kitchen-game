@@ -2,12 +2,12 @@ const showHtml = document.querySelector('.editor-html__markup');
 const showLevel = document.querySelector('.levels-show');
 const arrBoardPictires = document.querySelectorAll('.bun');
 const arrLevels = document.querySelectorAll('.levels__item');
+const buttonHelp = document.querySelector('.editor-css__help');
 
 interface DefaultLevel {
     level: number;
     title: string;
     history: string;
-    help: string;
     tag: string;
     id: string;
     html: string[];
@@ -20,7 +20,6 @@ class DefaultLevel implements DefaultLevel {
         level: number,
         title: string,
         history: string,
-        help: string,
         tag: string,
         id: string,
         html: string[],
@@ -30,7 +29,6 @@ class DefaultLevel implements DefaultLevel {
         this.level = level;
         this.title = title;
         this.history = history;
-        this.help = help;
         this.tag = tag;
         this.id = id;
         this.html = html;
@@ -41,14 +39,11 @@ class DefaultLevel implements DefaultLevel {
     createAppendLevel() {
         const levTitle = document.createElement('h2');
         const levHistory = document.createElement('p');
-        const levHelp = document.createElement('p');
 
         levTitle.textContent = this.title;
         showLevel?.appendChild(levTitle);
         showLevel?.appendChild(levHistory);
         levHistory.textContent = this.history;
-        levHelp.textContent = this.help;
-        showLevel?.appendChild(levHelp);
     }
 
     createHtmlMarkUp() {
@@ -232,6 +227,15 @@ class DefaultLevel implements DefaultLevel {
 
         button?.addEventListener('click', handleButtonClick);
         inputPlace?.addEventListener('keydown', handleInputKeyDown);
+    }
+
+    pressHelp() {
+        buttonHelp?.addEventListener('click', () => {
+            const inputPlace = document.querySelector('.editor-css__input') as HTMLInputElement;
+            if (inputPlace) {
+                inputPlace.value = this.tag;
+            }
+        });
     }
 }
 

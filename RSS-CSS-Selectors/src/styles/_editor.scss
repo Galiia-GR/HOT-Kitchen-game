@@ -58,7 +58,8 @@
 }
 
 .editor-css__button,
-.editor-css__reset {
+.editor-css__reset,
+.editor-css__press {
     background-color: rgba(91, 147, 231, 0.671);
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
     cursor: pointer;
@@ -69,21 +70,32 @@
 }
 
 .editor-css__submit,
-.editor-css__resetLev {
+.editor-css__resetLev,
+.editor-css__help {
     display: flex;
     margin: 5px;
     justify-content: start;
 }
 
 .editor-css__button:hover,
-.editor-css__reset:hover {
+.editor-css__reset:hover,
+.editor-css__press:hover {
     transform: translate3d(0, 2px, -2px);
     background-color: rgba(73, 36, 158, 0.315);
 }
 
-.editor-css__resetLev {
+.editor-css__buttons {
     padding-top: 20px;
-    justify-content: end;
+    display: flex;
+    justify-content: space-between;
+}
+
+.editor-css__help {
+    align-self: start;
+}
+
+.editor-css__resetLev {
+    align-self: end;
 }
 
 .editor-css__input {
