@@ -47,6 +47,10 @@ function drawLevel(level: number) {
     if (layerBunsFour && layerBunsFour.style) layerBunsFour.style.display = 'none';
     if (layerBunsFive && layerBunsFive.style) layerBunsFive.style.display = 'none';
 
+    arrLevels.forEach((el) => {
+        if (Number(el.getAttribute('id')) === currentLevel) el.classList.add('hover');
+    });
+
     myObj.createAppendLevel();
     myObj.createHtmlMarkUp();
     myObj.createHintsShakeElements();
@@ -62,6 +66,9 @@ function clearDrawLevel() {
         showLevel.innerHTML = '';
         arrBoardPictires.forEach((element) => {
             if (element.classList.contains('shake')) element.classList.remove('shake');
+        });
+        arrLevels.forEach((el) => {
+            if (el.classList.contains('hover')) el.classList.remove('hover');
         });
     }
 }
@@ -124,6 +131,7 @@ const checkWin = new MutationObserver((mutationsList) => {
                 localStorage.setItem('dataLevel', JSON.stringify(dataLevel));
                 clearDrawLevel();
                 (inputPlace as HTMLInputElement).value = '';
+
                 console.log(dataLevel);
                 if (checkArray(dataLevel)) {
                     if (layerBunsZero && layerBunsZero.style) layerBunsZero.style.display = 'none';

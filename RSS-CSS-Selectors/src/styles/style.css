@@ -415,7 +415,8 @@ footer {
   color: #fff;
   text-align: center;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 48px;
+  padding-bottom: 100px;
 }
 
 .editor-html {

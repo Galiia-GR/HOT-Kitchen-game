@@ -506,16 +506,11 @@ class DefaultLevel implements DefaultLevel {
         const inputPlace = document.querySelector('.editor-css__input') as HTMLInputElement;
         const boardImg = document.querySelector('.board-img') as HTMLElement;
 
-        const handleButtonClick = () => {
+        button?.addEventListener('click', () => {
             if (this.tag !== inputPlace.value) {
-                boardImg.style.border = '5px solid red';
-                boardImg.style.animation = 'shake 0.5s infinite';
-                setTimeout(() => {
-                    boardImg.style.border = '5px solid rgba(73, 36, 158, 0.61)';
-                    boardImg.style.animation = '';
-                    console.log('You wrong');
-                }, 500);
-            } else if (this.tag === inputPlace.value) {
+                boardImg.style.animation = 'shake 0.5s';
+                console.log('You wrong');
+            } else {
                 arrLevels.forEach((item) => {
                     if (Number(item.getAttribute('id')) === this.level) {
                         item.classList.add('win');
@@ -523,16 +518,23 @@ class DefaultLevel implements DefaultLevel {
                 });
                 console.log('You right');
             }
-        };
+        });
 
-        const handleInputKeyDown = (event: KeyboardEvent) => {
+        inputPlace?.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                handleButtonClick();
+                if (this.tag !== inputPlace.value) {
+                    boardImg.style.animation = 'shake 0.5s';
+                    console.log('You wrong');
+                } else {
+                    arrLevels.forEach((item) => {
+                        if (Number(item.getAttribute('id')) === this.level) {
+                            item.classList.add('win');
+                        }
+                    });
+                    console.log('You right');
+                }
             }
-        };
-
-        button?.addEventListener('click', handleButtonClick);
-        inputPlace?.addEventListener('keydown', handleInputKeyDown);
+        });
     }
 
     pressHelp() {
