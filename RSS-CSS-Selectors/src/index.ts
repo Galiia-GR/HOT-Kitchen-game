@@ -12,6 +12,18 @@ const inputPlace = document.querySelector('.editor-css__input');
 const buttonReset = document.querySelector('.editor-css__resetLev');
 const dataLevel: number[] = [];
 
+const layerBunsZero = document.querySelector('.board-buns__level0') as HTMLElement;
+const layerBunsOne = document.querySelector('.board-buns__level1') as HTMLElement;
+const layerBunsTwo = document.querySelector('.board-buns__level2') as HTMLElement;
+const layerBunsThree = document.querySelector('.board-buns__level3') as HTMLElement;
+const layerBunsFour = document.querySelector('.board-buns__level4') as HTMLElement;
+const layerBunsFive = document.querySelector('.board-buns__level5') as HTMLElement;
+
+const boardImg = document.querySelector('.board-img') as HTMLElement;
+const winImg = document.querySelector('.board-win') as HTMLElement;
+const winHeader = document.querySelector('.editor-win') as HTMLElement;
+const editorHeader = document.querySelector('.editor-title') as HTMLElement;
+
 let currentLevel: number = levelsList[0].level;
 
 function drawLevel(level: number) {
@@ -28,6 +40,13 @@ function drawLevel(level: number) {
         levelsList[level].childFourth,
         levelsList[level].childFifth
     );
+
+    if (layerBunsOne && layerBunsOne.style) layerBunsOne.style.display = 'none';
+    if (layerBunsTwo && layerBunsTwo.style) layerBunsTwo.style.display = 'none';
+    if (layerBunsThree && layerBunsThree.style) layerBunsThree.style.display = 'none';
+    if (layerBunsFour && layerBunsFour.style) layerBunsFour.style.display = 'none';
+    if (layerBunsFive && layerBunsFive.style) layerBunsFive.style.display = 'none';
+
     myObj.createAppendLevel();
     myObj.createHtmlMarkUp();
     myObj.createHintsShakeElements();
@@ -91,6 +110,11 @@ htmlMarkUp?.addEventListener('mouseout', (e) => {
     }
 });
 
+function checkArray(arr: number[] = []) {
+    const expected = Array.from(Array(11).keys()); // Создаем массив с элементами от 0 до 10
+    return expected.every((element) => arr.includes(element));
+}
+
 const checkWin = new MutationObserver((mutationsList) => {
     mutationsList.forEach((mutation) => {
         if (mutation.attributeName === 'class') {
@@ -100,12 +124,25 @@ const checkWin = new MutationObserver((mutationsList) => {
                 localStorage.setItem('dataLevel', JSON.stringify(dataLevel));
                 clearDrawLevel();
                 (inputPlace as HTMLInputElement).value = '';
+                console.log(dataLevel);
+                if (checkArray(dataLevel)) {
+                    if (layerBunsZero && layerBunsZero.style) layerBunsZero.style.display = 'none';
+                    if (layerBunsOne && layerBunsOne.style) layerBunsOne.style.display = 'none';
+                    if (layerBunsTwo && layerBunsTwo.style) layerBunsTwo.style.display = 'none';
+                    if (layerBunsThree && layerBunsThree.style) layerBunsThree.style.display = 'none';
+                    if (layerBunsFour && layerBunsFour.style) layerBunsFour.style.display = 'none';
+                    if (layerBunsFive && layerBunsFive.style) layerBunsFive.style.display = 'none';
 
-                if (currentLevel !== 10) {
-                    currentLevel = Number(targetElement.getAttribute('id')) + 1;
-                    drawLevel(currentLevel);
-                } else {
+                    if (boardImg && boardImg.style) boardImg.style.display = 'none';
+                    if (editorHeader && editorHeader.style) editorHeader.style.display = 'none';
+
+                    if (winHeader && winHeader.style) winHeader.style.display = 'block';
+                    if (winImg && winImg.style) winImg.style.display = 'block';
+
                     console.log('!!!!You win !!!!');
+                } else {
+                    if (currentLevel !== 10) currentLevel = Number(targetElement.getAttribute('id')) + 1;
+                    drawLevel(currentLevel);
                 }
             }
         }

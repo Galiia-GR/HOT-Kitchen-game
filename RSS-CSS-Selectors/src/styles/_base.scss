@@ -10,7 +10,7 @@
 $content-width: 1440px;
 $tablet-width: 761px;
 $tablet-width-big: 1220px;
-$mobile-width: 320px;
+$mobile-width: 480px;
 $mobile-big-width: 760px;
 @mixin media-laptop {
     @media (max-width: $content-width) {
@@ -57,15 +57,18 @@ $mobile-big-width: 760px;
 
 header {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     color: white;
+    justify-content: baseline;
 }
 
 footer {
-    padding-top: 10px;
     align-self: flex-end;
     color: white;
+}
+
+.RSS {
+    padding-left: 50px;
 }
 
 .game {
@@ -82,9 +85,19 @@ footer {
     }
 }
 
+.header__hot {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 220px;
+}
+
+.header__img {
+    width: 100px;
+    height: 45px;
+}
+
 .main-title {
     padding-top: 10px;
-    padding-left: 200px;
     font-size: 28px;
     color: white;
 

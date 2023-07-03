@@ -143,7 +143,7 @@ export const levelsList = [
     },
     {
         level: 10,
-        title: 'Select all the things!',
+        title: 'Select all!',
         history:
             'The Universal Selector! You can select everything! You can select all elements with the universal selector * !',
         tag: '*',
