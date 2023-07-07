@@ -20,6 +20,7 @@ module.exports = {
         'no-console': 'off',
         'no-alert': 'off',
         'import/prefer-default-export': 'off',
+        'no-useless-return': 'off',
         'max-len': [
             'error',
             {

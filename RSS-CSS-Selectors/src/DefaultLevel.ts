@@ -1,7 +1,6 @@
 const showHtml = document.querySelector('.editor-html__markup');
 const showLevel = document.querySelector('.levels-show');
 const arrBoardPictires = document.querySelectorAll('.bun');
-const arrLevels = document.querySelectorAll('.levels__item');
 const buttonHelp = document.querySelector('.editor-css__help');
 
 interface DefaultLevel {
@@ -501,48 +500,17 @@ class DefaultLevel implements DefaultLevel {
         });
     }
 
-    win() {
-        const button = document.querySelector('.editor-css__button');
-        const inputPlace = document.querySelector('.editor-css__input') as HTMLInputElement;
-        const boardImg = document.querySelector('.board-img') as HTMLElement;
-
-        button?.addEventListener('click', () => {
-            if (this.tag !== inputPlace.value) {
-                boardImg.style.animation = 'shake 0.5s';
-                console.log('You wrong');
-            } else {
-                arrLevels.forEach((item) => {
-                    if (Number(item.getAttribute('id')) === this.level) {
-                        item.classList.add('win');
-                    }
-                });
-                console.log('You right');
-            }
-        });
-
-        inputPlace?.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                if (this.tag !== inputPlace.value) {
-                    boardImg.style.animation = 'shake 0.5s';
-                    console.log('You wrong');
-                } else {
-                    arrLevels.forEach((item) => {
-                        if (Number(item.getAttribute('id')) === this.level) {
-                            item.classList.add('win');
-                        }
-                    });
-                    console.log('You right');
-                }
-            }
-        });
-    }
-
     pressHelp() {
+        const inputPlace = document.querySelector('.editor-css__input') as HTMLInputElement;
         buttonHelp?.addEventListener('click', () => {
-            const inputPlace = document.querySelector('.editor-css__input') as HTMLInputElement;
+            inputPlace.classList.add('typing__anim');
             if (inputPlace) {
                 inputPlace.value = this.tag;
             }
+        });
+
+        inputPlace.addEventListener('animationend', () => {
+            inputPlace.classList.remove('typing__anim');
         });
     }
 }
