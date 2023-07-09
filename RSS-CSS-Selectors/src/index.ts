@@ -150,7 +150,7 @@ htmlMarkUp?.addEventListener('mouseout', (e) => {
     }
 });
 
-function checkArray(arr: number[] = []) {
+export function checkArray(arr: number[] = []) {
     const expected = Array.from(Array(11).keys()); // Создаем массив с элементами от 0 до 10
     return expected.every((element) => arr.includes(element));
 }
