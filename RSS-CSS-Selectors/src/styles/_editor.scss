@@ -36,7 +36,7 @@
 }
 
 .column-numbers {
-    background-color: rgba(73, 36, 158, 0.315);
+    background-color: $color-primary-light;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
@@ -61,7 +61,7 @@
 }
 
 .markup__item:hover {
-    background-color: rgba(91, 147, 231, 0.671);
+    background-color: $color-second-blue;
 }
 
 .editor-css__markup {
@@ -80,10 +80,10 @@
 .editor-css__button,
 .editor-css__reset,
 .editor-css__press {
-    background-color: rgba(91, 147, 231, 0.671);
+    background-color: $color-second-blue;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    border: 2px solid rgba(91, 147, 231, 0.671);
+    border: 2px solid $color-second-blue;
     color: #fff;
     padding: 5px;
     border-radius: 15px;
@@ -101,7 +101,7 @@
 .editor-css__reset:hover,
 .editor-css__press:hover {
     transform: translate3d(0, 2px, -2px);
-    background-color: rgba(73, 36, 158, 0.315);
+    background-color: $color-primary-light;
 }
 
 .editor-css__buttons {

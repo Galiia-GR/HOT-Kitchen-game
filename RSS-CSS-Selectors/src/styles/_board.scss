@@ -15,7 +15,7 @@
 .board-img {
     width: 100%;
     max-height: 70%;
-    border: 5px solid rgba(73, 36, 158, 0.61);
+    border: 5px solid $color-primary;
     background-image: url('../images/3b060e0ca625a5ea9f32.jpg');
 }
 
@@ -23,7 +23,7 @@
     display: none;
     width: 100%;
     max-height: 70%;
-    border: 5px solid rgba(73, 36, 158, 0.61);
+    border: 5px solid $color-primary;
     background-image: url('../images/d683226e59b2f8ece47d.jpg');
 }
 

@@ -3,9 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-// body {
-//     overflow: hidden;
-// }
+
+$color-primary: rgba(73, 36, 158, 0.61);
+$color-primary-light: rgba(73, 36, 158, 0.315);
+
+$color-second-blue: rgba(91, 147, 231, 0.671);
 
 $content-width: 1440px;
 $tablet-width: 761px;
