@@ -2,7 +2,6 @@ import './styles/style.css';
 import { levelsList } from './levelList';
 import DefaultLevel from './DefaultLevel';
 
-const showHtml = document.querySelector('.editor-html__markup');
 const showLevel = document.querySelector('.levels-show');
 const arrBoardPictires = document.querySelectorAll('.bun');
 const htmlMarkUp = document.querySelector('.editor-html__markup');
@@ -45,11 +44,11 @@ function drawLevel(level: number) {
         levelsList[level].childFifth
     );
 
-    if (layerBunsOne && layerBunsOne.style) layerBunsOne.style.display = 'none';
-    if (layerBunsTwo && layerBunsTwo.style) layerBunsTwo.style.display = 'none';
-    if (layerBunsThree && layerBunsThree.style) layerBunsThree.style.display = 'none';
-    if (layerBunsFour && layerBunsFour.style) layerBunsFour.style.display = 'none';
-    if (layerBunsFive && layerBunsFive.style) layerBunsFive.style.display = 'none';
+    if (layerBunsOne?.style) layerBunsOne.style.display = 'none';
+    if (layerBunsTwo?.style) layerBunsTwo.style.display = 'none';
+    if (layerBunsThree?.style) layerBunsThree.style.display = 'none';
+    if (layerBunsFour?.style) layerBunsFour.style.display = 'none';
+    if (layerBunsFive?.style) layerBunsFive.style.display = 'none';
 
     arrLevels.forEach((el) => {
         if (Number(el.getAttribute('id')) === currentLevel) el.classList.add('hover');
@@ -65,8 +64,8 @@ function drawLevel(level: number) {
 drawLevel(currentLevel);
 
 function clearDrawLevel() {
-    if (showHtml && showLevel && arrBoardPictires) {
-        showHtml.innerHTML = '';
+    if (htmlMarkUp && showLevel && arrBoardPictires) {
+        htmlMarkUp.innerHTML = '';
         showLevel.innerHTML = '';
         arrBoardPictires.forEach((element) => {
             if (element.classList.contains('shake')) element.classList.remove('shake');
@@ -83,7 +82,7 @@ levels.forEach((el) =>
 
         if ((temp as HTMLElement)?.getAttribute('id')) {
             currentLevel = Number((temp as HTMLElement)?.getAttribute('id'));
-            (inputPlace as HTMLInputElement).value = '';
+            inputPlace.value = '';
 
             clearDrawLevel();
             drawLevel(currentLevel);
@@ -163,24 +162,24 @@ const checkWin = new MutationObserver((mutationsList) => {
                 dataLevel.push(Number(targetElement.getAttribute('id')));
                 localStorage.setItem('dataLevel', JSON.stringify(dataLevel));
                 clearDrawLevel();
-                (inputPlace as HTMLInputElement).value = '';
+                inputPlace.value = '';
                 if (targetElement.classList.contains('tips')) {
                     dataTips.push(Number(targetElement.getAttribute('id')));
                     localStorage.setItem('dataTips', JSON.stringify(dataTips));
                 }
                 if (checkArray(dataLevel)) {
-                    if (layerBunsZero && layerBunsZero.style) layerBunsZero.style.display = 'none';
-                    if (layerBunsOne && layerBunsOne.style) layerBunsOne.style.display = 'none';
-                    if (layerBunsTwo && layerBunsTwo.style) layerBunsTwo.style.display = 'none';
-                    if (layerBunsThree && layerBunsThree.style) layerBunsThree.style.display = 'none';
-                    if (layerBunsFour && layerBunsFour.style) layerBunsFour.style.display = 'none';
-                    if (layerBunsFive && layerBunsFive.style) layerBunsFive.style.display = 'none';
+                    if (layerBunsZero?.style) layerBunsZero.style.display = 'none';
+                    if (layerBunsOne?.style) layerBunsOne.style.display = 'none';
+                    if (layerBunsTwo?.style) layerBunsTwo.style.display = 'none';
+                    if (layerBunsThree?.style) layerBunsThree.style.display = 'none';
+                    if (layerBunsFour?.style) layerBunsFour.style.display = 'none';
+                    if (layerBunsFive?.style) layerBunsFive.style.display = 'none';
 
-                    if (boardImg && boardImg.style) boardImg.style.display = 'none';
-                    if (editorHeader && editorHeader.style) editorHeader.style.display = 'none';
+                    if (boardImg?.style) boardImg.style.display = 'none';
+                    if (editorHeader?.style) editorHeader.style.display = 'none';
 
-                    if (winHeader && winHeader.style) winHeader.style.display = 'block';
-                    if (winImg && winImg.style) winImg.style.display = 'block';
+                    if (winHeader?.style) winHeader.style.display = 'block';
+                    if (winImg?.style) winImg.style.display = 'block';
 
                     console.log('!!!!You win !!!!');
                 } else {

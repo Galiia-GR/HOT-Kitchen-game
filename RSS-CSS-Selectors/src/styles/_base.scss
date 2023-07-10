@@ -58,13 +58,13 @@ $mobile-big-width: 760px;
 header {
     display: flex;
     align-items: flex-start;
-    color: white;
+    color: #ffff;
     justify-content: baseline;
 }
 
 footer {
     align-self: flex-end;
-    color: white;
+    color: #ffff;
 }
 
 .RSS {
@@ -99,7 +99,7 @@ footer {
 .main-title {
     padding-top: 10px;
     font-size: 28px;
-    color: white;
+    color: #ffff;
 
     @include media-tablet {
         font-size: 24px;

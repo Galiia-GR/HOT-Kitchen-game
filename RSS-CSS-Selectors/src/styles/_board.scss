@@ -7,9 +7,6 @@
     align-items: center;
     margin-top: -40px;
 
-    @include media-tablet {
-    }
-
     @include media-mobile {
         width: 80%;
     }

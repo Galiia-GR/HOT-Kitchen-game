@@ -2,7 +2,7 @@
     width: 30%;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: #ffff;
     justify-content: space-between;
 }
 
@@ -28,7 +28,7 @@
 .levels__item {
     position: relative;
     cursor: pointer;
-    border: 1px solid white;
+    border: 1px solid #ffff;
     padding-top: 5px;
     border-radius: 50%;
     width: 30px;

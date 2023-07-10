@@ -1,4 +1,4 @@
-const showHtml = document.querySelector('.editor-html__markup');
+const htmlMarkUp = document.querySelector('.editor-html__markup');
 const showLevel = document.querySelector('.levels-show');
 const arrBoardPictires = document.querySelectorAll('.bun');
 const buttonHelp = document.querySelector('.editor-css__help');
@@ -67,24 +67,24 @@ class DefaultLevel implements DefaultLevel {
             switch (index) {
                 case 0:
                     tempDiv.setAttribute('data', `${element}First`);
-                    showHtml?.appendChild(tempDiv);
+                    htmlMarkUp?.appendChild(tempDiv);
                     break;
 
                 case 1:
                     tempDiv.setAttribute('data', `${element}First`);
-                    showHtml?.appendChild(tempDiv);
+                    htmlMarkUp?.appendChild(tempDiv);
                     break;
 
                 case 2:
                     tempDiv.setAttribute('data', `${element}Second`);
-                    showHtml?.appendChild(tempDiv);
+                    htmlMarkUp?.appendChild(tempDiv);
                     break;
                 case 3:
                     tempDiv.setAttribute('data', `${element}Second`);
-                    showHtml?.appendChild(tempDiv);
+                    htmlMarkUp?.appendChild(tempDiv);
                     break;
                 default:
-                    console.log('Opps');
+                    console.log("can't read html layer");
                     break;
             }
             tempDiv?.appendChild(tempSpan);
@@ -117,29 +117,29 @@ class DefaultLevel implements DefaultLevel {
                 switch (index) {
                     case 0:
                         tempDiv.setAttribute('data', `${element}BlackFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 1:
                         tempDiv.setAttribute('data', `${element}WhiteFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 2:
                         tempDiv.setAttribute('data', `${element}BlackSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
                     case 3:
                         tempDiv.setAttribute('data', `${element}WhiteSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
 
                         break;
                     default:
-                        console.log('Opps');
+                        console.log("can't read html layer");
                         break;
                 }
                 tempDiv?.appendChild(tempSpan);
@@ -169,29 +169,29 @@ class DefaultLevel implements DefaultLevel {
                 switch (index) {
                     case 0:
                         tempDiv.setAttribute('data', `${element}BlackFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 1:
                         tempDiv.setAttribute('data', `${element}WhiteFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 2:
                         tempDiv.setAttribute('data', `${element}BlackSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
                     case 3:
                         tempDiv.setAttribute('data', `${element}WhiteSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
 
                         break;
                     default:
-                        console.log('Opps');
+                        console.log("can't read html layer");
                         break;
                 }
                 tempDiv?.appendChild(tempSpan);
@@ -221,29 +221,29 @@ class DefaultLevel implements DefaultLevel {
                 switch (index) {
                     case 0:
                         tempDiv.setAttribute('data', `${element}BlackFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 1:
                         tempDiv.setAttribute('data', `${element}WhiteFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 2:
                         tempDiv.setAttribute('data', `${element}BlackSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
                     case 3:
                         tempDiv.setAttribute('data', `${element}WhiteSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
 
                         break;
                     default:
-                        console.log('Opps');
+                        console.log("can't read html layer");
                         break;
                 }
                 tempDiv?.appendChild(tempSpan);
@@ -273,29 +273,29 @@ class DefaultLevel implements DefaultLevel {
                 switch (index) {
                     case 0:
                         tempDiv.setAttribute('data', `${element}BlackFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 1:
                         tempDiv.setAttribute('data', `${element}WhiteFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 2:
                         tempDiv.setAttribute('data', `${element}BlackSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
                     case 3:
                         tempDiv.setAttribute('data', `${element}WhiteSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
 
                         break;
                     default:
-                        console.log('Opps');
+                        console.log("can't read html layer");
                         break;
                 }
 
@@ -332,29 +332,29 @@ class DefaultLevel implements DefaultLevel {
                 switch (index) {
                     case 0:
                         tempDiv.setAttribute('data', `headBlackFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 1:
                         tempDiv.setAttribute('data', `headWhiteFirst`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
 
                     case 2:
                         tempDiv.setAttribute('data', `headBlackSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
                         break;
                     case 3:
                         tempDiv.setAttribute('data', `headWhiteSecond`);
-                        showHtml?.appendChild(tempDiv);
+                        htmlMarkUp?.appendChild(tempDiv);
                         arrGeneralBunsHtml[index].appendChild(tempDiv);
 
                         break;
                     default:
-                        console.log('Opps');
+                        console.log("can't read html layer");
                         break;
                 }
                 tempDiv?.appendChild(tempSpan);
