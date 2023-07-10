@@ -1,4 +1,4 @@
-const htmlMarkUp = document.querySelector('.editor-html__markup');
+const htmlMarkUp = document.querySelector('.editor-html__markup') as HTMLElement;
 const showLevel = document.querySelector('.levels-show');
 const arrBoardPictires = document.querySelectorAll('.bun');
 const buttonHelp = document.querySelector('.editor-css__help');
@@ -55,6 +55,41 @@ class DefaultLevel implements DefaultLevel {
     }
 
     createHtmlMarkUp() {
+        function createSwichMarkupLayer(element: string, index: number) {
+            const tempDiv = document.createElement('div');
+            tempDiv.classList.add('markup__item');
+
+            const arrGeneralBunsHtml = document.querySelectorAll('.general');
+            switch (index) {
+                case 0:
+                    tempDiv.setAttribute('data', `${element}BlackFirst`);
+                    htmlMarkUp?.appendChild(tempDiv);
+                    arrGeneralBunsHtml[index].appendChild(tempDiv);
+                    break;
+
+                case 1:
+                    tempDiv.setAttribute('data', `${element}WhiteFirst`);
+                    htmlMarkUp?.appendChild(tempDiv);
+                    arrGeneralBunsHtml[index].appendChild(tempDiv);
+                    break;
+
+                case 2:
+                    tempDiv.setAttribute('data', `${element}BlackSecond`);
+                    htmlMarkUp?.appendChild(tempDiv);
+                    arrGeneralBunsHtml[index].appendChild(tempDiv);
+                    break;
+                case 3:
+                    tempDiv.setAttribute('data', `${element}WhiteSecond`);
+                    htmlMarkUp?.appendChild(tempDiv);
+                    arrGeneralBunsHtml[index].appendChild(tempDiv);
+                    break;
+
+                default:
+                    console.log("can't read html layer");
+                    break;
+            }
+        }
+
         const [...arrHtml] = this.html;
 
         /*  inintial layer   */
@@ -64,29 +99,11 @@ class DefaultLevel implements DefaultLevel {
             const tempSpan = document.createElement('span');
             tempDiv.classList.add('markup__item');
             tempDiv.classList.add('general');
-            switch (index) {
-                case 0:
-                    tempDiv.setAttribute('data', `${element}First`);
-                    htmlMarkUp?.appendChild(tempDiv);
-                    break;
 
-                case 1:
-                    tempDiv.setAttribute('data', `${element}First`);
-                    htmlMarkUp?.appendChild(tempDiv);
-                    break;
+            const dataAttr = index < 2 ? `${element}First` : `${element}Second`;
+            tempDiv.setAttribute('data', dataAttr);
 
-                case 2:
-                    tempDiv.setAttribute('data', `${element}Second`);
-                    htmlMarkUp?.appendChild(tempDiv);
-                    break;
-                case 3:
-                    tempDiv.setAttribute('data', `${element}Second`);
-                    htmlMarkUp?.appendChild(tempDiv);
-                    break;
-                default:
-                    console.log("can't read html layer");
-                    break;
-            }
+            htmlMarkUp?.appendChild(tempDiv);
             tempDiv?.appendChild(tempSpan);
             if (typeof element === 'string' && this.id !== '' && index === 1) {
                 tempSpan.textContent = `<${element} id=${this.id}>`;
@@ -106,42 +123,14 @@ class DefaultLevel implements DefaultLevel {
                 boardLev1.style.display = 'flex';
             }
 
-            const arrGeneralBunsHtml = document.querySelectorAll('.general');
-
             arrChildFirstHtml.forEach((element, index: number) => {
-                const tempSpan = document.createElement('span');
                 const tempDiv = document.createElement('div');
+                const tempSpan = document.createElement('span');
                 tempDiv.classList.add('markup__item');
                 tempDiv.classList.add('level1');
 
-                switch (index) {
-                    case 0:
-                        tempDiv.setAttribute('data', `${element}BlackFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
+                createSwichMarkupLayer(element, index);
 
-                    case 1:
-                        tempDiv.setAttribute('data', `${element}WhiteFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-
-                    case 2:
-                        tempDiv.setAttribute('data', `${element}BlackSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-                    case 3:
-                        tempDiv.setAttribute('data', `${element}WhiteSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-
-                        break;
-                    default:
-                        console.log("can't read html layer");
-                        break;
-                }
                 tempDiv?.appendChild(tempSpan);
                 tempSpan.textContent = `<${element}>`;
                 tempDiv.classList.add(`${element}`);
@@ -158,42 +147,14 @@ class DefaultLevel implements DefaultLevel {
                 boardLev2.style.display = 'flex';
             }
 
-            const arrGeneralBunsHtml = document.querySelectorAll('.general');
-
             arrChildSecondHtml.forEach((element, index: number) => {
-                const tempSpan = document.createElement('span');
                 const tempDiv = document.createElement('div');
+                const tempSpan = document.createElement('span');
                 tempDiv.classList.add('markup__item');
                 tempDiv.classList.add('level2');
 
-                switch (index) {
-                    case 0:
-                        tempDiv.setAttribute('data', `${element}BlackFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
+                createSwichMarkupLayer(element, index);
 
-                    case 1:
-                        tempDiv.setAttribute('data', `${element}WhiteFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-
-                    case 2:
-                        tempDiv.setAttribute('data', `${element}BlackSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-                    case 3:
-                        tempDiv.setAttribute('data', `${element}WhiteSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-
-                        break;
-                    default:
-                        console.log("can't read html layer");
-                        break;
-                }
                 tempDiv?.appendChild(tempSpan);
                 tempSpan.textContent = `<${element} class = "slice" >`;
                 tempDiv.classList.add(`${element}`);
@@ -210,42 +171,14 @@ class DefaultLevel implements DefaultLevel {
                 boardLev3.style.display = 'flex';
             }
 
-            const arrGeneralBunsHtml = document.querySelectorAll('.general');
-
             arrChildThirdHtml.forEach((element, index: number) => {
-                const tempSpan = document.createElement('span');
                 const tempDiv = document.createElement('div');
+                const tempSpan = document.createElement('span');
                 tempDiv.classList.add('markup__item');
                 tempDiv.classList.add('level3');
 
-                switch (index) {
-                    case 0:
-                        tempDiv.setAttribute('data', `${element}BlackFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
+                createSwichMarkupLayer(element, index);
 
-                    case 1:
-                        tempDiv.setAttribute('data', `${element}WhiteFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-
-                    case 2:
-                        tempDiv.setAttribute('data', `${element}BlackSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-                    case 3:
-                        tempDiv.setAttribute('data', `${element}WhiteSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-
-                        break;
-                    default:
-                        console.log("can't read html layer");
-                        break;
-                }
                 tempDiv?.appendChild(tempSpan);
                 tempSpan.textContent = `<${element} class = "tomato" >`;
                 tempDiv.classList.add(`${element}`);
@@ -262,42 +195,13 @@ class DefaultLevel implements DefaultLevel {
                 boardLev4.style.display = 'flex';
             }
 
-            const arrGeneralBunsHtml = document.querySelectorAll('.general');
-
             arrChildFourthHtml.forEach((element, index: number) => {
-                const tempSpan = document.createElement('span');
                 const tempDiv = document.createElement('div');
+                const tempSpan = document.createElement('span');
                 tempDiv.classList.add('markup__item');
                 tempDiv.classList.add('level3');
 
-                switch (index) {
-                    case 0:
-                        tempDiv.setAttribute('data', `${element}BlackFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-
-                    case 1:
-                        tempDiv.setAttribute('data', `${element}WhiteFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-
-                    case 2:
-                        tempDiv.setAttribute('data', `${element}BlackSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-                    case 3:
-                        tempDiv.setAttribute('data', `${element}WhiteSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-
-                        break;
-                    default:
-                        console.log("can't read html layer");
-                        break;
-                }
+                createSwichMarkupLayer(element, index);
 
                 if (index === 1) {
                     tempDiv?.appendChild(tempSpan);
@@ -321,42 +225,14 @@ class DefaultLevel implements DefaultLevel {
                 boardLev5.style.display = 'flex';
             }
 
-            const arrGeneralBunsHtml = document.querySelectorAll('.general');
-
             arrChildFifthHtml.forEach((element, index: number) => {
-                const tempSpan = document.createElement('span');
                 const tempDiv = document.createElement('div');
+                const tempSpan = document.createElement('span');
                 tempDiv.classList.add('markup__item');
                 tempDiv.classList.add('level3');
 
-                switch (index) {
-                    case 0:
-                        tempDiv.setAttribute('data', `headBlackFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
+                createSwichMarkupLayer(element, index);
 
-                    case 1:
-                        tempDiv.setAttribute('data', `headWhiteFirst`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-
-                    case 2:
-                        tempDiv.setAttribute('data', `headBlackSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-                        break;
-                    case 3:
-                        tempDiv.setAttribute('data', `headWhiteSecond`);
-                        htmlMarkUp?.appendChild(tempDiv);
-                        arrGeneralBunsHtml[index].appendChild(tempDiv);
-
-                        break;
-                    default:
-                        console.log("can't read html layer");
-                        break;
-                }
                 tempDiv?.appendChild(tempSpan);
                 tempSpan.textContent = `</${element}>`;
                 tempDiv.classList.add(`${element}`);
