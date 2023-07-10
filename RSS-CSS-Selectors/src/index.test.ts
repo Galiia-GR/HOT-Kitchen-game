@@ -1,12 +1,4 @@
-// import { checkArray } from './index';
-
-// jest.mock('./styles/style.css', () => '');
-
-// describe('index file', () => {
-//     it('should to be a function', () => {
-//         expect(checkArray).toBeInstanceOf(Function);
-//     });
-// });
+jest.mock('./styles/style.css', () => '');
 
 describe('index', () => {
     it('test', () => {

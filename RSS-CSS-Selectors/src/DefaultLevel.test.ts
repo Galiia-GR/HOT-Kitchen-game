@@ -64,4 +64,8 @@ describe('class DefaultLevel', () => {
     it('arr html lenght', () => {
         expect(arrTestHtml.length).toBe(4);
     });
+
+    it('should to be a function', () => {
+        expect(testLevel.pressHelp).toBeInstanceOf(Function);
+    });
 });
