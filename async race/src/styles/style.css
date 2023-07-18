@@ -4,32 +4,68 @@
   box-sizing: border-box;
 }
 
-#container {
+body {
+  background-color: rgba(161, 60, 60, 0.103);
+}
+
+.container {
   display: flex;
-  max-width: 1920px;
+  max-width: 1720px;
   max-height: 100%;
   margin: 0 auto;
   overflow: hidden;
-  position: relative;
-  padding-top: 20.25%;
   flex-direction: column;
 }
 
 .wrapper {
   top: 0;
   left: 0;
-  position: absolute;
   width: 100%;
   height: 100%;
   background-image: url("../images/db7b2182207d54b77aaa.jpg");
   background-repeat: no-repeat;
-  background-size: 100% 50%;
+  background-size: 100% 100%;
 }
 
 .cars-container {
-  height: 500px;
+  height: 600px;
   background-color: rgb(84, 84, 84);
-  width: 1920px;
+  width: 1720px;
+}
+
+.switch {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.switch__garage,
+.switch__winners {
+  cursor: pointer;
+  font-size: 12px;
+  width: 80px;
+  height: 20px;
+}
+
+.input {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.input-buttons {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.garage-title {
+  margin: 80px 0 0 20px;
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: aliceblue;
 }
 
 /*# sourceMappingURL=style.css.map */
