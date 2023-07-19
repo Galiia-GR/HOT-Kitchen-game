@@ -1,4 +1,4 @@
-$content-width: 1720px;
+$content-width: 1920px;
 
 * {
     margin: 0;
@@ -31,9 +31,11 @@ body {
 }
 
 .cars-container {
-    height: 600px;
+    height: 500px;
     background-color: rgb(84, 84, 84);
     width: $content-width;
+    display: flex;
+    flex-direction: column;
 }
 
 .switch {
@@ -63,10 +65,39 @@ body {
 }
 
 .garage-title {
-    margin: 80px 0 0 20px;
+    margin: 100px 0 0 20px;
     display: flex;
     gap: 20px;
     font-size: 18px;
     font-weight: bold;
     color: aliceblue;
+}
+.list {
+    padding: 20px;
+}
+
+.car {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    border-bottom: 3px dashed white;
+}
+
+.car__img {
+    display: block;
+    width: 94px;
+    height: 34px;
+}
+
+.car-selectors {
+    display: flex;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.car-selectors__select,
+.car-selectors__remove,
+.car-selectors__start,
+.car-selectors__stop {
+    cursor: pointer;
 }
