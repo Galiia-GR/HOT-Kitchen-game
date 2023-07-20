@@ -1,8 +1,4 @@
-function createEl(tagName: string, className: string) {
-    const el = document.createElement(tagName);
-    if (className) el.className = className;
-    return el;
-}
+import { helpCreateEl } from './drawUI';
 
 function createCarUI(color: string) {
     const svgCar = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -19,68 +15,35 @@ function createCarUI(color: string) {
     return svgCar;
 }
 
-export async function drawCars(): Promise<void> {
-    const container = document.querySelector('.container');
-    if (container) {
-        const carsContainer = createEl('div', 'cars-container');
-        container?.append(carsContainer);
-    } else {
-        console.error('Error: container element not found');
-    }
+const carsContainer = helpCreateEl('div', 'cars-container');
+if (carsContainer) console.log(true);
 
-    const list = createEl('div', 'list');
-
-    document.querySelector('.cars-container')?.append(list);
-}
-
-//  http://127.0.0.1:3000/garage
-
-export async function fethCars(url: string): Promise<void> {
+export async function fethCarsUI(url: string): Promise<void> {
     function getCars(arr: []) {
         return arr.map((data: { id: number; name: string; color: string }) => {
-            const carContain = createEl('div', 'car');
-            carContain.setAttribute('id', `${data.id}`);
-            document.querySelector('.list')?.append(carContain);
+            const car = helpCreateEl('div', 'car');
+            car.setAttribute('id', `${data.id}`);
+            const temp = `
+            <div class="car-selectors">
+            <button class="car-selectors__select" id="select-${data.id}">SELECT</button>
+            <button class="car-selectors__remove" id="remove-${data.id}">REMOVE</button>
+            <button class="car-selectors__start" id="start-${data.id}">Start</button>
+            <button class="car-selectors__stop" id="stop-${data.id}">Stop</button>
+            </div>
+            <h5 class="car__title">${data.name}</h5>
+            <div class="car__img" id=img-${data.id}>${createCarUI(data.color)}</div>`;
 
-            const carTitle = createEl('h5', 'car__title');
-            carTitle.textContent = data.name;
-            carContain.append(carTitle);
-
-            const imgCar = createCarUI(`${data.color}`);
-            const car = createEl('div', 'car__img');
-            carContain.append(car);
-            car.innerHTML = imgCar;
-            return carContain;
+            car.innerHTML = temp;
+            return car;
         });
     }
-
     const response: Response = await fetch(url);
-    const json = await response.json();
-    const carsArr = getCars(json);
+    const arrCars = await response.json();
 
-    document.querySelector('.list')?.append(...carsArr);
+    const carElements = getCars(arrCars);
 
-    const addButtons = document.querySelectorAll('.car');
+    console.log(carElements);
 
-    console.log();
-
-    addButtons.forEach((el) => {
-        const carButtonsSelectors = createEl('div', 'car-selectors');
-        el.insertAdjacentElement('afterend', carButtonsSelectors);
-        const buttonSelect = createEl('button', 'car-selectors__select');
-        carButtonsSelectors?.append(buttonSelect);
-        buttonSelect.textContent = 'SELECT';
-
-        const buttonRemove = createEl('button', 'car-selectors__remove');
-        carButtonsSelectors?.append(buttonRemove);
-        buttonRemove.textContent = 'REMOVE';
-
-        const buttonStart = createEl('button', 'car-selectors__stars');
-        carButtonsSelectors?.append(buttonStart);
-        buttonStart.textContent = 'Start';
-
-        const buttonStop = createEl('button', 'car-selectors__stop');
-        carButtonsSelectors?.append(buttonStop);
-        buttonStop.textContent = 'Stop';
-    });
+    if (carsContainer) carsContainer.append(...carElements);
+    document.querySelector('.container')?.append(carsContainer);
 }

@@ -1,12 +1,12 @@
 import './styles/style.css';
 
 import { ininialUI } from './drawUI';
-import { drawCars, fethCars } from './raceUI';
+import { fethCarsUI } from './raceUI';
+import { garageApi } from './api';
 
 async function startApp(): Promise<void> {
     await ininialUI();
-    drawCars();
-    fethCars('http://localhost:3000/garage');
+    fethCarsUI(garageApi);
 }
 
 startApp();

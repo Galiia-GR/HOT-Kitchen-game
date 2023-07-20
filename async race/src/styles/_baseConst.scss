@@ -72,14 +72,12 @@ body {
     font-weight: bold;
     color: aliceblue;
 }
-.list {
-    padding: 20px;
-}
 
 .car {
     display: flex;
     flex-direction: column;
     padding-top: 10px;
+    padding-left: 10px;
     border-bottom: 3px dashed white;
 }
 
@@ -92,7 +90,7 @@ body {
 .car-selectors {
     display: flex;
     gap: 10px;
-    padding-top: 10px;
+    padding: 10px 0 10px 0;
 }
 
 .car-selectors__select,
