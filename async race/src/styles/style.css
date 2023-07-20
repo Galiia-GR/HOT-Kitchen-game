@@ -84,6 +84,10 @@ body {
   height: 34px;
 }
 
+.car__title {
+  padding-bottom: 20px;
+}
+
 .car-selectors {
   display: flex;
   gap: 10px;
@@ -95,6 +99,16 @@ body {
 .car-selectors__start,
 .car-selectors__stop {
   cursor: pointer;
+}
+
+.delete {
+  display: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(197, 226, 230);
 }
 
 /*# sourceMappingURL=style.css.map */

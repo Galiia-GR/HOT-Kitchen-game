@@ -11,6 +11,7 @@ export async function ininialUI(): Promise<void> {
     <button class="switch__garage">to GARAGE</button>
     <button class="switch__winners">to WINNERS</button>
     </div>
+    <div class = "garage">
     <div class="input">
     <div class="input-create__block">
     <input class="input-create__input">
@@ -31,6 +32,7 @@ export async function ininialUI(): Promise<void> {
     <div class="garage-title">
     <span class="garage-title__main">Garage(4)</span>
     <span class="garage-title__page">Page #1</span>
+    </div>
     </div>
 `;
 
