@@ -18,29 +18,26 @@ function createCarUI(color: string) {
 }
 
 export const apiGarage = `http://localhost:3000/garage`;
+let countCars = 0;
 
 export async function fetchCarsUI(url: string): Promise<void> {
+    const carsContainer = document.querySelector('.cars-container');
     try {
-        const carsContainer = helpCreateEl('div', 'cars-container');
-        document.querySelector('.container')?.append(carsContainer);
-
         const response: Response = await fetch(url);
         const arrCars = await response.json();
         console.log(arrCars);
 
         arrCars.forEach((data: { id: number; name: string; color: string }) => {
             const car = helpCreateEl('div', 'car');
-            if (carsContainer) console.log(true);
-
-            car.setAttribute('id', `${data.id}`);
-            carsContainer.append(car);
+            if (carsContainer) car.setAttribute('id', `${data.id}`);
+            carsContainer?.append(car);
 
             const temp = `
             <div class="car-selectors">
-            <button class="car-selectors__select" id="select-${data.id}">SELECT</button>
-            <button class="car-selectors__remove" id="remove-${data.id}">REMOVE</button>
-            <button class="car-selectors__start" id="start-${data.id}">Start</button>
-            <button class="car-selectors__stop" id="stop-${data.id}">Stop</button>
+            <button class="car-selectors__select" id="${data.id}">SELECT</button>
+            <button class="car-selectors__remove" id="${data.id}">REMOVE</button>
+            <button class="car-selectors__start" id="${data.id}">Start</button>
+            <button class="car-selectors__stop" id="${data.id}">Stop</button>
             </div>
             <h5 class="car__title">${data.name}</h5>
             <div class="car__img" id=img-${data.id}>${createCarUI(data.color)}</div>
@@ -52,3 +49,37 @@ export async function fetchCarsUI(url: string): Promise<void> {
         console.error('Error fetching car data:', (error as Error).message);
     }
 }
+
+export const apiCarsPage = async (page: number, limit = 7) => {
+    try {
+        const response: Response = await fetch(`${apiGarage}?_page=${page}&_limit=${limit}`, { method: 'GET' });
+        countCars = Number(response.headers.get('X-Total-count'));
+
+        const arrCarsPage = response.json();
+
+        const garageCount = document.querySelector('.garage-count') as HTMLElement;
+        if (garageCount) garageCount.innerHTML = `${countCars}`;
+
+        console.log(arrCarsPage);
+    } catch (error) {
+        console.error('Error fetching car data:', (error as Error).message);
+    }
+};
+
+export const apiCarDelete = async (id: number) => {
+    try {
+        await fetch(`${apiGarage}/${id}`, {
+            method: 'DELETE',
+        });
+    } catch (error) {
+        console.error('Error fetching car data:', (error as Error).message);
+    }
+};
+
+export const apiGetCar = async (id: number) => {
+    try {
+        (await fetch(`${apiGetCar}/${id}`, { method: 'GET' })).json();
+    } catch (error) {
+        console.error('Error fetching car data:', (error as Error).message);
+    }
+};

@@ -1,6 +1,6 @@
 import './styles/style.css';
 import { ininialUI, helpCreateEl } from './drawUI';
-import { fetchCarsUI, apiGarage } from './apiGarage';
+import { fetchCarsUI, apiGarage, apiCarsPage } from './apiGarage';
 import { switchLayout } from './buttons';
 import { fetchWinners, apiWinners, getWinnersApi, getWinApi } from './apiWinners';
 import { apiDriveMotor, apiStopMotor, apiStartMotor } from './drive';
@@ -15,6 +15,7 @@ async function startApp(): Promise<void> {
     apiStartMotor(1);
     apiStopMotor(2);
     apiDriveMotor(1);
+    apiCarsPage(1);
     footer();
 }
 

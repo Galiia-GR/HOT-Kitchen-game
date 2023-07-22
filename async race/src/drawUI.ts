@@ -43,6 +43,7 @@ export async function ininialUI(): Promise<void> {
       </div>
     </div>
 
+    <div class="cars-container"></div>
 </div>
 
 <div class="winners delete">

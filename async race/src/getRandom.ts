@@ -1,4 +1,4 @@
-export const getRandomName = () => {
+export function randomName() {
     const brandsCarArr: Array<string> = [
         'Audi',
         'Ford',
@@ -38,8 +38,8 @@ export const getRandomName = () => {
     const randomBrand = Math.floor(Math.random() * 15);
     const randomModel = Math.floor(Math.random() * 15);
 
-    return `${brandsCarArr[randomBrand]}  ${modelsCarsArr[randomModel]}`;
-};
+    return `${brandsCarArr[randomBrand]} ${modelsCarsArr[randomModel]}`;
+}
 
 export function randomColor() {
     const arrColors = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
