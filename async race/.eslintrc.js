@@ -22,6 +22,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'no-useless-return': 'off',
         'max-len': 'off',
+        'prefer-const': 'off',
         'import/no-unresolved': 'off', // https://github.com/typescript-eslint/typescript-eslint/issues/1624
         'import/extensions': ['warn', 'never'], // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
         'import/no-extraneous-dependencies': ['error', { devDependencies: true }],

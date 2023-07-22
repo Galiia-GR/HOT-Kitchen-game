@@ -1,114 +1,123 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: rgba(161, 60, 60, 0.103);
+    background-color: rgba(161, 60, 60, 0.103);
 }
 
 .container {
-  display: flex;
-  max-width: 1920px;
-  max-height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  flex-direction: column;
+    display: flex;
+    max-width: 1920px;
+    max-height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    flex-direction: column;
 }
 
 .wrapper {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("../images/db7b2182207d54b77aaa.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/db7b2182207d54b77aaa.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .cars-container {
-  height: 500px;
-  background-color: rgb(84, 84, 84);
-  width: 1920px;
-  display: flex;
-  flex-direction: column;
+    height: 500px;
+    background-color: rgb(84, 84, 84);
+    width: 1920px;
+    display: flex;
+    flex-direction: column;
 }
 
 .switch {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
 }
 
 .switch__garage,
 .switch__winners {
-  cursor: pointer;
-  font-size: 12px;
-  width: 80px;
-  height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 80px;
+    height: 20px;
 }
 
 .input {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
 }
 
 .input-buttons {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
 }
 
-.garage-title {
-  margin: 100px 0 0 20px;
-  display: flex;
-  gap: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: aliceblue;
+.garage-title,
+.winners-title {
+    margin: 100px 0 0 20px;
+    display: flex;
+    gap: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.winners-title {
+    margin: 200px 0 0 20px;
 }
 
 .car {
-  display: flex;
-  flex-direction: column;
-  padding-top: 10px;
-  padding-left: 10px;
-  border-bottom: 3px dashed white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-bottom: 3px dashed #fff;
 }
 
 .car__img {
-  display: block;
-  width: 94px;
-  height: 34px;
+    display: block;
+    width: 94px;
+    height: 34px;
 }
 
 .car__title {
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 .car-selectors {
-  display: flex;
-  gap: 10px;
-  padding: 10px 0 10px 0;
+    display: flex;
+    gap: 10px;
+    padding: 10px 0 10px 0;
 }
 
 .car-selectors__select,
 .car-selectors__remove,
 .car-selectors__start,
 .car-selectors__stop {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .delete {
-  display: none;
+    display: none;
 }
 
 .footer {
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(197, 226, 230);
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(197, 226, 230);
+}
+
+.winners-table__container {
+    color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

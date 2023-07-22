@@ -64,7 +64,8 @@ body {
     padding: 20px;
 }
 
-.garage-title {
+.garage-title,
+.winners-title {
     margin: 100px 0 0 20px;
     display: flex;
     gap: 20px;
@@ -73,12 +74,16 @@ body {
     color: aliceblue;
 }
 
+.winners-title {
+    margin: 200px 0 0 20px;
+}
+
 .car {
     display: flex;
     flex-direction: column;
     padding-top: 10px;
     padding-left: 10px;
-    border-bottom: 3px dashed white;
+    border-bottom: 3px dashed #fff;
 }
 
 .car__img {
@@ -112,4 +117,8 @@ body {
     display: flex;
     justify-content: space-between;
     background-color: rgb(197, 226, 230);
+}
+
+.winners-table__container {
+    color: #fff;
 }

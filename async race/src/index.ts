@@ -1,13 +1,16 @@
 import './styles/style.css';
 import { ininialUI, helpCreateEl } from './drawUI';
-import { fethCarsUI } from './raceUI';
-import { garageApi } from './api';
+import { fetchCarsUI, apiGarage } from './apiGarage';
 import { switchLayout } from './buttons';
+import { fetchWinners, apiWinners, getWinnersApi, getWinApi } from './apiWinners';
 
 async function startApp(): Promise<void> {
     await ininialUI();
-    await fethCarsUI(garageApi);
+    await fetchCarsUI(apiGarage);
     switchLayout();
+    await fetchWinners(apiWinners);
+    getWinnersApi(2);
+    getWinApi(2);
     footer();
 }
 
