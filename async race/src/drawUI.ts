@@ -18,12 +18,12 @@ export async function ininialUI(): Promise<void> {
     <div class="input">
     <div class="input-create__block">
     <input class="input-create__input">
-    <input class="input-create__color">
+    <input type='color' class="input-create__color">
     <button class="input-create__button">CREATE</button>
     </div>
     <div class="input-update__block">
     <input class="input-update__input">
-    <input class="input-update__color">
+    <input type='color' class="input-update__color">
     <button class="input-update__button">UPDATE</button>
     </div>
     </div>

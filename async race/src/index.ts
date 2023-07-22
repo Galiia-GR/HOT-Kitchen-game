@@ -3,6 +3,7 @@ import { ininialUI, helpCreateEl } from './drawUI';
 import { fetchCarsUI, apiGarage } from './apiGarage';
 import { switchLayout } from './buttons';
 import { fetchWinners, apiWinners, getWinnersApi, getWinApi } from './apiWinners';
+import { apiDriveMotor, apiStopMotor, apiStartMotor } from './drive';
 
 async function startApp(): Promise<void> {
     await ininialUI();
@@ -11,6 +12,9 @@ async function startApp(): Promise<void> {
     await fetchWinners(apiWinners);
     getWinnersApi(2);
     getWinApi(2);
+    apiStartMotor(1);
+    apiStopMotor(2);
+    apiDriveMotor(1);
     footer();
 }
 

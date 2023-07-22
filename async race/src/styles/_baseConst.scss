@@ -58,6 +58,11 @@ body {
     padding: 20px;
 }
 
+.input-create__color,
+.input-update__color {
+    height: 20px;
+}
+
 .input-buttons {
     display: flex;
     gap: 20px;
@@ -79,6 +84,7 @@ body {
 }
 
 .car {
+    position: relative;
     display: flex;
     flex-direction: column;
     padding-top: 10px;
@@ -121,4 +127,12 @@ body {
 
 .winners-table__container {
     color: #fff;
+}
+
+.flag {
+    position: absolute;
+    color: red;
+    font-size: 40px;
+    margin-left: 80%;
+    top: 50%;
 }
