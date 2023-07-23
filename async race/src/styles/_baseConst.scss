@@ -16,7 +16,6 @@ body {
     max-width: $content-width;
     max-height: 100%;
     margin: 0 auto;
-    overflow: hidden;
     flex-direction: column;
 }
 
@@ -31,7 +30,6 @@ body {
 }
 
 .cars-container {
-    height: 500px;
     background-color: rgb(84, 84, 84);
     width: $content-width;
     display: flex;

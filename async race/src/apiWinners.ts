@@ -10,7 +10,6 @@ export async function fetchWinners(url: string): Promise<void> {
         const response: Response = await fetch(url, { method: 'GET' });
 
         const arrWin = await response.json();
-        console.log(arrWin, countWinners);
 
         arrWin.forEach((data: { id: number; wins: number; time: number }) => {
             count += 1;
@@ -29,7 +28,9 @@ export async function fetchWinners(url: string): Promise<void> {
     }
 }
 
-export async function getWinnersApi(page: number, limit = 10) {
+await fetchWinners(apiWinners);
+
+export async function apiGetWinTotal(page: number, limit = 10) {
     try {
         const response: Response = await fetch(`${apiWinners}?_page=${page}&_limit=${limit}`, { method: 'GET' });
         countWinners = Number(response.headers.get('X-Total-count'));
@@ -42,7 +43,9 @@ export async function getWinnersApi(page: number, limit = 10) {
     if (winnersCountHtml) winnersCountHtml.innerHTML = `${countWinners}`;
 }
 
-export async function getWinApi(id: number) {
+apiGetWinTotal(1);
+
+export async function apiGetWin(id: number) {
     try {
         const response: Response = await fetch(`${apiWinners}/${id}`, { method: 'GET' });
         const winResp = await response.json();
@@ -51,3 +54,13 @@ export async function getWinApi(id: number) {
         console.error('Error fetching winner id:', (error as Error).message);
     }
 }
+
+export const apiWinnerDelete = async (id: number) => {
+    try {
+        await fetch(`${apiWinners}/${id}`, {
+            method: 'DELETE',
+        });
+    } catch (error) {
+        console.error('Error fetching car data:', (error as Error).message);
+    }
+};

@@ -1,10 +1,21 @@
-import { apiCarDelete, apiGarage, fetchCarsUI, apiGetCar } from './apiGarage';
+import { apiCarDelete, apiGarage, apiGetCar, apiUpdateCar, apiCreateCar } from './apiGarage';
+import { fetchCarsUI } from './drawUI';
+import { fetchWinners, apiWinners, apiWinnerDelete } from './apiWinners';
+
+const carsContainer = document.querySelector('.cars-container') as HTMLElement;
+const tableContain = document.querySelector('.win-container') as HTMLElement;
+
+const inputCreate = document.querySelector('.input-create__input') as HTMLInputElement;
+const inputCreateColor = document.querySelector('.input-create__color') as HTMLInputElement;
+const buttonCreate = document.querySelector('.input-create__button');
 
 const inputUpdate = document.querySelector('.input-update__input') as HTMLInputElement;
 const inputUpdateColor = document.querySelector('.input-update__color') as HTMLInputElement;
+const buttonUpdate = document.querySelector('.input-update__button');
+
+let getIdSelect: number;
 
 export function switchLayout() {
-    const carsContainer = document.querySelector('.cars-container');
     const garageUI = document.querySelector('.garage');
     const winnersUI = document.querySelector('.winners');
 
@@ -23,48 +34,51 @@ export function switchLayout() {
         winnersUI?.classList.remove('delete');
     });
 }
+switchLayout();
 
 document.addEventListener('click', async (e) => {
     const buttonCar = e.target as HTMLElement;
 
-    console.log(buttonCar);
-
     if (buttonCar.classList.contains('car-selectors__select')) {
-        const getIdSelect = Number(buttonCar.getAttribute('id'));
-        apiGetCar(getIdSelect).then((data: { name: string; color: string }) => {
-            if (inputUpdate) inputUpdate.value = data.name;
-            if (inputUpdateColor) inputUpdateColor.value = data.color;
-        });
+        getIdSelect = Number(buttonCar.getAttribute('id'));
+
+        apiGetCar(getIdSelect)
+            .then((data) => {
+                inputUpdate.value = data.name;
+                inputUpdateColor.value = data.color;
+            })
+            .catch((error) => {
+                console.error('Error getting car data:', error.message);
+            });
     }
 
     if (buttonCar.classList.contains('car-selectors__remove')) {
         const getIdRemove = Number(buttonCar.getAttribute('id'));
-        const carsContainer = document.querySelector('.cars-container');
         if (carsContainer) carsContainer.innerHTML = '';
         apiCarDelete(getIdRemove).then(() => fetchCarsUI(apiGarage));
+        if (tableContain) tableContain.innerHTML = '';
+        apiWinnerDelete(getIdRemove).then(() => fetchWinners(apiWinners));
     }
 });
 
-//     idUpdateCar = Number(btn.dataset.select);
-//     inputTextUpdate.disabled = false;
-//     inputColorUpdate.disabled = false;
-//     btnUpdate.disabled = false;
+buttonUpdate?.addEventListener('click', async () => {
+    const newColor = inputUpdateColor.value;
+    const newName = inputUpdate.value;
+    apiUpdateCar({ name: newName, color: newColor }, getIdSelect).then(() => {
+        if (carsContainer) carsContainer.innerHTML = '';
+        fetchCarsUI(apiGarage);
+    });
+    inputUpdate.value = '';
+});
 
-//     getCarAPI(idUpdateCar).then((item) => {
-//         inputTextUpdate.value = item.name;
-//         inputColorUpdate.value = item.color;
-//     });
-// }
-
-// if (btn.classList.contains('car-options_remove')) {
-//     const idButton = Number(btn.dataset.remove);
-//     deleteCarAPI(idButton).then(() => updateCarsUI());
-
-//     getAllWinnersAPI()
-//         .then((arrAllWin) => {
-//             arrAllWin.forEach((item: DescriptionCar) => {
-//                 if (Number(item.id) === idButton) deleteWinnerAPI(idButton);
-//             });
-//         })
-//         .then(() => updateWinnersUI());
-// }
+buttonCreate?.addEventListener('click', async () => {
+    const newColorCreate = inputCreateColor.value;
+    const newNameCreate = inputCreate.value;
+    if (newNameCreate !== '') {
+        apiCreateCar({ name: newNameCreate, color: newColorCreate }).then(() => {
+            if (carsContainer) carsContainer.innerHTML = '';
+            fetchCarsUI(apiGarage);
+        });
+        inputCreate.value = '';
+    }
+});
