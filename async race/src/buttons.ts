@@ -1,4 +1,4 @@
-import { apiCarDelete, apiGarage, apiGetCar, apiUpdateCar, apiCreateCar } from './apiGarage';
+import { apiCarDelete, apiGarage, apiGetCar, apiUpdateCar, apiCreateCar, apiCarsPageCount } from './apiGarage';
 import { fetchCarsUI } from './drawUI';
 import { fetchWinners, apiWinners, apiWinnerDelete } from './apiWinners';
 
@@ -50,6 +50,15 @@ document.addEventListener('click', async (e) => {
             .catch((error) => {
                 console.error('Error getting car data:', error.message);
             });
+
+        buttonUpdate?.addEventListener('click', async () => {
+            if (inputUpdate.value !== '')
+                apiUpdateCar({ name: inputUpdate.value, color: inputUpdateColor.value }, getIdSelect).then(() => {
+                    if (carsContainer) carsContainer.innerHTML = '';
+                    fetchCarsUI(apiGarage);
+                });
+            inputUpdate.value = '';
+        });
     }
 
     if (buttonCar.classList.contains('car-selectors__remove')) {
@@ -57,18 +66,11 @@ document.addEventListener('click', async (e) => {
         if (carsContainer) carsContainer.innerHTML = '';
         apiCarDelete(getIdRemove).then(() => fetchCarsUI(apiGarage));
         if (tableContain) tableContain.innerHTML = '';
-        apiWinnerDelete(getIdRemove).then(() => fetchWinners(apiWinners));
+        apiWinnerDelete(getIdRemove).then(() => {
+            fetchWinners(apiWinners);
+            apiCarsPageCount(1);
+        });
     }
-});
-
-buttonUpdate?.addEventListener('click', async () => {
-    const newColor = inputUpdateColor.value;
-    const newName = inputUpdate.value;
-    apiUpdateCar({ name: newName, color: newColor }, getIdSelect).then(() => {
-        if (carsContainer) carsContainer.innerHTML = '';
-        fetchCarsUI(apiGarage);
-    });
-    inputUpdate.value = '';
 });
 
 buttonCreate?.addEventListener('click', async () => {
@@ -78,6 +80,7 @@ buttonCreate?.addEventListener('click', async () => {
         apiCreateCar({ name: newNameCreate, color: newColorCreate }).then(() => {
             if (carsContainer) carsContainer.innerHTML = '';
             fetchCarsUI(apiGarage);
+            apiCarsPageCount(1);
         });
         inputCreate.value = '';
     }
