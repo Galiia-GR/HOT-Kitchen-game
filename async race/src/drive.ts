@@ -1,29 +1,32 @@
 const apiMotor = 'http://localhost:3000/engine';
-let idtoStart: number;
+let idStart: number;
+let idAnim: number;
+let time: number;
 
 //  const buttonRace = document.querySelector('.input-button__race');
 
-export async function apiStartMotor(id: number): Promise<void> {
+export const apiStartMotor = async (id: number): Promise<{ velocity: number; distance: number }> => {
     try {
         const response: Response = await fetch(`${apiMotor}?id=${id}&status=started`, { method: 'PATCH' });
-        await response.json();
+        const data = response.json();
+        console.log(data);
+        return data;
     } catch (error) {
         console.error('Error starting motor:', (error as Error).message);
+        throw error;
     }
-}
+};
 
-export async function apiStopMotor(id: number) {
+export async function apiStopMotor(id: number): Promise<void> {
     try {
         const response: Response = await fetch(`${apiMotor}?id=${id}&status=stopped`, { method: 'PATCH' });
-        const arrStop = await response.json();
-
-        console.log(arrStop);
+        await response.json();
     } catch (error) {
         console.error('Error stopping motor:', (error as Error).message);
     }
 }
 
-export async function apiDriveMotor(id: number) {
+export async function apiDriveMotor(id: number): Promise<{ success: boolean }> {
     try {
         const response: Response = await fetch(`${apiMotor}?id=${id}&status=drive`, { method: 'PATCH' });
 
@@ -39,43 +42,60 @@ export async function apiDriveMotor(id: number) {
         return { success: false };
     }
 }
+
+function animation(car: HTMLElement, distance: number, duration: number) {
+    let startTime = 0;
+    idAnim = idStart;
+    console.log(idAnim);
+
+    function step(timestamp: number) {
+        if (!startTime) {
+            startTime = timestamp;
+        }
+        const progress = (timestamp - startTime) / duration;
+        const translate: number = progress * distance;
+        car.style.transform = `translateX(${translate}px)`;
+
+        if (progress < 1) {
+            idAnim = window.requestAnimationFrame(step);
+        }
+    }
+    idAnim = window.requestAnimationFrame(step);
+    return idAnim;
+}
+
+const startCar = async (idCar: number) => {
+    try {
+        const data = await apiStartMotor(idCar);
+        const velocity = Number(data.velocity);
+        const distance = Number(data.distance);
+        time = distance / velocity;
+
+        const car = document.getElementById(`img-${idCar}`);
+        if (car instanceof HTMLElement) {
+            const screenWidth = document.body.clientWidth;
+            const positionCar = (screenWidth / 100) * 15;
+            const distanceAnimation = screenWidth - positionCar;
+
+            animation(car, distanceAnimation, time);
+
+            const arrDrive = await apiDriveMotor(idCar);
+            if (!arrDrive.success) {
+                window.cancelAnimationFrame(idAnim);
+            }
+        }
+    } catch (error) {
+        console.error('Error starting car:', (error as Error).message);
+    }
+};
+
 document.addEventListener('click', async (e) => {
     const button = e.target as HTMLElement;
     console.log(button);
 
     if (button.classList.contains('car-selectors__start')) {
-        idtoStart = Number(button.getAttribute('id'));
-        console.log(idtoStart);
+        idStart = Number(button.getAttribute('id'));
+        console.log(idStart);
+        startCar(idStart);
     }
 });
-
-// async function moveCar(carElement: HTMLElement, endPosition: number, steps: number): Promise<void> {
-//     let currPosition = carElement.offsetLeft;
-//     const updatePosition = async () => {
-//         currPosition += steps;
-//         carElement.style.transform = `translateX(${currPosition}px)`;
-
-//         if (currPosition < endPosition) {
-//             requestAnimationFrame(updatePosition);
-//         } else {
-//             requestAnimationFrame(updatePosition); // Resolve the promise when the animation is complete
-//         }
-//         requestAnimationFrame(updatePosition);
-//     };
-
-//     await updatePosition();
-// }
-
-// async function animateCar(
-//     carElement: HTMLElement,
-//     data: { velocity: number; distance: number },
-//     endPosition: number
-// ): Promise<void> {
-//     const { velocity, distance } = data;
-//     const duration = distance / velocity;
-//     const frames = (duration / 1000) * 60;
-//     const steps = (endPosition - carElement.offsetLeft) / frames;
-
-//     await moveCar(carElement, endPosition, steps);
-//     // this.stopCar();
-// }
