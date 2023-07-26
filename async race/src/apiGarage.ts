@@ -40,7 +40,6 @@ export const apiUpdateCar = async (body: object, id: number) => {
                 'Content-Type': 'application/json',
             },
         });
-        console.log(body);
     } catch (error) {
         console.error('Error fetching car data:', (error as Error).message);
     }

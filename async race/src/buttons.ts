@@ -1,6 +1,7 @@
 import { apiCarDelete, apiGarage, apiGetCar, apiUpdateCar, apiCreateCar, apiCarsPageCount } from './apiGarage';
 import { fetchCarsUI } from './drawUI';
 import { fetchWinners, apiWinners, apiWinnerDelete } from './apiWinners';
+import { randomName, randomColor } from './getRandom';
 
 const carsContainer = document.querySelector('.cars-container') as HTMLElement;
 const tableContain = document.querySelector('.win-container') as HTMLElement;
@@ -12,6 +13,8 @@ const buttonCreate = document.querySelector('.input-create__button');
 const inputUpdate = document.querySelector('.input-update__input') as HTMLInputElement;
 const inputUpdateColor = document.querySelector('.input-update__color') as HTMLInputElement;
 const buttonUpdate = document.querySelector('.input-update__button');
+
+const buttonGenerate = document.querySelector('.input-button__generate') as HTMLElement;
 
 let getIdSelect: number;
 
@@ -84,4 +87,15 @@ buttonCreate?.addEventListener('click', async () => {
         });
         inputCreate.value = '';
     }
+});
+
+buttonGenerate?.addEventListener('click', async () => {
+    for (let i = 0; i < 100; i++) {
+        const name = randomName();
+        const color = randomColor();
+        apiCreateCar({ name: `${name}`, color: `${color}` });
+    }
+    if (carsContainer) carsContainer.innerHTML = '';
+    fetchCarsUI(apiGarage);
+    apiCarsPageCount(1);
 });
