@@ -139,8 +139,8 @@ export async function fetchCarsUI(url: string): Promise<void> {
           <div class="car-selectors">
           <button class="car-selectors__select" id="${data.id}">SELECT</button>
           <button class="car-selectors__remove" id="${data.id}">REMOVE</button>
-          <button class="car-selectors__start" id="${data.id}">Start</button>
-          <button class="car-selectors__stop" id="${data.id}">Stop</button>
+          <button class="car-selectors__start" id="${data.id}" data ="start-${data.id}">Start</button>
+          <button class="car-selectors__stop" id="${data.id}" data ="stop-${data.id}">Stop</button>
           </div>
           <h5 class="car__title">${data.name}</h5>
           <div class="car__img" id=img-${data.id}>${createCarUI(data.color)}</div>

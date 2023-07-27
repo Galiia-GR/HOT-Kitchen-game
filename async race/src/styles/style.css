@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +28,6 @@ body {
 
 .cars-container {
   background-color: rgb(84, 84, 84);
-  width: 1920px;
   display: flex;
   flex-direction: column;
 }
@@ -132,22 +130,8 @@ body {
   position: absolute;
   color: red;
   font-size: 40px;
-  margin-left: 80%;
+  right: 8%;
   top: 50%;
-}
-
-.moving-div {
-  position: relative;
-  animation: moveForward 6s linear infinite; /* Измените значение времени и тип анимации по своему усмотрению */
-}
-
-@keyframes moveForward {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: calc(100% - 100px); /* Рассчитываем положение, чтобы div не выходил за пределы родительского элемента */
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,7 +1,13 @@
 export const apiGarage = `http://localhost:3000/garage`;
 let countCars = 0;
 
-export const apiCarsPageCount = async (page: number, limit = 7) => {
+interface Car {
+    id: number;
+    name: string;
+    color: string;
+}
+
+export const apiCarsPageCount = async (page: number, limit = 7): Promise<Car[]> => {
     try {
         const response: Response = await fetch(`${apiGarage}?_page=${page}&_limit=${limit}`, { method: 'GET' });
         countCars = Number(response.headers.get('X-Total-count'));
@@ -12,8 +18,10 @@ export const apiCarsPageCount = async (page: number, limit = 7) => {
         if (garageCount) garageCount.innerHTML = `${countCars}`;
 
         console.log(arrCarsPage);
+        return arrCarsPage;
     } catch (error) {
         console.error('Error fetching car data:', (error as Error).message);
+        throw error;
     }
 };
 

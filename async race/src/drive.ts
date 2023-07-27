@@ -1,10 +1,14 @@
+import { apiCarsPageCount } from './apiGarage';
+
 const apiMotor = 'http://localhost:3000/engine';
 let idStart: number;
 let idAnim: number;
+let idStop: number;
 let time: number;
+//  let idWin: number;
 
-//  const buttonRace = document.querySelector('.input-button__race');
-
+const buttonRace = document.querySelector('.input-button__race') as HTMLElement;
+const buttonReset = document.querySelector('.input-button__reset') as HTMLElement;
 export const apiStartMotor = async (id: number): Promise<{ velocity: number; distance: number }> => {
     try {
         const response: Response = await fetch(`${apiMotor}?id=${id}&status=started`, { method: 'PATCH' });
@@ -74,7 +78,7 @@ const startCar = async (idCar: number) => {
         const car = document.getElementById(`img-${idCar}`);
         if (car instanceof HTMLElement) {
             const screenWidth = document.body.clientWidth;
-            const positionCar = (screenWidth / 100) * 15;
+            const positionCar = (screenWidth / 200) * 15;
             const distanceAnimation = screenWidth - positionCar;
 
             animation(car, distanceAnimation, time);
@@ -89,13 +93,77 @@ const startCar = async (idCar: number) => {
     }
 };
 
+export const stopCar = async (idCar: number) => {
+    try {
+        apiStopMotor(idCar).then(() => {
+            window.cancelAnimationFrame(idCar);
+            const car = document.getElementById(`img-${idCar}`);
+            if (car instanceof HTMLElement) {
+                car.style.transform = 'translateX(0px)';
+            }
+        });
+    } catch (error) {
+        console.error('Error starting car:', (error as Error).message);
+    }
+};
+
 document.addEventListener('click', async (e) => {
     const button = e.target as HTMLElement;
-    console.log(button);
 
     if (button.classList.contains('car-selectors__start')) {
+        const buttonStart = button;
+        const parent = button.parentNode;
+        const buttonStop = parent?.querySelector('.car-selectors__stop');
+
         idStart = Number(button.getAttribute('id'));
-        console.log(idStart);
         startCar(idStart);
+        buttonStart.setAttribute('disabled', 'disabled');
+        buttonStop?.removeAttribute('disabled');
     }
+
+    if (button.classList.contains('car-selectors__stop')) {
+        const buttonStop = button;
+        const parent = button.parentNode;
+        const buttonStart = parent?.querySelector('.car-selectors__start');
+        idStop = Number(button.getAttribute('id'));
+        stopCar(idStop);
+        buttonStop.setAttribute('disabled', 'disabled');
+        buttonStart?.removeAttribute('disabled');
+    }
+});
+
+async function startRace(page: number) {
+    try {
+        const arrCarsPage = await apiCarsPageCount(page);
+        arrCarsPage.forEach((el) => {
+            const currentEl = el;
+            startCar(currentEl.id);
+        });
+    } catch (error) {
+        console.error('Error starting car:', (error as Error).message);
+    }
+}
+
+async function stopRace(page: number) {
+    try {
+        const arrCarsPage = await apiCarsPageCount(page);
+        arrCarsPage.forEach((el) => {
+            const currentEl = el;
+            stopCar(currentEl.id);
+        });
+    } catch (error) {
+        console.error('Error starting car:', (error as Error).message);
+    }
+}
+
+buttonRace?.addEventListener('click', async () => {
+    startRace(1);
+    buttonRace.setAttribute('disabled', 'disabled');
+    buttonReset?.removeAttribute('disabled');
+});
+
+buttonReset?.addEventListener('click', async () => {
+    stopRace(1);
+    buttonReset.setAttribute('disabled', 'disabled');
+    buttonRace?.removeAttribute('disabled');
 });
