@@ -10,18 +10,23 @@ export async function fetchWinners(url: string): Promise<void> {
         const response: Response = await fetch(url, { method: 'GET' });
 
         const arrWin = await response.json();
-
         arrWin.forEach((data: { id: number; wins: number; time: number }) => {
+            const carHtml = document.getElementById(`${data.id}`);
+            const carNameTitle = carHtml?.querySelector('.car__title');
+            const carImg = carHtml?.querySelector('.car__img') as HTMLElement;
+
             count += 1;
             const el = helpCreateEl('tr', `${data.id}`);
             const temp = `<td>${count}</td>
-        <td class = "win__look">how car look</td>
-        <td>car name</td>
+        <td class = "win__look"></td>
+        <td>${carNameTitle?.textContent}</td>
         <td>${data.wins}</td>
         <td>${data.time}</td>`;
 
             tableContain?.append(el);
             el.innerHTML = temp;
+            const winCar = document.querySelector('.win__look');
+            if (winCar) winCar.textContent = carImg.textContent;
         });
     } catch (error) {
         console.error('Error fetching winnersApi:', (error as Error).message);

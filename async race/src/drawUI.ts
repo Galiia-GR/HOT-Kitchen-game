@@ -1,4 +1,4 @@
-function createCarUI(color: string) {
+export function createCarUI(color: string) {
     const svgCar = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 666.55878 236.45138">
   <g id="layer1" transform="translate(2708.5 468.56)">
@@ -57,7 +57,8 @@ export async function ininialUI(): Promise<void> {
     <div class="pagination">
         <button class="prev-pagination__button">Prev</button>
         <button class="next-pagination__button">Next</button>
-      </div>
+        </div>
+        <span class='show'></span>
     </div>
 
     <div class="cars-container"></div>

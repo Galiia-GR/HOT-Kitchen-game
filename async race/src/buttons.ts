@@ -15,8 +15,6 @@ const inputUpdateColor = document.querySelector('.input-update__color') as HTMLI
 const buttonUpdate = document.querySelector('.input-update__button');
 
 const buttonGenerate = document.querySelector('.input-button__generate') as HTMLElement;
-//  const buttonPrev = document.querySelector('.prev-pagination__button') as HTMLElement;
-//  const buttonPrev = document.querySelector('.next-pagination__button') as HTMLElement;
 
 let getIdSelect: number;
 

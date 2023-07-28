@@ -134,4 +134,21 @@ body {
   top: 50%;
 }
 
+.show {
+  font-size: 24px;
+  font-family: "Arial", sans-serif;
+  color: #fff;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff6c00, 0 0 70px #ff6c00, 0 0 80px #ff6c00, 0 0 100px #ff6c00, 0 0 150px #ff6c00;
+  animation: neon-animation 1s ease-in-out infinite alternate;
+}
+
+@keyframes neon-animation {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff6c00, 0 0 70px #ff6c00, 0 0 80px #ff6c00, 0 0 100px #ff6c00, 0 0 150px #ff6c00;
+  }
+  to {
+    text-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff, 0 0 60px #ff6c00, 0 0 105px #ff6c00, 0 0 120px #ff6c00, 0 0 150px #ff6c00, 0 0 225px #ff6c00;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

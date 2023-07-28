@@ -1,1 +1,159 @@
-@import './_baseConst.scss';
+$content-width: 1920px;
+$main-color: rgb(84, 84, 84);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    //overflow: hidden;
+}
+
+body {
+    background-color: $main-color;
+}
+
+.container {
+    display: flex;
+    max-width: $content-width;
+    max-height: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+}
+
+.wrapper {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/db7b2182207d54b77aaa.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 300px;
+}
+
+.cars-container {
+    background-color: $main-color;
+    display: flex;
+    flex-direction: column;
+}
+
+.switch {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.switch__garage,
+.switch__winners {
+    cursor: pointer;
+    font-size: 12px;
+    width: 80px;
+    height: 20px;
+}
+
+.input {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.input-create__color,
+.input-update__color {
+    height: 20px;
+}
+
+.input-buttons {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.garage-title,
+.winners-title {
+    margin: 100px 0 0 10px;
+    display: flex;
+    gap: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.winners-title {
+    margin: 200px 0 0 20px;
+}
+
+.car {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-bottom: 3px dashed #fff;
+}
+
+.car__img {
+    display: block;
+    width: 94px;
+    height: 34px;
+}
+
+.car__title {
+    padding-bottom: 20px;
+}
+
+.car-selectors {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0 10px 0;
+}
+
+.car-selectors__select,
+.car-selectors__remove,
+.car-selectors__start,
+.car-selectors__stop {
+    cursor: pointer;
+}
+
+.delete {
+    display: none;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: $main-color;
+    color: #fff;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.winners-table__container {
+    color: #fff;
+}
+
+.flag {
+    position: absolute;
+    color: red;
+    font-size: 40px;
+    right: 8%;
+    top: 50%;
+}
+
+.show {
+    font-size: 24px;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff6c00, 0 0 70px #ff6c00, 0 0 80px #ff6c00,
+        0 0 100px #ff6c00, 0 0 150px #ff6c00;
+    animation: neon-animation 1s ease-in-out infinite alternate;
+}
+
+@keyframes neon-animation {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff6c00, 0 0 70px #ff6c00, 0 0 80px #ff6c00,
+            0 0 100px #ff6c00, 0 0 150px #ff6c00;
+    }
+    to {
+        text-shadow: 0 0 15px #fff, 0 0 30px #fff, 0 0 45px #fff, 0 0 60px #ff6c00, 0 0 105px #ff6c00, 0 0 120px #ff6c00,
+            0 0 150px #ff6c00, 0 0 225px #ff6c00;
+    }
+}

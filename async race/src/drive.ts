@@ -5,15 +5,17 @@ let idStart: number;
 let idAnim: number;
 let idStop: number;
 let time: number;
-//  let idWin: number;
+let idWin: number;
+let isShowWinExecuted = false;
 
 const buttonRace = document.querySelector('.input-button__race') as HTMLElement;
 const buttonReset = document.querySelector('.input-button__reset') as HTMLElement;
+const showWinner = document.querySelector('.show') as HTMLElement;
+
 export const apiStartMotor = async (id: number): Promise<{ velocity: number; distance: number }> => {
     try {
         const response: Response = await fetch(`${apiMotor}?id=${id}&status=started`, { method: 'PATCH' });
         const data = response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Error starting motor:', (error as Error).message);
@@ -39,7 +41,6 @@ export async function apiDriveMotor(id: number): Promise<{ success: boolean }> {
         }
 
         const arrDrive = await response.json();
-        console.log(arrDrive);
         return arrDrive;
     } catch (error) {
         console.error('Error driving motor:', (error as Error).message);
@@ -62,6 +63,9 @@ function animation(car: HTMLElement, distance: number, duration: number) {
 
         if (progress < 1) {
             idAnim = window.requestAnimationFrame(step);
+        }
+        if (progress >= 1 && !buttonReset.hasAttribute('disabled')) {
+            showWin(car, duration);
         }
     }
     idAnim = window.requestAnimationFrame(step);
@@ -166,4 +170,17 @@ buttonReset?.addEventListener('click', async () => {
     stopRace(1);
     buttonReset.setAttribute('disabled', 'disabled');
     buttonRace?.removeAttribute('disabled');
+    showWinner.innerHTML = '';
+    isShowWinExecuted = false;
 });
+
+async function showWin(carWin: HTMLElement, timeWin: number) {
+    if (!isShowWinExecuted) {
+        isShowWinExecuted = true;
+        idWin = Number(carWin.dataset.car);
+        console.log(idWin, carWin);
+        let timetoShow = (timeWin / 1000).toFixed(2);
+        let nameWinner = carWin.parentNode?.querySelector('.car__title')?.textContent;
+        showWinner.innerHTML = `${nameWinner} winner - (${timetoShow}sec) !`;
+    }
+}
