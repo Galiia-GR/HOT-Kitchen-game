@@ -39,7 +39,7 @@ export function switchLayout() {
 }
 switchLayout();
 
-document.addEventListener('click', async (e) => {
+document.addEventListener('click', (e) => {
     const buttonCar = e.target as HTMLElement;
 
     if (buttonCar.classList.contains('car-selectors__select')) {
