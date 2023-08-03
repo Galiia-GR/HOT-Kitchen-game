@@ -97,18 +97,18 @@ const startCar = async (idCar: number) => {
     }
 };
 
-export const stopCar = async (idCar: number) => {
-    try {
-        apiStopMotor(idCar).then(() => {
+export const stopCar = (idCar: number) => {
+    apiStopMotor(idCar)
+        .then(() => {
             window.cancelAnimationFrame(idCar);
             const car = document.getElementById(`img-${idCar}`);
             if (car instanceof HTMLElement) {
                 car.style.transform = 'translateX(0px)';
             }
+        })
+        .catch((error) => {
+            console.error('Error starting car:', (error as Error).message);
         });
-    } catch (error) {
-        console.error('Error starting car:', (error as Error).message);
-    }
 };
 
 document.addEventListener('click', async (e) => {
@@ -160,18 +160,28 @@ async function stopRace(page: number) {
     }
 }
 
-buttonRace?.addEventListener('click', async () => {
-    startRace(1);
-    buttonRace.setAttribute('disabled', 'disabled');
-    buttonReset?.removeAttribute('disabled');
+buttonRace?.addEventListener('click', () => {
+    startRace(1)
+        .then(() => {
+            buttonRace.setAttribute('disabled', 'disabled');
+            buttonReset?.removeAttribute('disabled');
+        })
+        .catch((error) => {
+            console.error('Error starting the race:', error);
+        });
 });
 
-buttonReset?.addEventListener('click', async () => {
-    stopRace(1);
-    buttonReset.setAttribute('disabled', 'disabled');
-    buttonRace?.removeAttribute('disabled');
-    showWinner.innerHTML = '';
-    isShowWinExecuted = false;
+buttonReset?.addEventListener('click', () => {
+    stopRace(1)
+        .then(() => {
+            buttonReset.setAttribute('disabled', 'disabled');
+            buttonRace?.removeAttribute('disabled');
+            showWinner.innerHTML = '';
+            isShowWinExecuted = false;
+        })
+        .catch((error) => {
+            console.error('Error reseting the race:', error);
+        });
 });
 
 async function showWin(carWin: HTMLElement, timeWin: number) {
