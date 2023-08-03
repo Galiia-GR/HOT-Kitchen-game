@@ -1,6 +1,7 @@
 import { helpCreateEl } from './drawUI';
+import { urlBase } from './api';
 
-export const apiWinners = 'http://localhost:3000/winners';
+export const apiWinners = `${urlBase}/winners`;
 let countWinners = 0;
 let count = 0;
 

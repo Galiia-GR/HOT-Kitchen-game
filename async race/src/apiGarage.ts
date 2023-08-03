@@ -1,4 +1,7 @@
-export const apiGarage = `http://localhost:3000/garage`;
+import { urlBase } from './api';
+
+export const apiGarage = `${urlBase}/garage`;
+
 let countCars = 0;
 
 interface Car {
