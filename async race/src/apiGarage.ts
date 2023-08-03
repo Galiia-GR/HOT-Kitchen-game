@@ -18,7 +18,9 @@ export const apiCarsPageCount = async (page: number, limit = 7): Promise<Car[]> 
         const arrCarsPage = response.json();
 
         const garageCount = document.querySelector('.garage-count') as HTMLElement;
-        if (garageCount) garageCount.innerHTML = `${countCars}`;
+        if (garageCount) {
+            garageCount.innerHTML = `${countCars}`;
+        }
         return arrCarsPage;
     } catch (error) {
         console.error('Error fetching car data:', (error as Error).message);

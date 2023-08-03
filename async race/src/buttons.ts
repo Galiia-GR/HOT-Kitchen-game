@@ -55,20 +55,27 @@ document.addEventListener('click', async (e) => {
             });
 
         buttonUpdate?.addEventListener('click', async () => {
-            if (inputUpdate.value !== '')
+            if (inputUpdate.value !== '') {
                 apiUpdateCar({ name: inputUpdate.value, color: inputUpdateColor.value }, getIdSelect).then(() => {
-                    if (carsContainer) carsContainer.innerHTML = '';
-                    fetchCarsUI(apiGarage);
+                    if (carsContainer) {
+                        carsContainer.innerHTML = '';
+                        fetchCarsUI(apiGarage);
+                    }
                 });
-            inputUpdate.value = '';
+                inputUpdate.value = '';
+            }
         });
     }
 
     if (buttonCar.classList.contains('car-selectors__remove')) {
         const getIdRemove = Number(buttonCar.getAttribute('id'));
-        if (carsContainer) carsContainer.innerHTML = '';
+        if (carsContainer) {
+            carsContainer.innerHTML = '';
+        }
         apiCarDelete(getIdRemove).then(() => fetchCarsUI(apiGarage));
-        if (tableContain) tableContain.innerHTML = '';
+        if (tableContain) {
+            tableContain.innerHTML = '';
+        }
         apiWinnerDelete(getIdRemove).then(() => {
             fetchWinners(apiWinners);
             apiCarsPageCount(1);
@@ -81,9 +88,11 @@ buttonCreate?.addEventListener('click', async () => {
     const newNameCreate = inputCreate.value;
     if (newNameCreate !== '') {
         apiCreateCar({ name: newNameCreate, color: newColorCreate }).then(() => {
-            if (carsContainer) carsContainer.innerHTML = '';
-            fetchCarsUI(apiGarage);
-            apiCarsPageCount(1);
+            if (carsContainer) {
+                carsContainer.innerHTML = '';
+                fetchCarsUI(apiGarage);
+                apiCarsPageCount(1);
+            }
         });
         inputCreate.value = '';
     }
@@ -95,7 +104,9 @@ buttonGenerate?.addEventListener('click', async () => {
         const color = randomColor();
         apiCreateCar({ name: `${name}`, color: `${color}` });
     }
-    if (carsContainer) carsContainer.innerHTML = '';
+    if (carsContainer) {
+        carsContainer.innerHTML = '';
+    }
     fetchCarsUI(apiGarage);
     apiCarsPageCount(1);
 });

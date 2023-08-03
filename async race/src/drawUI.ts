@@ -19,7 +19,9 @@ export function createCarUI(color: string) {
 
 export function helpCreateEl(tagName: string, className: string) {
     const el = document.createElement(tagName);
-    if (className) el.className = className;
+    if (className) {
+        el.className = className;
+    }
     return el;
 }
 
@@ -135,8 +137,10 @@ export async function fetchCarsUI(url: string): Promise<void> {
 
         arrCars.forEach((data: { id: number; name: string; color: string }) => {
             const car = helpCreateEl('div', 'car');
-            if (carsContainer) car.setAttribute('id', `${data.id}`);
-            carsContainer?.append(car);
+            if (carsContainer) {
+                car.setAttribute('id', `${data.id}`);
+                carsContainer?.append(car);
+            }
 
             const temp = `
           <div class="car-selectors">

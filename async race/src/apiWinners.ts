@@ -27,7 +27,9 @@ export async function fetchWinners(url: string): Promise<void> {
             tableContain?.append(el);
             el.innerHTML = temp;
             const winCar = document.querySelector('.win__look');
-            if (winCar) winCar.textContent = carImg.textContent;
+            if (winCar) {
+                winCar.textContent = carImg.textContent;
+            }
         });
     } catch (error) {
         console.error('Error fetching winnersApi:', (error as Error).message);
@@ -46,7 +48,9 @@ export async function apiGetWinTotal(page: number, limit = 10) {
         console.error('Error fetching winners total count:', (error as Error).message);
     }
     const winnersCountHtml = document.querySelector('.winners-count') as HTMLElement;
-    if (winnersCountHtml) winnersCountHtml.innerHTML = `${countWinners}`;
+    if (winnersCountHtml) {
+        winnersCountHtml.innerHTML = `${countWinners}`;
+    }
 }
 
 apiGetWinTotal(1);
