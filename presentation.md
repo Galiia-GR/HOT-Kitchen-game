@@ -1,6 +1,8 @@
-#YouTube video - [link](https://www.youtube.com/watch?v=JzV7SAdU8G4);
-#Reveal presentation's deploy - [link](https://galiia-gr.github.io/reveal.js/);
-#The transcript of presentation:
+- YouTube video - [link](https://www.youtube.com/watch?v=JzV7SAdU8G4);
+
+- Reveal presentation's deploy - [link](https://galiia-gr.github.io/reveal.js/);
+
+- The transcript of presentation:
 
 SOFTWARE DEVELOPMENT PRINCIPLES
 
